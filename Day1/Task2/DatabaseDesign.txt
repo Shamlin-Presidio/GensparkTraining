@@ -1,0 +1,68 @@
+I have 4 tables:
+    Rentals
+    Movies
+    Members
+    Dependents (dad's account membership used by child, but tracked -- as in Family membership plans in OTTs )
+
+Since Rental details maps every other table, and also because it is related directly to the fronend,
+Rentals is considered the master table herw:
+
+
+-------------------------------------
+TABLE: Rentals
+-------------------------------------
+rental_id        INT PRIMARY KEY
+movie_id         INT 
+member_id        INT                            
+dependent_id     INT                            
+rental_date      DATE 
+return_date      DATE
+
+FOREIGN KEY (movie_id) REFERENCES Movies(movie_id)
+FOREIGN KEY (member_id) REFERENCES Members(member_id)
+FOREIGN KEY (dependent_id) REFERENCES Dependents(dependent_id)
+
+
+
+
+-------------------------------------
+TABLE: Movies
+-------------------------------------
+movie_id         INT PRIMARY KEY
+title            VARCHAR(100) 
+format           VARCHAR(10)            
+category          VARCHAR(50)         
+
+
+
+
+-------------------------------------
+TABLE: Members
+-------------------------------------
+member_id        INT PRIMARY KEY
+name             VARCHAR(100) 
+phone_number     VARCHAR(15) 
+favorite_category VARCHAR(50)
+member_type      VARCHAR(10)            -- Golden or Bronze
+credit_card      VARCHAR(20)             
+
+
+
+-------------------------------------
+TABLE: Dependents
+-------------------------------------
+dependent_id     INT PRIMARY KEY
+member_id        INT NOT NULL
+name             VARCHAR(100) NOT NULL
+
+FOREIGN KEY (member_id) REFERENCES Members(member_id)
+
+
+
+---------------------------------------------------------------------------------------------------------------
+Notes:
+---------------------------------------------------------------------------------------------------------------
+
+
+Mam's solution:
+---------------------------------------------------------------------------------------------------------------
