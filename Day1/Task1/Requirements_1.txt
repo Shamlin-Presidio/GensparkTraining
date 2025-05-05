@@ -1,0 +1,8 @@
+Create a plan for the database(Tables and columns) for the following requirement
+It is for a shop that takes orders for custom tailoring
+It allows people to place order with measurement and gives a delivery date for the order
+The fabric will be picked up from the customer's place
+The pick-up date will be specified by the application
+Once the order is billed, we can see the billing details
+Bills have to be maintained
+Once fabric is picked up no cancellation is accepted( before that customer can cancel the order)

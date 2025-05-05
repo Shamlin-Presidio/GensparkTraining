@@ -1,0 +1,121 @@
+I have 4 tables, Customers, Orders, Pickups and Bills
+
+-------------------------------------
+TABLE: Customers
+-------------------------------------
+customer_id      INT PRIMARY KEY
+name             VARCHAR(100) NOT NULL
+phone_number     VARCHAR(15) NOT NULL
+email            VARCHAR(100)
+address          TEXT NOT NULL
+
+
+
+-------------------------------------
+TABLE: Orders
+-------------------------------------
+order_id         INT PRIMARY KEY
+customer_id      INT NOT NULL
+order_date       DATETIME NOT NULL
+delivery_date    DATE NOT NULL
+status           VARCHAR(20) 
+can_cancel       BOOLEAN DEFAULT TRUE
+
+FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+
+
+
+-------------------------------------
+TABLE: Pickups
+-------------------------------------
+pickup_id        INT PRIMARY KEY
+order_id         INT NOT NULL
+scheduled_date   DATE NOT NULL
+actual_date      DATE
+picked_up        BOOLEAN DEFAULT FALSE
+
+FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+
+
+
+-------------------------------------
+TABLE: Bills
+-------------------------------------
+bill_id          INT PRIMARY KEY
+order_id         INT NOT NULL
+bill_date        DATETIME NOT NULL
+amount           DECIMAL(10,2) NOT NULL
+payment_status   VARCHAR(20) 
+
+FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+
+
+---------------------------------------------------------------------------------------------------------------
+                                            Notes:
+---------------------------------------------------------------------------------------------------------------
+
+1. Ideate upon "Soft Delete" --> not delted, but marked as deleted, this helps in future data works/analysis
+
+2. Start with master table
+
+    Master table --> table that stores main data, shown in the front end
+    here, status is master table
+    address can also be master table
+
+-----------------------------
+3. Solution, as per mam:
+-----------------------------
+
+CustomerStatusMaster
+ Id, StatusMessage(Example - {id-1,StatusMessage-"Available"})
+
+OrderStatusMaster
+ Id, StatusMessage(Example - {id-1,StatusMessage-"Order Confirmed"})
+
+ 
+CityMaster
+ Id, CityName, StateId
+
+StateMaster
+ Id, StateName
+
+TypeMaster
+ Id, Name, status
+
+Items_Mater
+ Id, Name
+
+FabricMater
+  Id, Name
+
+ITems_Fabric
+  Id, Fabric_Id, Item_Id, Price
+
+Address
+  Id, Doornumber, Street/Apartmnet Name, Area, Zip code, CityId
+
+Customer_Address
+  Id, Name, Address_Id, Customer_Id
+ 
+Customer
+ Id, Name, Phone, Email,  Status_Id 
+
+
+SizeChart
+ Id, Measurement(JSON)
+
+Order
+ OrerNumber, OrderDate, Customer_Id,  Amount, PicupId, Order_Status_Id, Remarks, Patmnet_Id
+
+Refund_Details
+ Refund_id, Order_Numebr, Refund_Initiated_Date, Refund_Date, Amount 
+
+Payment_Datails
+  Id, Order_Number, Type, Amount, Status
+
+Order_Details
+  Order_Details_Number, Order_Number, Item_Fabric_Id, quantity, Price,  Size_Id
+
+PickUp_And_Delivery_Details
+  Id, Date, Order_Numebr, Status, actual_Date, ScheduledDate, Address_Id, Item_Fabric_id
+
