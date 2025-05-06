@@ -1,0 +1,201 @@
+USE pubs;
+GO
+
+1) Print all the title names
+
+SELECT title
+FROM titles;
+
+
+2) Print all the titles that have been published by publisher 1389
+
+SELECT title
+FROM titles
+WHERE pub_id = '1389';
+
+
+3) Print the books that have price in range of 10 to 15
+
+SELECT title, price
+FROM titles
+WHERE price BETWEEN 10 AND 15;
+
+
+4) Print those books that have no price
+
+SELECT title
+FROM titles
+WHERE price IS NULL;
+
+NOTES:
+----------------------------------------------------------------------------------------
+ --  IS NULL is used and not '= NULL', because we cant equate with undefined(NULL)
+----------------------------------------------------------------------------------------
+
+
+5) Print the book names that start with 'The'
+
+SELECT title
+FROM titles
+WHERE title LIKE 'The%';
+
+----------------------------------------------------------------------------------------
+Learn about soundex 
+----------------------------------------------------------------------------------------
+
+
+6) Print the book names that do not have 'v' in their name
+SELECT title
+FROM titles
+WHERE title NOT LIKE '%v%' AND title NOT LIKE '%V%';
+
+
+7) Print the books sorted by the royalty
+
+SELECT title, royalty
+FROM titles
+ORDER BY royalty;
+
+
+8) Print the books sorted by publisher in descending, then by type in ascending, then by price in descending
+
+SELECT title, pub_id, type, price
+FROM titles
+ORDER BY pub_id DESC, type ASC, price DESC;
+
+----------------------------------------------------------------------------------------
+Better one: (above one is useless, becuase pub_id is unique)
+----------------------------------------------------------------------------------------
+SELECT *
+FROM titles join publishers ON titles.pub_id=publishers.pub_id
+ORDER BY publishers.pub_name DESC, titles.type ASC, titles.price DESC;
+----------------------------------------------------------------------------------------
+
+
+9) Print the average price of books in every type
+----------------------------------------------------------------------------------------
+NOTE: If there is 'every' in condition, we use Group by in query
+----------------------------------------------------------------------------------------
+
+SELECT type, AVG(price) AS average_price
+FROM titles
+GROUP BY type;
+
+10) Print all the types in unique
+
+SELECT DISTINCT type
+FROM titles;
+
+
+11) Print the first 2 costliest books
+
+SELECT TOP 2 title, price
+FROM titles
+ORDER BY price DESC;
+
+
+12) Print books that are of type 'business', price less than 20, and advance greater than 7000
+
+SELECT title, type, price, advance
+FROM titles
+WHERE type = 'business'
+  AND price < 20
+  AND advance > 7000;
+
+
+13) Select those publisher id and number of books which have price between 15 to 25 and have 'It' in its name. 
+    Print only those which have count greater than 2. Also sort the result in ascending order of count
+
+SELECT pub_id, COUNT(*) AS book_count
+FROM titles
+WHERE price BETWEEN 15 AND 25
+  AND title LIKE '%It%'
+GROUP BY pub_id
+HAVING COUNT(*) > 2
+ORDER BY book_count ASC;
+
+o/p:
+----------------------------------------------------------------------------------------
+no data satisfying these conditions
+----------------------------------------------------------------------------------------
+
+
+14) Print the authors who are from 'CA'
+
+SELECT au_id, au_lname, au_fname, state
+FROM authors
+WHERE state = 'CA';
+
+
+15) Print the count of authors from every state
+
+SELECT state, COUNT(*) AS author_count
+FROM authors
+GROUP BY state;
+
+
+----------------------------------------------------------------------------------------
+SUB-TASK:
+----------------------------------------------------------------------------------------
+
+REMARK:
+
+This is the first time I'm encountering the link thing....
+I've been used to NoSQL databases 
+and would have used an object to store the list of suppliers and list of products
+
+
+PRODUCTS TABLE:
+---------------------------------
+
+product_id       INT PRIMARY KEY  
+name             VARCHAR(100) NOT NULL  
+price            DECIMAL(10, 2) NOT NULL  
+description      TEXT  
+
+
+SUPPLIERS TABLE:
+---------------------------------
+supplier_id      INT PRIMARY KEY  
+name             VARCHAR(100) NOT NULL  
+contact_info     VARCHAR(150)  
+
+
+PRODUCT_SUPPLIER TABLE: (used GPT for clarification)
+---------------------------------
+product_id       INT NOT NULL  
+supplier_id      INT NOT NULL  
+PRIMARY KEY (product_id, supplier_id),  
+FOREIGN KEY (product_id) REFERENCES Products(product_id),  
+FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id)
+
+NOTE:
+It is this composite key (line 168) that resolved my doubt
+
+
+CUSTOMRS TABLE:
+---------------------------------
+customer_id      INT PRIMARY KEY  
+name             VARCHAR(100) NOT NULL  
+phone_number     VARCHAR(15) NOT NULL  
+email            VARCHAR(100)  
+address          TEXT NOT NULL  
+
+BILLS TABLE:
+---------------------------------
+bill_id          INT PRIMARY KEY  
+customer_id      INT NOT NULL  
+bill_date        DATETIME NOT NULL,  
+FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)  
+
+
+BILL ITEMS TABLE: (individual bill)
+------------------------------------
+bill_id          INT NOT NULL  
+product_id       INT NOT NULL  
+quantity         INT NOT NULL  
+price_at_purchase DECIMAL(10, 2) NOT NULL,  
+PRIMARY KEY (bill_id, product_id),  
+FOREIGN KEY (bill_id) REFERENCES Bills(bill_id),  
+FOREIGN KEY (product_id) REFERENCES Products(product_id)
+
