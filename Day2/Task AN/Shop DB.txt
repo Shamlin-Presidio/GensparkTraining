@@ -1,4 +1,3 @@
-
 -- 1. Create Tables
 
 CREATE TABLE ITEM (
@@ -7,21 +6,21 @@ CREATE TABLE ITEM (
     itemcolor VARCHAR(50)
 );
 
+CREATE TABLE DEPARTMENT (
+    deptname VARCHAR(50) PRIMARY KEY,
+    deptfloor INT,
+    deptphone VARCHAR(20),
+    empno INT  -- FK will be added later
+);
+
 CREATE TABLE EMP (
     empno INT PRIMARY KEY,
     empname VARCHAR(100),
     salary DECIMAL(10,2),
     deptname VARCHAR(50) NOT NULL,
     bossno INT,
+    FOREIGN KEY (deptname) REFERENCES DEPARTMENT(deptname),
     FOREIGN KEY (bossno) REFERENCES EMP(empno)
-);
-
-CREATE TABLE DEPARTMENT (
-    deptname VARCHAR(50) PRIMARY KEY,
-    deptfloor INT,
-    deptphone VARCHAR(20),
-    empno INT NOT NULL,
-    FOREIGN KEY (empno) REFERENCES EMP(empno)
 );
 
 CREATE TABLE SALES (
@@ -33,9 +32,9 @@ CREATE TABLE SALES (
     FOREIGN KEY (deptname) REFERENCES DEPARTMENT(deptname)
 );
 
--- 2. Insert Data
+--  Insert Data
 
--- ITEM
+--  Insert into ITEM
 INSERT INTO ITEM (itemname, itemtype, itemcolor) VALUES
 ('Pocket Knife-Nile', 'E', 'Brown'),
 ('Pocket Knife-Avon', 'E', 'Brown'),
@@ -58,8 +57,21 @@ INSERT INTO ITEM (itemname, itemtype, itemcolor) VALUES
 ('Tent - 2 person', 'F', 'Khaki'),
 ('Tent -8 person', 'F', 'Khaki');
 
--- EMP (insert top-level first)
+-- Insert into DEPARTMENT with temporary NULL empno
+INSERT INTO DEPARTMENT (deptname, deptfloor, deptphone, empno) VALUES
+('Management', 5, '34', NULL),
+('Books', 1, '81', NULL),
+('Clothes', 2, '24', NULL),
+('Equipment', 3, '57', NULL),
+('Furniture', 4, '14', NULL),
+('Navigation', 1, '41', NULL),
+('Recreation', 2, '29', NULL),
+('Accounting', 5, '35', NULL),
+('Purchasing', 5, '36', NULL),
+('Personnel', 5, '37', NULL),
+('Marketing', 5, '38', NULL);
 
+--  Insert into EMP (now DEPARTMENT exists)
 INSERT INTO EMP (empno, empname, salary, deptname, bossno) VALUES
 (1, 'Alice', 75000, 'Management', NULL),
 (2, 'Ned', 45000, 'Marketing', 1),
@@ -79,21 +91,24 @@ INSERT INTO EMP (empno, empname, salary, deptname, bossno) VALUES
 (16, 'Pat', 15000, 'Furniture', 3),
 (17, 'Mark', 15000, 'Recreation', 3);
 
--- DEPARTMENT
-INSERT INTO DEPARTMENT (deptname, deptfloor, deptphone, empno) VALUES
-('Management', 5, '34', 1),
-('Books', 1, '81', 4),
-('Clothes', 2, '24', 4),
-('Equipment', 3, '57', 3),
-('Furniture', 4, '14', 3),
-('Navigation', 1, '41', 3),
-('Recreation', 2, '29', 4),
-('Accounting', 5, '35', 5),
-('Purchasing', 5, '36', 7),
-('Personnel', 5, '37', 9),
-('Marketing', 5, '38', 2);
+--  Update DEPARTMENT.empno to correct values
+UPDATE DEPARTMENT SET empno = 1 WHERE deptname = 'Management';
+UPDATE DEPARTMENT SET empno = 4 WHERE deptname = 'Books';
+UPDATE DEPARTMENT SET empno = 4 WHERE deptname = 'Clothes';
+UPDATE DEPARTMENT SET empno = 3 WHERE deptname = 'Equipment';
+UPDATE DEPARTMENT SET empno = 3 WHERE deptname = 'Furniture';
+UPDATE DEPARTMENT SET empno = 3 WHERE deptname = 'Navigation';
+UPDATE DEPARTMENT SET empno = 4 WHERE deptname = 'Recreation';
+UPDATE DEPARTMENT SET empno = 5 WHERE deptname = 'Accounting';
+UPDATE DEPARTMENT SET empno = 7 WHERE deptname = 'Purchasing';
+UPDATE DEPARTMENT SET empno = 9 WHERE deptname = 'Personnel';
+UPDATE DEPARTMENT SET empno = 2 WHERE deptname = 'Marketing';
 
--- SALES
+-- Add the missing FK from DEPARTMENT to EMP
+ALTER TABLE DEPARTMENT
+ADD CONSTRAINT FK_DEPT_EMP FOREIGN KEY (empno) REFERENCES EMP(empno);
+
+-- Insert into SALES
 INSERT INTO SALES (salesno, saleqty, itemname, deptname) VALUES
 (101, 2, 'Boots-snake proof', 'Clothes'),
 (102, 1, 'Pith Helmet', 'Clothes'),
@@ -123,7 +138,7 @@ INSERT INTO SALES (salesno, saleqty, itemname, deptname) VALUES
 (126, 1, 'Camel Saddle', 'Recreation');
 
 
-SELECT * from ITEM;
-SELECT * from EMP;
-SELECT * from DEPARTMENT;
-SELECT * from SALES;
+SELECT * FROM ITEM;
+SELECT * FROM EMP;
+SELECT * FROM DEPARTMENT;
+SELECT * FROM SALES;
