@@ -42,3 +42,10 @@ LEFT OUTER JOIN titles t ON p.pub_id = t.pub_id
 LEFT OUTER JOIN sales s ON t.title_id = s.title_id
 GROUP BY p.pub_name
 ORDER BY 2 DESC;
+
+-- print the book and store address of the sale
+SELECT t.title Book_Name, s.stor_address Store_Address
+FROM titles t
+JOIN sales sa ON t.title_id = sa.title_id
+JOIN stores s ON sa.stor_id = s.stor_id
+ORDER BY 1;
