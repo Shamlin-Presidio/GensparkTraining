@@ -40,4 +40,5 @@ SELECT p.pub_name, MIN(s.ord_date) AS First_Book_Sale_Date
 FROM publishers p
 LEFT OUTER JOIN titles t ON p.pub_id = t.pub_id
 LEFT OUTER JOIN sales s ON t.title_id = s.title_id
-GROUP BY p.pub_name;
+GROUP BY p.pub_name
+ORDER BY 2 DESC;
