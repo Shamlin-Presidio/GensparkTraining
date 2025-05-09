@@ -77,7 +77,7 @@ ORDER BY
 -- Using a CTE, show the top 3 rented movies by number of rentals.
 -- Columns: title, rental_count
 
-WITH rental_counts AS (
+WITH cte_rental_counts AS (
     SELECT f.title, COUNT(r.rental_id) AS rental_count
     FROM film f
     JOIN inventory i ON f.film_id = i.film_id
@@ -85,7 +85,7 @@ WITH rental_counts AS (
     GROUP BY f.title
 )
 SELECT title, rental_count
-FROM rental_counts
+FROM cte_rental_counts
 ORDER BY rental_count DESC
 LIMIT 3;
 
@@ -93,14 +93,14 @@ LIMIT 3;
 -- Use a CTE to compute the average rentals per customer, then filter.
 
 -- trying
-WITH customer_rentals AS (
+WITH cte_customer_rentals AS (
     SELECT 
         customer_id,
         COUNT(rental_id) AS rental_count
     FROM rental
     GROUP BY customer_id
 ),
-avg_rentals AS (
+cte_avg_rentals AS (
     SELECT AVG(rental_count) AS avg_rental_count
     FROM customer_rentals
 )
@@ -108,8 +108,8 @@ SELECT
     cr.customer_id,
     cr.rental_count
 FROM 
-    customer_rentals cr,
-    avg_rentals ar
+    cte_customer_rentals cr,
+    cte_avg_rentals ar
 WHERE 
     cr.rental_count > ar.avg_rental_count
 ORDER BY 
@@ -143,7 +143,7 @@ $$ LANGUAGE plpgsql;
 -- Write a stored procedure that updates the rental rate of a film by film ID and new rate.
 -- Procedure: update_rental_rate(film_id INT, new_rate NUMERIC)
 --------------------------------------------------------------------------------------------------
-CREATE OR REPLACE PROCEDURE update_rental_rate(film_id INT, new_rate NUMERIC)
+CREATE OR REPLACE PROCEDURE proc_update_rental_rate(film_id INT, new_rate NUMERIC)
 AS $$
 BEGIN
     UPDATE film
@@ -152,6 +152,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CALL update_rental_rate(1, 9.99);
+CALL proc_update_rental_rate(1, 9.99);
 
 select * FROM film order by film_id;
