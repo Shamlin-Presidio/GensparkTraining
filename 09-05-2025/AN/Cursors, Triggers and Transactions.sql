@@ -59,8 +59,30 @@ $$;
 
 
 -- Create a function using a cursor that collects titles of all films from a particular category.
+CREATE OR REPLACE FUNCTION get_films_by_category(param_category_name VARCHAR)
+RETURNS TABLE(film_title VARCHAR) AS $$
+DECLARE
+    param_film_title VARCHAR;
+    film_cursor CURSOR FOR
+        SELECT f.title
+        FROM film f
+        JOIN film_category fc ON f.film_id = fc.film_id
+        JOIN category c ON fc.category_id = c.category_id
+        WHERE c.name = param_category_name;
+BEGIN
+    OPEN film_cursor;
+    LOOP
+        FETCH film_cursor INTO param_film_title;
+        EXIT WHEN NOT FOUND;
+        film_title := param_film_title;  
+        RETURN NEXT; 
+    END LOOP;
+    CLOSE film_cursor;
+    RETURN; 
+END;
+$$ LANGUAGE plpgsql;
 
-
+SELECT get_films_by_category('Action')
 
 -- Loop through all stores and count how many distinct films are available in each store using a cursor.
 
@@ -240,7 +262,14 @@ COMMIT;
 
 
 -- Create a transaction that transfers an inventory item from one store to another.
+BEGIN;
 
+UPDATE inventory
+SET store_id = 2
+WHERE store_id = 1 AND film_id = 1;
+
+
+COMMIT;
 
 -- Demonstrate SAVEPOINT and ROLLBACK TO SAVEPOINT by updating payment amounts, then undoing one.
 BEGIN;
@@ -281,3 +310,13 @@ COMMIT;
 
 -- Procedure: get_overdue_rentals() that selects relevant columns.
  
+CREATE FUNCTION get_overdue_rentals()
+RETURNS TABLE (customer_id smallint, rental_date timestamp without time zone) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT r.customer_id, r.rental_date FROM rental as r
+	WHERE r.return_date IS NULL AND r.rental_date < CURRENT_DATE - INTERVAL '7 days';
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM get_overdue_rentals()
