@@ -1,0 +1,17 @@
+1. all updates will be rolled back and changes will be lost
+
+2. No, B can not read the new balance unless commited by A.
+    But B can tead the old value
+
+3. Yes, the second transaction overwrites. It will not be overwritten only when we use serializable or set row level lock using FOR UPDATE
+
+
+4. Yes, only the changes made after the savpoint will be rolled back.
+
+5. serializable 
+
+6. No... 
+
+7. Yes
+
+8. no, we won't see updated balance in second session as it was not commited
