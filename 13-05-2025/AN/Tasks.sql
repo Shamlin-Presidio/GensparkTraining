@@ -208,5 +208,98 @@ COMMIT;
 
 
 
+----------------------------- TRIGGERS ----------------------------------
+
+-- Create a trigger to prevent inserting payments of zero or negative amount.
+CREATE OR REPLACE FUNCTION prevent_zero_negative_payment()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF new.amount <= 0 THEN
+        RAISE EXCEPTION 'Payment amount must be greater than zero';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_prevent_bad_payment
+BEFORE INSERT ON payment
+FOR EACH ROW
+EXECUTE FUNCTION prevent_zero_negative_payment();
+
+
+
+
+ROLLBACK;
+drop trigger trg_prevent_bad_payment on payment;
+
+ 
+-- Set up a trigger that automatically updates last_update on the film table when the title or rental rate is changed.
+
+
+CREATE OR REPLACE FUNCTION update_last_modified_film()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.title IS DISTINCT FROM OLD.title OR NEW.rental_rate IS DISTINCT FROM OLD.rental_rate THEN
+        NEW.last_update_custom := CURRENT_TIMESTAMP;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_film_update
+BEFORE UPDATE ON film
+FOR EACH ROW
+EXECUTE FUNCTION update_last_modified_film();
+
+
+
+
+DROP TRIGGER trg_film_update on film;
+
+ 
+-- Write a trigger that inserts a log into rental_log whenever a film is rented more than 3 times in a week.
+
+CREATE TABLE rental_log (
+    film_id INT,
+    log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION log_high_rentals()
+RETURNS TRIGGER AS $$
+DECLARE
+    cnt INT;
+BEGIN
+    SELECT COUNT(*) INTO cnt
+    FROM rental r
+    JOIN inventory i ON r.inventory_id = i.inventory_id
+    WHERE i.film_id = (SELECT film_id FROM inventory WHERE inventory_id = NEW.inventory_id)
+      AND r.rental_date >= CURRENT_DATE - INTERVAL '7 days';
+
+    IF cnt > 3 THEN
+        INSERT INTO rental_log(film_id) VALUES (
+            (SELECT film_id FROM inventory WHERE inventory_id = NEW.inventory_id)
+        );
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_rental_volume
+AFTER INSERT ON rental
+FOR EACH ROW
+EXECUTE FUNCTION log_high_rentals();
+
+
+-- testing this :
+
+INSERT INTO rental (rental_date, inventory_id, customer_id, return_date, staff_id)
+VALUES 
+  (NOW(), 1, 1, NOW() + INTERVAL '1 day', 1),
+  (NOW() + INTERVAL '1 minute', 1, 1, NOW() + INTERVAL '1 day 1 minute', 1),
+  (NOW() + INTERVAL '2 minutes', 1, 1, NOW() + INTERVAL '1 day 2 minutes', 1),
+  (NOW() + INTERVAL '3 minutes', 1, 1, NOW() + INTERVAL '1 day 3 minutes', 1);
+
+SELECT * FROM rental_log;
 
 
