@@ -141,3 +141,72 @@ $$;
 SELECT * FROM inactive_customers;
 
 
+
+----------------------------- TRANSACTIONS ----------------------------------
+
+
+-- Write a transaction that inserts a new customer, adds their rental, and logs the payment – all atomically.
+
+BEGIN
+
+    INSERT INTO customer (store_id, first_name, last_name, email, address_id, active, create_date)
+    VALUES (1, 'Shaml', 'lin', 'Sham@lin.com', 1, true, CURRENT_DATE);
+
+    INSERT INTO rental (rental_date, inventory_id, customer_id, staff_id)
+    VALUES (CURRENT_TIMESTAMP, 1, 600, 1);
+
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (600, 1, currval('rental_rental_id_seq'), 5.99, CURRENT_TIMESTAMP);
+
+COMMIT;
+
+
+
+-- Simulate a transaction where one update fails (e.g., invalid rental ID), and ensure the entire transaction rolls back.
+BEGIN;
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (1, 1, 99999, 5.00, CURRENT_TIMESTAMP);
+
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (1, 1, 99999, 10.00, CURRENT_TIMESTAMP);
+
+ROLLBACK;
+
+ 
+-- Use SAVEPOINT to update multiple payment amounts. Roll back only one payment update using ROLLBACK TO SAVEPOINT.
+BEGIN;
+    SAVEPOINT step1;
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (1, 1, 1, 10.00, CURRENT_TIMESTAMP);
+
+    SAVEPOINT step2;
+
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (1, 1, 2, -5.00, CURRENT_TIMESTAMP); -- let's surpirse them with a negative rental id   :)
+
+    ROLLBACK TO SAVEPOINT step2;
+
+
+    INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
+    VALUES (1, 1, 2, 5.00, CURRENT_TIMESTAMP);
+
+COMMIT;
+ 
+-- Perform a transaction that transfers inventory from one store to another (delete + insert) safely.
+BEGIN;
+    UPDATE inventory
+    SET store_id = 2
+    WHERE inventory_id = 1 AND store_id = 1;
+COMMIT;
+ 
+-- Create a transaction that deletes a customer and all associated records (rental, payment), ensuring referential integrity.
+BEGIN;
+    DELETE FROM payment WHERE customer_id = 600;
+    DELETE FROM rental WHERE customer_id = 600;
+    DELETE FROM customer WHERE customer_id = 600;
+COMMIT;
+
+
+
+
+
