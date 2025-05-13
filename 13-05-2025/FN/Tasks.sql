@@ -77,3 +77,46 @@ FROM pg_locks;
 
 
 -- Learning.....
+
+
+------------------------------------------------TRANSACTIONS------------------------------------------------
+
+create table audit_log
+(audit_id serial primary key,
+table_name text,
+field_name text,
+old_value text,
+new_value text,
+updated_date Timestamp default current_Timestamp)
+
+create or replace function Update_Audit_log()
+returns trigger 
+as $$
+begin
+	Insert into audit_log(table_name,field_name,old_value,new_value,updated_date) 
+	values('customer','email',OLD.email,NEW.email,current_Timestamp);
+	return new;
+end;
+$$ language plpgsql
+
+
+create trigger trg_log_customer_email_Change
+before update
+on customer
+for each row
+execute function Update_Audit_log();
+
+drop trigger trg_log_customer_email_Change on customer;
+drop table audit_log;
+select * from customer order by customer_id
+
+select * from audit_log
+update customer set email = 'mary.smith@sakilacustomer.org' where customer_id = 1
+
+
+
+--------------------------------------------------------------------------------
+--                  N OT E    T H I S 
+--------------------------------------------------------------------------------
+
+-- in PostgreSQL, trigger functions cannot accept parameters
