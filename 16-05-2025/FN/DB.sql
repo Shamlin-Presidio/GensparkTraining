@@ -157,26 +157,31 @@ $$ LANGUAGE plpgsql;
 
 -- S T O R E D   P R O C E D U R E
 
-CREATE OR REPLACE PROCEDURE sp_enroll_student(p_student_id INT, p_course_id INT)
+CREATE OR REPLACE PROCEDURE sp_enroll_student(
+    p_student_id INT,
+    p_course_id INT,
+    completed BOOLEAN
+)
 LANGUAGE plpgsql AS $$
 DECLARE
     new_enrollment_id INT;
-    completed BOOLEAN := FALSE; -- simulate completion
 BEGIN
-    -- Insert enrollment
+    
     INSERT INTO enrollments(student_id, course_id, enroll_date)
     VALUES (p_student_id, p_course_id, CURRENT_DATE)
     RETURNING enrollment_id INTO new_enrollment_id;
 
-    -- certificate i simulated using random, 50% chance
-    completed := (random() > 0.5);
-
     IF completed THEN
         INSERT INTO certificates(enrollment_id, issue_date, serial_no)
-        VALUES (new_enrollment_id, CURRENT_DATE, 'CERT-' || p_course_id || '-' || new_enrollment_id);
+        VALUES (
+            new_enrollment_id,
+            CURRENT_DATE,
+            'CERT-' || p_course_id || '-' || new_enrollment_id
+        );
     END IF;
 END;
 $$;
+
 
 
 
