@@ -283,12 +283,12 @@ LANGUAGE plpgsql AS $$
 DECLARE
     new_enrollment_id INT;
 BEGIN
-    -- Try inserting into enrollments
+    
     INSERT INTO enrollments(student_id, course_id, enroll_date)
     VALUES (p_student_id, p_course_id, CURRENT_DATE)
     RETURNING enrollment_id INTO new_enrollment_id;
 
-    -- Now insert certificate using course_id and enrollment_id
+    
     INSERT INTO certificates(enrollment_id, issue_date, serial_no)
     VALUES (
         new_enrollment_id,
