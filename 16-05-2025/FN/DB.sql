@@ -272,3 +272,38 @@ BEGIN
     END;
 END;
 $$;
+
+-- rewriting this as a stored procedure
+
+CREATE OR REPLACE PROCEDURE sp_enroll_and_certify(
+    p_student_id INT,
+    p_course_id INT
+)
+LANGUAGE plpgsql AS $$
+DECLARE
+    new_enrollment_id INT;
+BEGIN
+    -- Try inserting into enrollments
+    INSERT INTO enrollments(student_id, course_id, enroll_date)
+    VALUES (p_student_id, p_course_id, CURRENT_DATE)
+    RETURNING enrollment_id INTO new_enrollment_id;
+
+    -- Now insert certificate using course_id and enrollment_id
+    INSERT INTO certificates(enrollment_id, issue_date, serial_no)
+    VALUES (
+        new_enrollment_id,
+        CURRENT_DATE,
+        'CERT-' || p_course_id || '-' || new_enrollment_id
+    );
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE NOTICE 'Transaction failed in procedure. Rolled back.';
+        RAISE;  -- Re-raise the error so caller can handle rollback
+END;
+$$;
+
+
+-- the required transcation block
+BEGIN;
+    CALL sp_enroll_and_certify(1, 1);
+COMMIT;
