@@ -19,31 +19,38 @@ namespace tasks
                 return;
             }
 
-            string encrypted = Encrypt(input);
-            string decrypted = Decrypt(encrypted);
+            Console.Write("Enter the shift value (integer): ");
+            if (!int.TryParse(Console.ReadLine(), out int shift))
+            {
+                Console.WriteLine("Invalid shift value.");
+                return;
+            }
+
+            string encrypted = Encrypt(input, shift);
+            string decrypted = Decrypt(encrypted, shift);
 
             Console.WriteLine($"Encrypted: {encrypted}");
             Console.WriteLine($"Decrypted: {decrypted}");
         }
 
-        private static string Encrypt(string message)
+        private static string Encrypt(string message, int shift)
         {
             char[] result = new char[message.Length];
             for (int i = 0; i < message.Length; i++)
             {
                 char c = message[i];
-                result[i] = (char)('a' + (c - 'a' + 3) % 26);
+                result[i] = (char)('a' + (c - 'a' + shift + 26) % 26);
             }
             return new string(result);
         }
 
-        private static string Decrypt(string message)
+        private static string Decrypt(string message, int shift)
         {
             char[] result = new char[message.Length];
             for (int i = 0; i < message.Length; i++)
             {
                 char c = message[i];
-                result[i] = (char)('a' + (c - 'a' - 3 + 26) % 26);
+                result[i] = (char)('a' + (c - 'a' - shift + 26) % 26);
             }
             return new string(result);
         }
