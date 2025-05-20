@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\tasks\tasks\bin\Debug\net8.0\tasks.exe
+C:\Users\DELL\source\repos\tasks\tasks\bin\Debug\net8.0\tasks.deps.json
+C:\Users\DELL\source\repos\tasks\tasks\bin\Debug\net8.0\tasks.runtimeconfig.json
+C:\Users\DELL\source\repos\tasks\tasks\bin\Debug\net8.0\tasks.dll
+C:\Users\DELL\source\repos\tasks\tasks\bin\Debug\net8.0\tasks.pdb
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.AssemblyInfo.cs
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.dll
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\refint\tasks.dll
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.pdb
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\tasks.genruntimeconfig.cache
+C:\Users\DELL\source\repos\tasks\tasks\obj\Debug\net8.0\ref\tasks.dll
