@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\WholeApp\WholeApp\bin\Debug\net8.0\WholeApp.exe
+C:\Users\DELL\source\repos\WholeApp\WholeApp\bin\Debug\net8.0\WholeApp.deps.json
+C:\Users\DELL\source\repos\WholeApp\WholeApp\bin\Debug\net8.0\WholeApp.runtimeconfig.json
+C:\Users\DELL\source\repos\WholeApp\WholeApp\bin\Debug\net8.0\WholeApp.dll
+C:\Users\DELL\source\repos\WholeApp\WholeApp\bin\Debug\net8.0\WholeApp.pdb
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.AssemblyInfo.cs
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.dll
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\refint\WholeApp.dll
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.pdb
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\WholeApp.genruntimeconfig.cache
+C:\Users\DELL\source\repos\WholeApp\WholeApp\obj\Debug\net8.0\ref\WholeApp.dll

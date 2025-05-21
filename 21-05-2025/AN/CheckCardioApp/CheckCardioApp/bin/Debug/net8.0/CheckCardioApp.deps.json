@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CheckCardioApp/1.0.0": {
+        "runtime": {
+          "CheckCardioApp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CheckCardioApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

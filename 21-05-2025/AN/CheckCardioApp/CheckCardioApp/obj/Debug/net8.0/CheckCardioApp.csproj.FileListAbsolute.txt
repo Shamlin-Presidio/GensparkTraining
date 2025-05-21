@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\bin\Debug\net8.0\CheckCardioApp.exe
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\bin\Debug\net8.0\CheckCardioApp.deps.json
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\bin\Debug\net8.0\CheckCardioApp.runtimeconfig.json
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\bin\Debug\net8.0\CheckCardioApp.dll
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\bin\Debug\net8.0\CheckCardioApp.pdb
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.AssemblyInfo.cs
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.dll
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\refint\CheckCardioApp.dll
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.pdb
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\CheckCardioApp.genruntimeconfig.cache
+C:\Users\DELL\source\repos\CheckCardioApp\CheckCardioApp\obj\Debug\net8.0\ref\CheckCardioApp.dll

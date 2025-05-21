@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DELL\\source\\repos\\WholeApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\manageemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\manageemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\models\\searchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\models\\searchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|c:\\users\\dell\\source\\repos\\wholeapp\\wholeapp\\interfaces\\irepositor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43E4ADFA-E5F2-4E90-82CA-78732529062B}|WholeApp\\WholeApp.csproj|solutionrelative:wholeapp\\interfaces\\irepositor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManageEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\ManageEmployee.cs",
+              "RelativeDocumentMoniker": "WholeApp\\ManageEmployee.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\ManageEmployee.cs",
+              "RelativeToolTip": "WholeApp\\ManageEmployee.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAcwKIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:45:31.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "WholeApp\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwC8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:25:04.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SearchModel.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Models\\SearchModel.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Models\\SearchModel.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Models\\SearchModel.cs",
+              "RelativeToolTip": "WholeApp\\Models\\SearchModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:13:31.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Interfaces\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "WholeApp\\Interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:09:46.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Repositories\\Repository.cs",
+              "RelativeToolTip": "WholeApp\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T04:31:00.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Program.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Program.cs",
+              "RelativeToolTip": "WholeApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T04:07:14.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Repositories\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Repositories\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Repositories\\EmployeeRepository.cs",
+              "RelativeToolTip": "WholeApp\\Repositories\\EmployeeRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T05:23:06.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IRepositor.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Interfaces\\IRepositor.cs",
+              "RelativeDocumentMoniker": "WholeApp\\Interfaces\\IRepositor.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\WholeApp\\WholeApp\\Interfaces\\IRepositor.cs",
+              "RelativeToolTip": "WholeApp\\Interfaces\\IRepositor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T04:30:41.436Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
