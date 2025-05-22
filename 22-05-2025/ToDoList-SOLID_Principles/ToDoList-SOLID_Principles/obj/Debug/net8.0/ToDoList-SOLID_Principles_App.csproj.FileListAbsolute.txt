@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\bin\Debug\net8.0\ToDoList-SOLID_Principles_App.exe
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\bin\Debug\net8.0\ToDoList-SOLID_Principles_App.deps.json
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\bin\Debug\net8.0\ToDoList-SOLID_Principles_App.runtimeconfig.json
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\bin\Debug\net8.0\ToDoList-SOLID_Principles_App.dll
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\bin\Debug\net8.0\ToDoList-SOLID_Principles_App.pdb
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.AssemblyInfo.cs
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.dll
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\refint\ToDoList-SOLID_Principles_App.dll
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.pdb
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ToDoList-SOLID_Principles_App.genruntimeconfig.cache
+C:\Users\DELL\source\repos\ToDoList-SOLID_Principles\ToDoList-SOLID_Principles\obj\Debug\net8.0\ref\ToDoList-SOLID_Principles_App.dll
