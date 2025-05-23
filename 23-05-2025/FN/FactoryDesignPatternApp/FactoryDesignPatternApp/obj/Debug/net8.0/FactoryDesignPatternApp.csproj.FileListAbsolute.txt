@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\bin\Debug\net8.0\FactoryDesignPatternApp.exe
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\bin\Debug\net8.0\FactoryDesignPatternApp.deps.json
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\bin\Debug\net8.0\FactoryDesignPatternApp.runtimeconfig.json
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\bin\Debug\net8.0\FactoryDesignPatternApp.dll
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\bin\Debug\net8.0\FactoryDesignPatternApp.pdb
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.AssemblyInfo.cs
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.dll
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\refint\FactoryDesignPatternApp.dll
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.pdb
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\FactoryDesignPatternApp.genruntimeconfig.cache
+C:\Users\DELL\source\repos\FactoryDesignPatternApp\FactoryDesignPatternApp\obj\Debug\net8.0\ref\FactoryDesignPatternApp.dll

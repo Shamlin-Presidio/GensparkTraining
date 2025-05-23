@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DELL\\source\\repos\\Proxy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|c:\\users\\dell\\source\\repos\\proxy\\proxy\\proxyfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|solutionrelative:proxy\\proxyfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|c:\\users\\dell\\source\\repos\\proxy\\proxy\\file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|solutionrelative:proxy\\file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|c:\\users\\dell\\source\\repos\\proxy\\proxy\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|solutionrelative:proxy\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|c:\\users\\dell\\source\\repos\\proxy\\proxy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE82D88F-1D0D-4FF7-B12C-E8331197A89B}|Proxy\\Proxy.csproj|solutionrelative:proxy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "File.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\File.cs",
+              "RelativeDocumentMoniker": "Proxy\\File.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\File.cs",
+              "RelativeToolTip": "Proxy\\File.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T10:30:38.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProxyFile.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\ProxyFile.cs",
+              "RelativeDocumentMoniker": "Proxy\\ProxyFile.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\ProxyFile.cs",
+              "RelativeToolTip": "Proxy\\ProxyFile.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T10:30:27.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\User.cs",
+              "RelativeDocumentMoniker": "Proxy\\User.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\User.cs",
+              "RelativeToolTip": "Proxy\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T10:29:58.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\Program.cs",
+              "RelativeDocumentMoniker": "Proxy\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\source\\repos\\Proxy\\Proxy\\Program.cs",
+              "RelativeToolTip": "Proxy\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T10:27:23.28Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

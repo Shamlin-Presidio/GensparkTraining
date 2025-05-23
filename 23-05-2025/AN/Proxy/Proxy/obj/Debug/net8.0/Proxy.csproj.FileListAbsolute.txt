@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\Proxy\Proxy\bin\Debug\net8.0\Proxy.exe
+C:\Users\DELL\source\repos\Proxy\Proxy\bin\Debug\net8.0\Proxy.deps.json
+C:\Users\DELL\source\repos\Proxy\Proxy\bin\Debug\net8.0\Proxy.runtimeconfig.json
+C:\Users\DELL\source\repos\Proxy\Proxy\bin\Debug\net8.0\Proxy.dll
+C:\Users\DELL\source\repos\Proxy\Proxy\bin\Debug\net8.0\Proxy.pdb
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.AssemblyInfo.cs
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.dll
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\refint\Proxy.dll
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.pdb
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\Proxy.genruntimeconfig.cache
+C:\Users\DELL\source\repos\Proxy\Proxy\obj\Debug\net8.0\ref\Proxy.dll
