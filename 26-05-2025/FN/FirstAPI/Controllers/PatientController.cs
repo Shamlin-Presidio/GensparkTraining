@@ -9,10 +9,29 @@ namespace FirstApi.Controllers
 
     public class PatientController : ControllerBase
     {
-        static List<Patient> patients = new List<Patient> // for learning only
+        static List<Patient> patients = new List<Patient> // dont use static, this is just for learning
         {
-            new Patient { Id = 201, Name = "Umar" }, // doctor = Ramu, Patient = Umar   :)
-            new Patient { Id = 202, Name = "Umos" }, // doctor = Somu, Patient = Umos   :)
+            new Patient
+            {
+                Id = 201,
+                Name = "Umar",
+                Age = 35,
+                DateOfDiagnosis = new DateTime(2025, 5, 20),
+                Diagnosis = "Flu",
+                Temperature = 101.2f,
+                BloodPressure = "120/80"
+            }, // doctor = Ramu, Patient = Umar :)
+
+            new Patient
+            {
+                Id = 202,
+                Name = "Umos",
+                Age = 42,
+                DateOfDiagnosis = new DateTime(2025, 5, 22),
+                Diagnosis = "Unidentified",
+                Temperature = 108.6f,
+                BloodPressure = "140/90"
+            } // doctor = Somu, Patient = Umos :)
         };
 
         [HttpGet]
