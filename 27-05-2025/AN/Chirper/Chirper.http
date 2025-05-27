@@ -1,0 +1,6 @@
+@Chirper_HostAddress = http://localhost:5130
+
+GET {{Chirper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
