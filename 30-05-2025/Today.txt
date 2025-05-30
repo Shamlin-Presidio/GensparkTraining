@@ -1,0 +1,2 @@
+Started building the Gen AI app
+Should learn "https://www.datacamp.com/tutorial/normalization-in-sql"  --> Normalisation
