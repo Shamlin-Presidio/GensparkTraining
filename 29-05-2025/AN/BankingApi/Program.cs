@@ -29,6 +29,7 @@ builder.Services.AddControllers()
 
 
 builder.Services.AddTransient<IAccountService, AccountServiceWithTransaction>();
+builder.Services.AddHttpClient<IFAQService, FAQService>();
 
 var app = builder.Build();
 
