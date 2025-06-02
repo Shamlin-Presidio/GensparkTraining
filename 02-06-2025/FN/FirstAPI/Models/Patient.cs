@@ -10,6 +10,7 @@ namespace FirstApi.Models
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
         public ICollection<Appointment>? Appointments { get; set; }
+        public string UserId { get; set; }
         public User? User { get; set; }
     }
 
