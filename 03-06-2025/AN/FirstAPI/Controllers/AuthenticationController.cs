@@ -12,7 +12,7 @@ namespace FirstAPI.Controllers
     [Route("/api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly FirstApi.Interfaces.IAuthenticationService _authenticationService;
+        private readonly IAuthenticationService _authenticationService;
         private readonly ILogger<AuthenticationController> _logger;
 
         public AuthenticationController(IAuthenticationService authenticationService, ILogger<AuthenticationController> logger)
@@ -33,6 +33,8 @@ namespace FirstAPI.Controllers
                 _logger.LogError(e.Message);
                 return Unauthorized(e.Message);
             }
+            // var result = await _authenticationService.Login(loginRequest);
+            // return Ok(result);
         }
     }
 }

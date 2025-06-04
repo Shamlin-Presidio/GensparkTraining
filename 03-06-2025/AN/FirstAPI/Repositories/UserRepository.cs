@@ -14,7 +14,9 @@ namespace FirstApi.Repositories
         }
         public override async Task<User> Get(string key)
         {
-            return await _clinicContext.Users.SingleOrDefaultAsync(u => u.Username == key);
+            // return await _clinicContext.Users.SingleOrDefaultAsync(u => u.Username == key);
+            return await _clinicContext.Users.Include(u => u.Doctor)
+                .Include(u => u.Patient).SingleOrDefaultAsync(u => u.Username == key);
         }
 
         public override async Task<IEnumerable<User>> GetAll()

@@ -9,6 +9,10 @@ using FirstApi.Misc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authorization;
+using FirstApi.Policies.Handlers;
+using FirstApi.Authorization;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +54,8 @@ builder.Services.AddControllers()
                     opts.JsonSerializerOptions.WriteIndented = true;
                 });
 
+builder.Logging.AddLog4Net();
+
 builder.Services.AddDbContext<ClinicContext>(opts =>
 {
     opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -71,6 +77,7 @@ builder.Services.AddTransient<IRepository<string, User>, UserRepository>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<IPatientService, PatientService>();
 // builder.Services.AddTransient<IDoctorService, DoctorServiceWithTransaction>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddTransient<IOtherContextFunctionalities, OtherFuncinalitiesImplementation>();
 builder.Services.AddTransient<IEncryptionService, EncryptionService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
@@ -94,9 +101,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 #endregion
 
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("DoctorExperienceCheck", policy =>
+        policy.Requirements.Add(new HasEnoughExperienceRequirement(3)));
+});
+
+builder.Services.AddScoped<IAuthorizationHandler, HasEnoughExperienceHandler>();
+
 #region  Misc
 builder.Services.AddAutoMapper(typeof(User));
-builder.Services.AddAutoMapper(typeof(PatientMapping)); 
+builder.Services.AddAutoMapper(typeof(PatientMapping));
+builder.Services.AddAutoMapper(typeof(AppointmentMapper));
+builder.Services.AddScoped<CustomExceptionFilter>();
 #endregion
 
 var app = builder.Build();
@@ -108,11 +125,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

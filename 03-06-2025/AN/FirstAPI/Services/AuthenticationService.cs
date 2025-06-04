@@ -44,7 +44,9 @@ namespace FirstApi.Services
                     throw new Exception("Invalid password");
                 }
             }
-            var token = await _tokenService.GenerateToken(dbUser);
+            
+            int? doctorId = dbUser.Doctor?.Id;
+            var token = await _tokenService.GenerateToken(dbUser, doctorId);
             return new UserLoginResponse
             {
                 Username = user.Username,

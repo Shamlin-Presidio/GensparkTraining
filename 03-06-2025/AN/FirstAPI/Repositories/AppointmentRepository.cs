@@ -16,9 +16,8 @@ namespace FirstApi.Repositories
         {
             var appointment = await _clinicContext.Appointments.SingleOrDefaultAsync(p => p.AppointmentNumber == key);
 
-            return appointment??throw new Exception("No appointmnet with the given ID");
+            return appointment??throw new Exception("No appointment with the given ID");
         }
-
 
         public override async Task<IEnumerable<Appointment>> GetAll()
         {

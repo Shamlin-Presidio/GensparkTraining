@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "56ulBGvw4dk=",
+  "dgSpecHash": "/i4qsohgFoc=",
   "success": true,
-  "projectFilePath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
+  "projectFilePath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
   "expectedPackageFiles": [
     "/Users/shamlin/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
     "/Users/shamlin/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",

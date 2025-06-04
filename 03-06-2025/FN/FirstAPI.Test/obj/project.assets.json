@@ -2697,11 +2697,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
+      "projectUniqueName": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
       "projectName": "FirstAPI.Test",
-      "projectPath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
+      "projectPath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI.Test/FirstAPI.Test.csproj",
       "packagesPath": "/Users/shamlin/.nuget/packages/",
-      "outputPath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI.Test/obj/",
+      "outputPath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI.Test/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/shamlin/.nuget/NuGet/NuGet.Config"
@@ -2716,8 +2716,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI/FirstAPI.csproj": {
-              "projectPath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI/FirstAPI.csproj"
+            "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI/FirstAPI.csproj": {
+              "projectPath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI/FirstAPI.csproj"
             }
           }
         }

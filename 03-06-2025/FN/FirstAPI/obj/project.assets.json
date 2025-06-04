@@ -3705,11 +3705,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI/FirstAPI.csproj",
+      "projectUniqueName": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI/FirstAPI.csproj",
       "projectName": "FirstAPI",
-      "projectPath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI/FirstAPI.csproj",
+      "projectPath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI/FirstAPI.csproj",
       "packagesPath": "/Users/shamlin/.nuget/packages/",
-      "outputPath": "/Users/shamlin/GensparkTraining/02-06-2025/FN/FirstAPI/obj/",
+      "outputPath": "/Users/shamlin/GensparkTraining/03-06-2025/FN/FirstAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/shamlin/.nuget/NuGet/NuGet.Config"
