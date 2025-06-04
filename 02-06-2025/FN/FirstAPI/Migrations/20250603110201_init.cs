@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FirstAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class initialSetup : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,7 +85,8 @@ namespace FirstAPI.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Age = table.Column<int>(type: "integer", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Phone = table.Column<string>(type: "text", nullable: false)
+                    Phone = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,13 +139,13 @@ namespace FirstAPI.Migrations
                 {
                     table.PrimaryKey("PK_AppointmentNumber", x => x.AppointmentNumber);
                     table.ForeignKey(
-                        name: "FK_Appointment_Doctor",
+                        name: "FK_Appoinment_Doctor",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Appointment_Patient",
+                        name: "FK_Appoinment_Patient",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "Id",

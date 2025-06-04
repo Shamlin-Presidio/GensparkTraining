@@ -147,6 +147,10 @@ namespace FirstAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
@@ -203,14 +207,14 @@ namespace FirstAPI.Migrations
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("FK_Appointment_Doctor");
+                        .HasConstraintName("FK_Appoinment_Doctor");
 
                     b.HasOne("FirstApi.Models.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("FK_Appointment_Patient");
+                        .HasConstraintName("FK_Appoinment_Patient");
 
                     b.Navigation("Doctor");
 

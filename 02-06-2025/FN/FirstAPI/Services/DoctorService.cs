@@ -42,16 +42,20 @@ namespace FirstApi.Services
         {
             try
             {
-                var user = _mapper.Map<DoctorAddRequestDto, User>(doctor);
+                var user = _mapper.Map<DoctorAddRequestDto, User>(doctor); // Automapper defined in UserProfile.cs
                 var encryptedData = await _encryptionService.EncryptData(new EncryptModel
                 {
                     Data= doctor.Password
                 });
                 user.Password = encryptedData.EncryptedData;
                 user.HashKey = encryptedData.HashKey;
+                user.Role = "Doctor";
+
                 user = await _userRepository.Add(user);
-                var newDoctor = doctorMapper.MapDoctorAddRequestDoctor(doctor);
+
+                var newDoctor = doctorMapper.MapDoctorAddRequestDoctor(doctor); // doctorMapper
                 newDoctor = await _doctorRepository.Add(newDoctor);
+
                 if (newDoctor == null)
                     throw new Exception("Could not add doctor");
                 if (doctor.Specialities.Count() > 0)
@@ -71,7 +75,7 @@ namespace FirstApi.Services
             }
             
         }
-
+ 
         private async Task<int[]> MapAndAddSpeciality(DoctorAddRequestDto doctor)
         {
             int[] specialityIds = new int[doctor.Specialities.Count()];
@@ -82,7 +86,7 @@ namespace FirstApi.Services
             }
             catch (Exception e)
             {
-
+ 
             }
             int count = 0;
             foreach (var item in doctor.Specialities)
@@ -100,12 +104,12 @@ namespace FirstApi.Services
             }
             return specialityIds;
         }
-
+ 
         public Task<Doctor> GetDoctByName(string name)
         {
             throw new NotImplementedException();
         }
-
+ 
         public async Task<ICollection<DoctorsBySpecialityResponseDto>> GetDoctorsBySpeciality(string speciality)
         {
             var result = await _otherContextFunctionalities.GetDoctorsBySpeciality(speciality);

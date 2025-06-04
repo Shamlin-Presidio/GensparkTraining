@@ -70,7 +70,7 @@ builder.Services.AddTransient<IRepository<string, User>, UserRepository>();
 #region Services
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<IPatientService, PatientService>();
-builder.Services.AddTransient<IDoctorService, DoctorServiceWithTransaction>();
+// builder.Services.AddTransient<IDoctorService, DoctorServiceWithTransaction>();
 builder.Services.AddTransient<IOtherContextFunctionalities, OtherFuncinalitiesImplementation>();
 builder.Services.AddTransient<IEncryptionService, EncryptionService>();
 builder.Services.AddTransient<ITokenService, TokenService>();
