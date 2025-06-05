@@ -1,0 +1,6 @@
+@docuNotify_HostAddress = http://localhost:5122
+
+GET {{docuNotify_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
