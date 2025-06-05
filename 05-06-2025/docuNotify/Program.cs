@@ -70,6 +70,19 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+
+
+#region CORS
+builder.Services.AddCors(options=>{
+    options.AddDefaultPolicy(policy=>{
+        policy.WithOrigins("http://127.0.0.1:5500")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .SetIsOriginAllowed(_ => true);
+    });
+});
+#endregion
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -87,6 +100,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

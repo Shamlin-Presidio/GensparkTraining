@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("docuNotify")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27c1ac3b8225d10708defcd31e00d500cf1affbe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cd0fd2c2d7f118bee06a620c15633db230976b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("docuNotify")]
 [assembly: System.Reflection.AssemblyTitleAttribute("docuNotify")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

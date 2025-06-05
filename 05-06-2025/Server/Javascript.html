@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>docuNotify SignalR Test</title>
+</head>
+<body>
+  <h2>docuNotify Realtime Notifications</h2>
+  <div id="messages"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.7/dist/browser/signalr.min.js"></script>
+  <script>
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("http://localhost:5122/documentHub", {
+        withCredentials: true
+      })
+      .withAutomaticReconnect()
+      .build();
+
+    connection.on("NewDocumentUploaded", (fileName) => {
+      const msgDiv = document.getElementById("messages");
+      const p = document.createElement("p");
+      p.innerText = `📄 New file uploaded: ${fileName}`;
+      msgDiv.appendChild(p);
+    });
+
+    connection.start()
+      .then(() => {
+        console.log("Connected to DocumentHub");
+      })
+      .catch(err => {
+        console.error("SignalR connection failed:", err);
+      });
+  </script>
+</body>
+</html>
