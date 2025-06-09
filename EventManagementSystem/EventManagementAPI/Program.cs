@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using EventManagementAPI.Hubs;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +109,17 @@ builder.Services.AddCors(options => {
     });
 });
 #endregion
+
+
+
+#region Logging
+builder.Host.UseSerilog((ctx, lc) =>
+    lc.WriteTo.Console()
+      .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
+#endregion
+
+
+
 builder.Services.AddSignalR();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
