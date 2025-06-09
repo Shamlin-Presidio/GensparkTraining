@@ -22,6 +22,8 @@ public class EventRepository : IEventRepository
                 e.Title.Contains(search) || e.Description.Contains(search));
         }
 
+        query = query.OrderByDescending(e => e.CreatedAt);
+
         return await query
             .Skip((page - 1) * pageSize)
             .Take(pageSize)

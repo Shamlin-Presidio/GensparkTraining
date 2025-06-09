@@ -7,5 +7,6 @@ public class EventUpdateDto
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
     public string Location { get; set; } = string.Empty;
-    public string? MapUrl { get; set; }
+    public string? GoogleMapLink { get; set; }
+    public string? OnlineMeetUrl { get; set; }
 }

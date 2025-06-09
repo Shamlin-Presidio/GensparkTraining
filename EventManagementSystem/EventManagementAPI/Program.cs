@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using EventManagementAPI.Hubs;
 using Serilog;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "EventManagementAPI", Version = "v1" });
+
+    // c.SupportNonNullableReferenceTypes();
+    // c.MapType<IFormFile>(() => new OpenApiSchema { Type = "string", Format = "binary" });
 
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {

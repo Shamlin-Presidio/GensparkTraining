@@ -34,7 +34,7 @@ public class EventController : ControllerBase
     // C R E A T E    E V E N T 
     [HttpPost]
     [Authorize(Roles = "Organizer")]
-    public async Task<IActionResult> CreateEvent(EventCreateDto dto)
+    public async Task<IActionResult> CreateEvent([FromForm] EventCreateDto dto)
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var newEvent = await _eventService.CreateEventAsync(dto, organizerId);

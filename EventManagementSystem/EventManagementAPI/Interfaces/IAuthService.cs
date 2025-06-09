@@ -5,6 +5,6 @@ namespace EventManagementAPI.Interfaces;
 
 public interface IAuthService
 {
-    Task<(string Token, UserResponseDto User)> SignUpAsync(UserCreateDto dto, IFormFile? profilePicture = null);
-    Task<(string Token, UserResponseDto User)> LoginAsync(LoginRequestDto dto);
+    Task<(string Token, string RefreshToken, UserResponseDto User)> SignUpAsync(UserCreateDto dto, IFormFile? profilePicture = null);
+    Task<(string Token, string RefreshToken, UserResponseDto User)> LoginAsync(LoginRequestDto dto);
 }

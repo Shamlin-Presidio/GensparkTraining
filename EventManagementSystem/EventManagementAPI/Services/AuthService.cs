@@ -27,7 +27,7 @@ public class AuthService : IAuthService
         _env = env;
     }
 
-    public async Task<(string Token, UserResponseDto User)> SignUpAsync(UserCreateDto dto, IFormFile? profilePicture = null)
+    public async Task<(string Token, string RefreshToken, UserResponseDto User)> SignUpAsync(UserCreateDto dto, IFormFile? profilePicture = null)
     {
         var user = new User
         {
@@ -66,10 +66,11 @@ public class AuthService : IAuthService
         };
 
         var token = _jwtService.GenerateAccessToken(user);
-        return (token, responseDto);
+        var refreshToken = _jwtService.GenerateRefreshToken(user);
+        return (token, refreshToken, responseDto);
     }
 
-    public async Task<(string Token, UserResponseDto User)> LoginAsync(LoginRequestDto dto)
+    public async Task<(string Token, string RefreshToken, UserResponseDto User)> LoginAsync(LoginRequestDto dto)
     {
         var users = await _userRepository.GetAllAsync();
         var user = users.FirstOrDefault(u => u.Username == dto.Username && !u.IsDeleted);
@@ -86,6 +87,7 @@ public class AuthService : IAuthService
         };
 
         var token = _jwtService.GenerateAccessToken(user);
-        return (token, responseDto);
+        var refreshToken = _jwtService.GenerateRefreshToken(user);
+        return (token, refreshToken,responseDto);
     }
 }

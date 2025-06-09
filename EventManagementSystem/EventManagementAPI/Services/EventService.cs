@@ -5,6 +5,7 @@ using EventManagementAPI.Interfaces;
 using EventManagementAPI.Models;
 using EventManagementAPI.Models.DTOs.Event;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 
@@ -34,7 +35,7 @@ public class EventService : IEventService
         var evnt = await _eventRepository.GetByIdAsync(id);
         if (evnt == null)
             return null;
-
+        Console.WriteLine(evnt.Organizer?.Username);
         return _mapper.Map<EventResponseDto>(evnt);
     }
 
@@ -61,9 +62,11 @@ public class EventService : IEventService
 
         var createdEvent = await _eventRepository.AddAsync(evnt);
 
+        // RELOAD FROM DB,    t h i s   e n s u r e s   u s e r    n a v i g a t o n
+        var fullEvent = await _eventRepository.GetByIdAsync(createdEvent.Id);
         await _hubContext.Clients.All.SendAsync("NewEventCreated", evnt.Title);
-        
-        return _mapper.Map<EventResponseDto>(createdEvent);
+        return _mapper.Map<EventResponseDto>(fullEvent);
+
     }
 
     public async Task<EventResponseDto?> UpdateEventAsync(Guid id, EventUpdateDto dto, Guid organizerId, IFormFile? image = null)
@@ -90,6 +93,7 @@ public class EventService : IEventService
         }
 
         await _eventRepository.UpdateAsync(evnt);
+        Console.WriteLine(evnt);
         return _mapper.Map<EventResponseDto>(evnt);
     }
 

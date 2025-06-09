@@ -41,8 +41,50 @@ public class JwtService : IJwtService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public string GenerateRefreshToken()
+    public string GenerateRefreshToken(User user)
     {
-        return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim("token_type", "refresh")
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Key));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: _settings.Issuer,
+            audience: _settings.Audience,
+            claims: claims,
+            expires: DateTime.UtcNow.AddDays(7), // REFRESH TOKENS LAST LONGER
+            signingCredentials: creds
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+    public ClaimsPrincipal? GetPrincipalFromToken(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.UTF8.GetBytes(_settings.Key);
+
+        try
+        {
+            var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidIssuer = _settings.Issuer,
+                ValidAudience = _settings.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ClockSkew = TimeSpan.Zero
+            }, out _);
+
+            return principal;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
