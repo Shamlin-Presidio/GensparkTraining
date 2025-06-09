@@ -1,0 +1,12 @@
+using EventManagementAPI.Models;
+
+namespace EventManagementAPI.Interfaces;
+
+public interface IRegistrationRepository
+{
+    Task<IEnumerable<Registration>> GetByAttendeeIdAsync(Guid attendeeId);
+    Task<Registration?> GetByIdAsync(Guid registrationId);
+    Task<Registration?> GetByEventAndAttendeeAsync(Guid eventId, Guid attendeeId);
+    Task<Registration> AddAsync(Registration registration);
+    Task<bool> DeleteAsync(Guid id);
+}

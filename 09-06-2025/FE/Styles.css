@@ -1,0 +1,267 @@
+/* G E N E R A L */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #F5F5F5;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+}
+
+
+/* H E AD E R */
+.header {
+  background: #fff;
+  padding: 24px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* B U T T O N S */
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px #3498db;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover{
+  color: #3498db;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.primary {
+  background-color: #CCCCCC;
+  color: #000;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid #666;
+  color: #333;
+}
+
+/* D O C T O R, HERO  */
+.hero {
+  background-color: #E0F0FF;
+  padding: 64px 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+.hero-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+}
+
+.patient-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+/* S E R V I C E S  */
+.services {
+  background-color: #fff;
+  padding: 64px 0;
+}
+
+.card-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.card {
+  flex: 1 1 250px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.card i {
+  color: #3498db;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+}
+
+/* T E S T I M O N I A L S */
+.testimonials {
+  background-color: #E0F0FF;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.testimonial-card {
+  display: inline-block;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 16px;
+  max-width: 500px;
+}
+
+.testimonial-card i {
+  width: 24px;
+  height: 24px;
+  color: #3498db;
+  margin-bottom: 12px;
+}
+
+/* H O U R S  */
+.clinic-hours {
+  background-color: #fff;
+  padding: 48px 0;
+}
+
+.clinic-grid {
+  display: flex;
+  gap: 20vw;
+  flex-wrap: wrap;
+}
+
+.hours-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content:space-between;
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+
+/* M E DI A   Q U E R I E S */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .clinic-grid {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .logo{
+    font-size: 30px;
+  }
+}
+
+
+/* H A M B UR G E R    M E N U  */
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 80px;
+    right: 24px;
+    z-index: 999;
+  }
+
+  .show {
+    display: flex;
+    align-items: center;
+  }
+}

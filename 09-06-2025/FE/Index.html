@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor's Clinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+   <script src="https://kit.fontawesome.com/fbffa4c527.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+  <!--  S E C T I O N    1  NAVBAR -->
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">🩺 Doctor’s Clinic</h1>
+      <nav>
+         <div class="hamburger" onclick="toggleMenu()">
+          <i data-feather="menu"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><button class="btn outline">Log In</button></li>
+          <li><button class="btn primary">Register</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!--  S E C T I O N    2  MAIN CONTENT -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Quality Care<br>for Your Health</h2>
+        <p>Our clinic provides the best medical services for you and your family.</p>
+        <button class="btn primary">Book Appointment</button>
+      </div>
+      <img src="./Assets/doctor.png" alt="Doctor" class="hero-img"/>
+      <!-- <img src="./Assets/doktor.jpg" alt="Doctor" class="hero-img"/> -->
+    </div>
+  </section>
+
+<!--  S E C T I O N    3  SERVICES -->
+
+  <section class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i data-feather="clipboard"></i>
+          <h3>Primary Care</h3>
+          <p>Provide doctor early care or cutlanes.</p>
+        </div>
+        <div class="card">
+          <i data-feather="activity"></i>
+          <h3>Paediatrics</h3>
+          <p>Provide careare with kids in-names.</p>
+        </div>
+        <div class="card">
+          <i data-feather="plus-circle"></i>
+          <h3>Specialty Care</h3>
+          <p>Provide accarecare and curisel-car.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--  S E C T I O N    4  TESTIMONIALS -->
+
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Our Patients Are Saying</h2>
+      <div class="testimonial-card">
+        <p><i class="fa-solid fa-quote-left"></i>Excellent service and wonderful staff.<br>I always feel well taken care of.</p>
+        <img src="./Assets/patient.jpg" alt="Doctor" class="patient-img"/>
+        <p> ~ Gin Le.</p>
+      </div>
+    </div>
+  </section>
+
+  <!--  S E C T I O N   5  CLINIC HOURS -->
+
+  <section class="clinic-hours">
+    <div class="container clinic-grid">
+      <div class="hours-block">
+        <h3>Clinic Hours</h3>
+        <div class="flex-row">
+          <span>Monday - Saturday</span>
+          <span>8:00 AM – 6:00 PM</span>
+        </div>
+        <div class="flex-row">
+          <span>Sunday</span>
+          <span>9:00 AM – 9:00 PM</span>
+        </div>
+      </div>
+      <div class="hours-block">
+        <h3>Pharmacy Hours</h3>
+        <div class="flex-row">
+          <span>Monday – Saturday</span>
+          <span>9:00 AM – 9:00 PM</span>
+        </div>
+        <div class="flex-row">
+          <span>Sunday</span>
+          <span>9:00 AM – 11:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>feather.replace();</script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
