@@ -157,4 +157,51 @@ public class AuthServiceTests
 
         Assert.ThrowsAsync<UnauthorizedAccessException>(() => _authService.LoginAsync(loginDto));
     }
+    [Test]
+    public async Task SignUpAsync_WithProfilePicture_SavesUserAndReturnsTokens()
+    {
+        // Arrange
+        var dto = new UserCreateDto
+        {
+            Username = "testuser",
+            Email = "test@example.com",
+            Password = "Password123",
+            Role = "Attendee"
+        };
+
+        var mockFile = new Mock<IFormFile>();
+        var stream = new MemoryStream();
+        var writer = new StreamWriter(stream);
+        writer.Write("fake image data");
+        writer.Flush();
+        stream.Position = 0;
+
+        mockFile.Setup(f => f.FileName).Returns("profile.png");
+        mockFile.Setup(f => f.Length).Returns(stream.Length);
+        mockFile.Setup(f => f.OpenReadStream()).Returns(stream);
+        mockFile.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default)).Returns<Stream, System.Threading.CancellationToken>((target, _) => stream.CopyToAsync(target));
+
+        _envMock.Setup(e => e.ContentRootPath).Returns(Directory.GetCurrentDirectory());
+
+        User? savedUser = null;
+        _userRepositoryMock.Setup(r => r.AddAsync(It.IsAny<User>()))
+            .Returns<User>(user =>
+            {
+                savedUser = user;
+                return Task.FromResult(user);
+            });
+
+        _jwtServiceMock.Setup(j => j.GenerateAccessToken(It.IsAny<User>())).Returns("mocked-access-token");
+        _jwtServiceMock.Setup(j => j.GenerateRefreshToken(It.IsAny<User>())).Returns("mocked-refresh-token");
+
+        // Act
+        var (token, refreshToken, userDto) = await _authService.SignUpAsync(dto, mockFile.Object);
+
+        // Assert
+        Assert.AreEqual("mocked-access-token", token);
+        Assert.AreEqual("mocked-refresh-token", refreshToken);
+        Assert.AreEqual(dto.Username, userDto.Username);
+        Assert.IsNotNull(savedUser);
+        Assert.That(savedUser!.ProfilePicturePath, Does.Contain("UploadedFiles/Users"));
+    }
 }

@@ -310,6 +310,57 @@ namespace EventManagementAPI.Tests
         }
 
         [Test]
+        public async Task CreateEventAsync_AddsEventToRepo_WithImage()
+        {
+            // Arrange
+            var dto = new EventCreateDto
+            {
+                Title = "New Event",
+                Location = "Here",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddHours(2)
+            };
+
+            var imageContent = new MemoryStream();
+            var writer = new StreamWriter(imageContent);
+            writer.Write("fake image content");
+            writer.Flush();
+            imageContent.Position = 0;
+
+            var mockImage = new Mock<IFormFile>();
+            mockImage.Setup(f => f.FileName).Returns("event.jpg");
+            mockImage.Setup(f => f.OpenReadStream()).Returns(imageContent);
+            mockImage.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default))
+                     .Returns((Stream stream, CancellationToken _) => imageContent.CopyToAsync(stream));
+            mockImage.Setup(f => f.Length).Returns(imageContent.Length);
+
+            var mappedEvent = new Event
+            {
+                Id = Guid.NewGuid(),
+                Title = dto.Title,
+                Location = dto.Location,
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime
+            };
+
+            _mapperMock.Setup(m => m.Map<Event>(dto)).Returns(mappedEvent);
+            _mapperMock.Setup(m => m.Map<EventResponseDto>(It.IsAny<Event>()))
+                       .Returns(new EventResponseDto { Title = dto.Title });
+
+            _envMock.Setup(e => e.ContentRootPath).Returns(Directory.GetCurrentDirectory());
+
+            // Act
+            var result = await _eventService.CreateEventAsync(dto, Guid.NewGuid(), mockImage.Object);
+
+            // Assert
+            Assert.That(result.Title, Is.EqualTo("New Event"));
+            Assert.That(_eventsInMemory.Count, Is.EqualTo(1));
+            Assert.That(_eventsInMemory[0].ImagePath, Does.Contain("UploadedFiles/Events"));
+        }
+
+
+
+        [Test]
         public async Task UpdateEventAsync_ValidOrganizer_UpdatesEvent()
         {
             var organizerId = Guid.NewGuid();
