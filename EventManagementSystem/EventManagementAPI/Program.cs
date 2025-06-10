@@ -21,9 +21,6 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "EventManagementAPI", Version = "v1" });
 
-    // c.SupportNonNullableReferenceTypes();
-    // c.MapType<IFormFile>(() => new OpenApiSchema { Type = "string", Format = "binary" });
-
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -98,6 +95,18 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key))
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnForbidden = async context =>
+        {
+            context.Response.StatusCode = 403;
+            context.Response.ContentType = "application/json";
+
+            var response = System.Text.Json.JsonSerializer.Serialize(new { Message = "You do not have permission to perform this action." });
+            await context.Response.WriteAsync(response);
+        }
     };
 });
 

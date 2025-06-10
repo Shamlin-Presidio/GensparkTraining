@@ -20,7 +20,23 @@ public class EventController : ControllerBase
     // G E T    A L L     E V E N T S 
     [HttpGet]
     public async Task<IActionResult> GetAllEvents([FromQuery] string? search, int page = 1, int pageSize = 10)
-        => Ok(await _eventService.GetAllEventsAsync(search, page, pageSize));
+    {
+        var events = await _eventService.GetAllEventsAsync(search, page, pageSize);
+
+        if (!events.Any())
+        {
+            return Ok(new
+            {
+                Message = "No matching events found",
+                Events = events
+            });
+        }
+
+        return Ok(new
+        {
+            Events = events
+        });
+    }
 
 
     // G E T    E V E N T   B Y   Id
@@ -28,7 +44,13 @@ public class EventController : ControllerBase
     public async Task<IActionResult> GetEventById(Guid id)
     {
         var evt = await _eventService.GetEventByIdAsync(id);
-        return evt == null ? NotFound() : Ok(evt);
+        // return evt == null ? NotFound() : Ok(evt);
+        if (evt == null)
+        {
+            return NotFound(new { Message = $"Event with ID '{id}' not found." });
+        }
+
+        return Ok(evt);
     }
     
     // C R E A T E    E V E N T 
@@ -37,7 +59,7 @@ public class EventController : ControllerBase
     public async Task<IActionResult> CreateEvent([FromForm] EventCreateDto dto)
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var newEvent = await _eventService.CreateEventAsync(dto, organizerId);
+        var newEvent = await _eventService.CreateEventAsync(dto, organizerId, dto.Image);
         return CreatedAtAction(nameof(GetEventById), new { id = newEvent.Id }, newEvent);
     }
 
@@ -48,7 +70,12 @@ public class EventController : ControllerBase
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var updated = await _eventService.UpdateEventAsync(id, dto, organizerId);
-        return updated == null ? NotFound() : Ok(updated);
+
+        if (updated == null)
+        {
+            return NotFound(new { Message = $"Cannot update — event with ID '{id}' not found or you are unauthorized." });
+        }
+        return Ok(updated);
     }
 
     // D E L E T E    E V E N T
@@ -58,6 +85,12 @@ public class EventController : ControllerBase
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var deleted = await _eventService.DeleteEventAsync(id, organizerId);
-        return deleted ? NoContent() : NotFound();
+
+        if (!deleted)
+        {
+            return NotFound(new { Message = $"Cannot delete — event with ID '{id}' not found or you are unauthorized." });
+        }
+
+        return NoContent();
     }
 }

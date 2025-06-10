@@ -27,24 +27,61 @@ namespace EventManagementAPI.Services
             return _mapper.Map<IEnumerable<RegistrationResponseDto>>(registrations);
         }
 
+        // public async Task<RegistrationResponseDto> RegisterForEventAsync(Guid eventId, Guid attendeeId)
+        // {
+
+        //     var evnt = await _eventRepository.GetByIdAsync(eventId);
+        //     if (evnt == null || evnt.IsDeleted)
+        //         throw new KeyNotFoundException("Event not found");
+
+
+        //     var existing = await _registrationRepository.GetByEventAndAttendeeAsync(eventId, attendeeId);
+        //     if (existing != null)
+        //         throw new InvalidOperationException("Already registered for this event");
+
+        //     var registration = new Registration
+        //     {
+        //         Id = Guid.NewGuid(),
+        //         EventId = eventId,
+        //         AttendeeId = attendeeId,
+        //         RegisteredAt = DateTime.UtcNow
+        //     };
+
+        //     var created = await _registrationRepository.AddAsync(registration);
+        //     return _mapper.Map<RegistrationResponseDto>(created);
+        // }
+
         public async Task<RegistrationResponseDto> RegisterForEventAsync(Guid eventId, Guid attendeeId)
         {
-
             var evnt = await _eventRepository.GetByIdAsync(eventId);
             if (evnt == null || evnt.IsDeleted)
                 throw new KeyNotFoundException("Event not found");
 
+            // fetch existing registration (active or soft‐deleted) (if any)
+            var existing = await _registrationRepository.GetByEventAndAttendeeIncludingDeletedAsync(eventId, attendeeId);
 
-            var existing = await _registrationRepository.GetByEventAndAttendeeAsync(eventId, attendeeId);
             if (existing != null)
-                throw new InvalidOperationException("Already registered for this event");
+            {
+                if (!existing.IsDeleted)
+                {
+                    throw new InvalidOperationException("Already registered for this event");
+                }
+                // existing.IsDeleted == true → reactivate
+                existing.IsDeleted = false;
+                existing.RegisteredAt = DateTime.UtcNow;
+                await _registrationRepository.SaveChangesAsync();
 
+                return _mapper.Map<RegistrationResponseDto>(existing);
+            }
+
+            // No existing registration, create new 
             var registration = new Registration
             {
                 Id = Guid.NewGuid(),
                 EventId = eventId,
                 AttendeeId = attendeeId,
-                RegisteredAt = DateTime.UtcNow
+                RegisteredAt = DateTime.UtcNow,
+                IsDeleted = false
             };
 
             var created = await _registrationRepository.AddAsync(registration);

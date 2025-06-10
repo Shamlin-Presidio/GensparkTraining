@@ -49,4 +49,17 @@ public class RegistrationRepository : IRegistrationRepository
         await _context.SaveChangesAsync();
         return true;
     }
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Registration?> GetByEventAndAttendeeIncludingDeletedAsync(Guid eventId, Guid attendeeId)
+    {
+        // N O   checks for IsDeleted!
+        return await _context.Registrations
+            .FirstOrDefaultAsync(r => 
+                r.EventId == eventId &&
+                r.AttendeeId == attendeeId);
+    }
 }

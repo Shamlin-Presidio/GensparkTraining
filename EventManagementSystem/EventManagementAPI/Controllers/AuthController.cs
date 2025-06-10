@@ -37,7 +37,7 @@ public class AuthController : ControllerBase
         }
         catch (UnauthorizedAccessException)
         {
-            return Unauthorized("Invalid username or password");
+            return Unauthorized(new { Message = "Invalid username or password." });
         }
     }
 
@@ -46,16 +46,16 @@ public class AuthController : ControllerBase
     {
         var principal = _jwtService.GetPrincipalFromToken(refreshToken);
         if (principal == null)
-            return Unauthorized("Invalid refresh token");
+            return Unauthorized(new { Message = "Invalid refresh token." });
 
         var tokenType = principal.FindFirst("token_type")?.Value;
         if (tokenType != "refresh")
-            return Unauthorized("Invalid token type");
+            return Unauthorized(new { Message = "Invalid token type." });
 
         var userId = Guid.Parse(principal.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var user = await _userRepository.GetByIdAsync(userId);
         if (user == null || user.IsDeleted)
-            return Unauthorized();
+            return Unauthorized(new { Message = "User not found or inactive." });
 
         var newAccessToken = _jwtService.GenerateAccessToken(user);
         var newRefreshToken = _jwtService.GenerateRefreshToken(user);

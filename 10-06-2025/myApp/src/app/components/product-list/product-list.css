@@ -1,0 +1,46 @@
+.productImage{
+    width: 250px;
+    height: fit-content;
+}
+/* *{
+    background-color: rgb(186, 206, 213);
+    margin:0;
+    padding: 0;
+} */
+
+.light-blue{
+    padding-top: 20px;
+    background-color: rgb(57, 102, 119);
+}
+
+.productDiv{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 2vh;
+}
+
+.addToCart{
+    cursor: pointer;
+    background-color: rgb(8, 164, 29);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.addToCart:hover{
+    transform: scale(1.1); 
+    transition: transform 0.3s ease; 
+}
+
+.card{
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 2vh;
+}

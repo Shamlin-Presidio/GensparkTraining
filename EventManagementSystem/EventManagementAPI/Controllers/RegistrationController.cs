@@ -26,12 +26,31 @@ public class RegistrationController : ControllerBase
     }
 
     // R E G I ST E R    
+    // [HttpPost("{eventId}")]
+    // public async Task<IActionResult> Register(Guid eventId)
+    // {
+    //     var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+    //     var reg = await _registrationService.RegisterForEventAsync(eventId, attendeeId);
+    //     return Ok(reg);
+    // }
+
     [HttpPost("{eventId}")]
     public async Task<IActionResult> Register(Guid eventId)
     {
         var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var reg = await _registrationService.RegisterForEventAsync(eventId, attendeeId);
-        return Ok(reg);
+
+        try
+        {
+            var registration = await _registrationService.RegisterForEventAsync(eventId, attendeeId);
+            if (registration == null)
+                return BadRequest(new { Message = "Registration failed. Possibly event not found or already registered." });
+
+            return CreatedAtAction(nameof(GetMyRegistrations), null, registration); 
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
     }
 
 
@@ -41,6 +60,9 @@ public class RegistrationController : ControllerBase
     {
         var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var cancelled = await _registrationService.CancelRegistrationAsync(registrationId, attendeeId);
-        return cancelled ? NoContent() : NotFound();
+        if (!cancelled)
+            return NotFound(new { Message = "Registration not found or you are not authorized to cancel it." });
+
+        return Ok(new { Message = "Registration cancelled successfully." });
     }
 }

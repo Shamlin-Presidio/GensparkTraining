@@ -9,4 +9,6 @@ public interface IRegistrationRepository
     Task<Registration?> GetByEventAndAttendeeAsync(Guid eventId, Guid attendeeId);
     Task<Registration> AddAsync(Registration registration);
     Task<bool> DeleteAsync(Guid id);
+    Task SaveChangesAsync();
+    Task<Registration?> GetByEventAndAttendeeIncludingDeletedAsync(Guid eventId, Guid attendeeId);
 }
