@@ -1363,3 +1363,4 @@ LIMIT 1
 2025-06-10 21:05:59.077 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.Register (EventManagementAPI) in 17.9372ms
 2025-06-10 21:05:59.078 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.Register (EventManagementAPI)'
 2025-06-10 21:05:59.078 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Registration/a19a2bd7-2b41-4357-b6cb-57739957e0c9 - 400 null application/json; charset=utf-8 20.4251ms
+2025-06-10 22:02:29.568 +05:30 [INF] Application is shutting down...
