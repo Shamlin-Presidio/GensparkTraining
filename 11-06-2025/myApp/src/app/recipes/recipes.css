@@ -7,3 +7,19 @@
 .yellow{
     background-color: rgb(234, 232, 204);
 }
+.appName{
+    padding: 20px;
+    background-color: rgb(245, 229, 7);
+    border: 5px solid black;
+}
+.appName h2{
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}
+.na{
+    height: 90vh;
+    font-size: 30px;
+    background-color: rgb(234, 232, 204);
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}
