@@ -4,4 +4,5 @@ export class RecipeModel {
   cuisine: string = '';
   cookTimeMinutes: number = 0;
   ingredients: string[] = [];
+  image: string = '';
 }
