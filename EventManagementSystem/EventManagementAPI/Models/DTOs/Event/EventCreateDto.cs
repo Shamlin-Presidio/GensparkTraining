@@ -9,5 +9,5 @@ public class EventCreateDto
     public string Location { get; set; } = string.Empty;
     public string? GoogleMapLink { get; set; }
     public string? OnlineMeetUrl { get; set; }
-    public IFormFile? Image { get; set; } 
+    public IFormFile? ImagePath { get; set; } 
 }

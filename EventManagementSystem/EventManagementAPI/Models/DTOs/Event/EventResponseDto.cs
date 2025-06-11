@@ -12,5 +12,6 @@ public class EventResponseDto
     public string Location { get; set; } = string.Empty;
     public string? GoogleMapLink { get; set; }
     public string? OnlineMeetUrl { get; set; }
+    public string? ImagePath { get; set; } 
     
 }

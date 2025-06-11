@@ -35,29 +35,30 @@ public class EventService : IEventService
         var evnt = await _eventRepository.GetByIdAsync(id);
         if (evnt == null)
             return null;
-        Console.WriteLine(evnt.Organizer?.Username);
+        // Console.WriteLine(evnt.Organizer?.Username);
         return _mapper.Map<EventResponseDto>(evnt);
     }
 
-    public async Task<EventResponseDto> CreateEventAsync(EventCreateDto dto, Guid organizerId, IFormFile? image = null)
+    public async Task<EventResponseDto> CreateEventAsync(EventCreateDto dto, Guid organizerId)
     {
         var evnt = _mapper.Map<Event>(dto);
         evnt.Id = Guid.NewGuid();
         evnt.OrganizerId = organizerId;
 
-        if (image != null)
+        if (dto.ImagePath != null)
         {
             var folder = Path.Combine("UploadedFiles", "Events");
-            var extension = Path.GetExtension(image.FileName);
+            var extension = Path.GetExtension(dto.ImagePath.FileName);
             var fileName = $"{evnt.Id}{extension}";
             var folderPath = Path.Combine(_env.ContentRootPath, folder);
             Directory.CreateDirectory(folderPath);
             var filePath = Path.Combine(folderPath, fileName);
 
             using var stream = new FileStream(filePath, FileMode.Create);
-            await image.CopyToAsync(stream);
+            await dto.ImagePath.CopyToAsync(stream);
 
             evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+        
         }
 
         var createdEvent = await _eventRepository.AddAsync(evnt);
@@ -69,7 +70,7 @@ public class EventService : IEventService
 
     }
 
-    public async Task<EventResponseDto?> UpdateEventAsync(Guid id, EventUpdateDto dto, Guid organizerId, IFormFile? image = null)
+    public async Task<EventResponseDto?> UpdateEventAsync(Guid id, EventUpdateDto dto, Guid organizerId)
     {
         var evnt = await _eventRepository.GetByIdAsync(id);
         if (evnt == null || evnt.IsDeleted || evnt.OrganizerId != organizerId)
@@ -77,17 +78,17 @@ public class EventService : IEventService
 
         _mapper.Map(dto, evnt);
 
-        if (image != null)
+        if (dto.ImagePath != null)
         {
             var folder = Path.Combine("UploadedFiles", "Events");
-            var extension = Path.GetExtension(image.FileName);
+            var extension = Path.GetExtension(dto.ImagePath.FileName);
             var fileName = $"{evnt.Id}{extension}";
             var folderPath = Path.Combine(_env.ContentRootPath, folder);
             Directory.CreateDirectory(folderPath);
             var filePath = Path.Combine(folderPath, fileName);
 
             using var stream = new FileStream(filePath, FileMode.Create);
-            await image.CopyToAsync(stream);
+            await dto.ImagePath.CopyToAsync(stream);
 
             evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
         }

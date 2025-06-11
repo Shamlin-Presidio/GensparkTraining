@@ -59,14 +59,14 @@ public class EventController : ControllerBase
     public async Task<IActionResult> CreateEvent([FromForm] EventCreateDto dto)
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var newEvent = await _eventService.CreateEventAsync(dto, organizerId, dto.Image);
+        var newEvent = await _eventService.CreateEventAsync(dto, organizerId);
         return CreatedAtAction(nameof(GetEventById), new { id = newEvent.Id }, newEvent);
     }
 
     // U P D A T E    E V E N T 
     [HttpPut("{id}")]
     [Authorize(Roles = "Organizer")]
-    public async Task<IActionResult> UpdateEvent(Guid id, EventUpdateDto dto)
+    public async Task<IActionResult> UpdateEvent(Guid id,[FromForm] EventUpdateDto dto)
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var updated = await _eventService.UpdateEventAsync(id, dto, organizerId);
