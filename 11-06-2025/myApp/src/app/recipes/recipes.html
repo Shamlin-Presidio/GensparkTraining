@@ -2,26 +2,8 @@
 <div class="appName">
   <h2>RecYippeee!</h2>
 </div>
-
-<!-- <div class=" yellow">
-  @if (recipes()) {
-    <div class="yellow">
-      @for (item of recipes(); track item.id) {
-        <app-recipe [recipe]="item"></app-recipe>
-      }
-    </div>
-  }
-  @else {
-    <div class="appName">
-      No recipes available
-    </div>
-  }
-</div> -->
-
-
 <div class="yellow">
   @if (recipes().length > 0) {
-    <!-- <h2>RecYippeee!</h2> -->
     <div class="yellow">
       @for (item of recipes(); track item.id) {
         <app-recipe [recipe]="item"></app-recipe>

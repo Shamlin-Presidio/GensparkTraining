@@ -2,6 +2,7 @@
   <h3 class="recipeName">{{ recipe?.name }}</h3>
   <hr/>
   <img [src]=recipe?.image alt="">
+  <hr/>
   <p><strong>Cuisine:</strong> {{ recipe?.cuisine }}</p>
   <p><strong>Cooking Time:</strong> {{ recipe?.cookTimeMinutes }} minutes</p>
   <p><strong>Ingredients:</strong> {{ recipe?.ingredients?.join(', ') }}</p>
