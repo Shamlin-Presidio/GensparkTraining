@@ -29,6 +29,12 @@ public class AuthService : IAuthService
 
     public async Task<(string Token, string RefreshToken, UserResponseDto User)> SignUpAsync(UserCreateDto dto, IFormFile? profilePicture = null)
     {
+        var validRoles = new[] { "Organizer", "Attendee" };
+        if (!validRoles.Contains(dto.Role, StringComparer.OrdinalIgnoreCase))
+        {
+            throw new ArgumentException("Role must be either 'Organizer' or 'Attendee'.");
+        
+        }
         var user = new User
         {
             Id = Guid.NewGuid(),

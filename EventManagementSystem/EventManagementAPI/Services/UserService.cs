@@ -45,9 +45,16 @@ public class UserService : IUserService
 
         public async Task<UserResponseDto?> UpdateUserAsync(Guid id, UserUpdateDto dto)
         {
+
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null || user.IsDeleted)
                 return null;
+
+            var validRoles = new[] { "Organizer", "Attendee" };
+            if (!validRoles.Contains(dto.Role, StringComparer.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Role must be either 'Organizer' or 'Attendee'."); 
+            }
             _mapper.Map(dto, user);
 
 
@@ -70,8 +77,12 @@ public class UserService : IUserService
             return _mapper.Map<UserResponseDto>(user);
         }
 
-        public async Task<bool> DeleteUserAsync(Guid id)
-        {
-            return await _userRepository.DeleteAsync(id);
+    public async Task<bool> DeleteUserAsync(Guid id, Guid currentUserId)
+    {
+        Console.WriteLine($"Requested ID: {id}, Current User ID: {currentUserId}");
+        if (id != currentUserId)
+            throw new UnauthorizedAccessException("You can only delete your own account.");
+
+        return await _userRepository.DeleteAsync(id);
         }
     }

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using EventManagementAPI.Interfaces;
 using EventManagementAPI.Models.DTOs.User;
 using Microsoft.AspNetCore.Authorization;
@@ -44,6 +45,23 @@ public class UserController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateUser(Guid id, [FromForm] UserUpdateDto dto)
     {
+        // var updated = await _userService.UpdateUserAsync(id, dto);
+        // return updated == null ? NotFound() : Ok(updated);
+
+        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "sub");
+        if (userIdClaim == null)
+            return Unauthorized("User ID not found in token. Login to perform this action");
+
+        var currentUserId = Guid.Parse(userIdClaim.Value);
+
+        if (id != currentUserId)
+        {
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                message = "You are not authorized to update another user's information."
+            });
+        }
+
         var updated = await _userService.UpdateUserAsync(id, dto);
         return updated == null ? NotFound() : Ok(updated);
     }
@@ -52,7 +70,38 @@ public class UserController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
-        var deleted = await _userService.DeleteUserAsync(id);
-        return deleted ? NoContent() : NotFound();
+        // var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "sub");
+        // if (userIdClaim == null)
+        //     return Unauthorized("User ID not found in token. Login to perform this action");
+
+        // var currentUserId = Guid.Parse(userIdClaim.Value);
+
+        // var result = await _userService.DeleteUserAsync(id, currentUserId);
+        // if (!result)
+        //     return NotFound();
+
+        // return Ok("Your account has been deleted.");
+        try
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "sub");
+            if (userIdClaim == null)
+                return Unauthorized("User ID not found in token. Login to perform this action.");
+
+            var currentUserId = Guid.Parse(userIdClaim.Value);
+
+            var result = await _userService.DeleteUserAsync(id, currentUserId);
+            if (!result)
+                return NotFound();
+
+            return Ok("Your account has been deleted.");
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                message = "You are not authorized to delete this account.",
+                reason = ex.Message
+            });
+        }
     }
 }
