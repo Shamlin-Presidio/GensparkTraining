@@ -1,24 +1,17 @@
-<!-- <h2>Recipes</h2>
-
-<div *ngIf="recipes().length === 0">
-  No recipes found.
-</div>
-
-<div *ngFor="let recipe of recipes()">
-  <app-recipe [recipe]="recipe"></app-recipe>
-</div> -->
-
 <h2>Recipes</h2>
 
-@if (recipes()) {
-  <div>
-    @for (item of recipes(); track item.id) {
-      <app-recipe [recipe]="item"></app-recipe>
-    }
-  </div>
-}
-@else {
-  <div>
-    No recipes available
-  </div>
-}
+<div class=" yellow">
+  @if (recipes()) {
+    <div class="yellow">
+      @for (item of recipes(); track item.id) {
+        <app-recipe [recipe]="item"></app-recipe>
+        <!-- <hr/> -->
+      }
+    </div>
+  }
+  @else {
+    <div>
+      No recipes available
+    </div>
+  }
+</div>

@@ -1,5 +1,6 @@
-<div class="card">
-  <h3>{{ recipe?.name }}</h3>
+<div class="card yellow-card">
+  <h3 class="recipeName">{{ recipe?.name }}</h3>
+  <hr/>
   <p><strong>Cuisine:</strong> {{ recipe?.cuisine }}</p>
   <p><strong>Cooking Time:</strong> {{ recipe?.cookTimeMinutes }} minutes</p>
   <p><strong>Ingredients:</strong> {{ recipe?.ingredients?.join(', ') }}</p>
