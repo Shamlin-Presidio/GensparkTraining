@@ -2,7 +2,6 @@ import { Component, Signal, computed, effect, inject, signal } from '@angular/co
 import { RecipeService } from '../services/recipe.service';
 import { RecipeModel } from '../models/recipe';
 import { Recipe } from '../recipe/recipe';
-import { NgIf, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-recipes',
