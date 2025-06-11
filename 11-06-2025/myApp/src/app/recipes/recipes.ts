@@ -7,7 +7,7 @@ import { NgIf, NgFor } from '@angular/common';
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [NgFor, NgIf, Recipe],
+  imports: [Recipe],
   templateUrl: './recipes.html',
   styleUrl: './recipes.css'
 })
