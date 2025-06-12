@@ -18,7 +18,7 @@ public class EventController : ControllerBase
 
 
     // G E T    A L L     E V E N T S 
-    [HttpGet]
+    [HttpGet("GetEvents")]
     public async Task<IActionResult> GetAllEvents([FromQuery] string? search, int page = 1, int pageSize = 10)
     {
         var events = await _eventService.GetAllEventsAsync(search, page, pageSize);
@@ -40,7 +40,7 @@ public class EventController : ControllerBase
 
 
     // G E T    E V E N T   B Y   Id
-    [HttpGet("{id}")]
+    [HttpGet("GetEventById/{id}")]
     public async Task<IActionResult> GetEventById(Guid id)
     {
         var evt = await _eventService.GetEventByIdAsync(id);
@@ -54,7 +54,7 @@ public class EventController : ControllerBase
     }
     
     // C R E A T E    E V E N T 
-    [HttpPost]
+    [HttpPost("CreateEvent")]
     [Authorize(Roles = "Organizer")]
     public async Task<IActionResult> CreateEvent([FromForm] EventCreateDto dto)
     {
@@ -64,7 +64,7 @@ public class EventController : ControllerBase
     }
 
     // U P D A T E    E V E N T 
-    [HttpPut("{id}")]
+    [HttpPut("UpdateEvent/{id}")]
     [Authorize(Roles = "Organizer")]
     public async Task<IActionResult> UpdateEvent(Guid id,[FromForm] EventUpdateDto dto)
     {
@@ -79,7 +79,7 @@ public class EventController : ControllerBase
     }
 
     // D E L E T E    E V E N T
-    [HttpDelete("{id}")]
+    [HttpDelete("DeleteEvent/{id}")]
     [Authorize(Roles = "Organizer")]
     public async Task<IActionResult> DeleteEvent(Guid id)
     {

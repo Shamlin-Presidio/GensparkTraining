@@ -17,7 +17,7 @@ public class RegistrationController : ControllerBase
     }
 
     // G E T   R E G I S T E R E D    E V E N T S
-    [HttpGet]
+    [HttpGet("GetMyRegistrations")]
     public async Task<IActionResult> GetMyRegistrations()
     {
         var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
@@ -34,7 +34,7 @@ public class RegistrationController : ControllerBase
     //     return Ok(reg);
     // }
 
-    [HttpPost("{eventId}")]
+    [HttpPost("Register/{eventId}")]
     public async Task<IActionResult> Register(Guid eventId)
     {
         var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
@@ -55,7 +55,7 @@ public class RegistrationController : ControllerBase
 
 
     // C A N C E L   R E G I S T R A T I O N
-    [HttpDelete("{registrationId}")]
+    [HttpDelete("Cancel/{registrationId}")]
     public async Task<IActionResult> Cancel(Guid registrationId)
     {
         var attendeeId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);

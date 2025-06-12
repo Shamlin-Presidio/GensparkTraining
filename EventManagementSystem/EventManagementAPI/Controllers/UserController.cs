@@ -19,14 +19,14 @@ public class UserController : ControllerBase
     }
 
     // G E T    A L L    USERS
-    [HttpGet]
+    [HttpGet("GetAllUsers")]
     public async Task<IActionResult> GetAllUsers()
     {
         return Ok(await _userService.GetAllUsersAsync());
     }
 
     // S E A R C H    USER
-    [HttpGet("{id}")]
+    [HttpGet("GetUserById/{id}")]
     public async Task<IActionResult> GetUserById(Guid id)
     {
         var user = await _userService.GetUserByIdAsync(id);
@@ -42,7 +42,7 @@ public class UserController : ControllerBase
     // }
 
     // U P D A T E    USER
-    [HttpPut("{id}")]
+    [HttpPut("UpdateUser/{id}")]
     public async Task<IActionResult> UpdateUser(Guid id, [FromForm] UserUpdateDto dto)
     {
         // var updated = await _userService.UpdateUserAsync(id, dto);
@@ -67,7 +67,7 @@ public class UserController : ControllerBase
     }
 
     // D E L E T E    USER
-    [HttpDelete("{id}")]
+    [HttpDelete("DeleteUser/{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
         // var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "sub");
