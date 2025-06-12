@@ -42,9 +42,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("refresh-token")]
-    public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
+    public async Task<IActionResult> RefreshToken(RefreshTokenRequestDto dto)
     {
-        var principal = _jwtService.GetPrincipalFromToken(refreshToken);
+        var principal = _jwtService.GetPrincipalFromToken(dto.RefreshToken);
         if (principal == null)
             return Unauthorized(new { Message = "Invalid refresh token." });
 

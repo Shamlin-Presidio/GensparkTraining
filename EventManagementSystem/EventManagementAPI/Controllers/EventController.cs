@@ -91,6 +91,6 @@ public class EventController : ControllerBase
             return NotFound(new { Message = $"Cannot delete — event with ID '{id}' not found or you are unauthorized." });
         }
 
-        return NoContent();
+        return Ok(new { Message = $"Event with ID '{id}' deleted successfully." });
     }
 }

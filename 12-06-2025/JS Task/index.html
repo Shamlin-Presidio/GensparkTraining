@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Data Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>User Data Demo</h2>
+  <button onclick="getUsersWithCallback()">Get Users (Callback)</button>
+  <button onclick="getUsersWithPromise()">Get Users (Promise)</button>
+  <button onclick="getUsersWithAsyncAwait()">Get Users (Async/Await)</button>
+
+  <ul id="userList"></ul>
+
+  <script src="./script.js"></script>
+</body>
+</html>
