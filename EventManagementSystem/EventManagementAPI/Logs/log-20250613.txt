@@ -1,0 +1,30 @@
+2025-06-13 10:29:45.239 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-06-13 10:29:45.396 +05:30 [INF] Now listening on: http://localhost:5025
+2025-06-13 10:29:45.399 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-13 10:29:45.400 +05:30 [INF] Hosting environment: Development
+2025-06-13 10:29:45.400 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-06-13 10:30:34.683 +05:30 [INF] Application is shutting down...
+2025-06-13 10:30:43.115 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-06-13 10:30:43.254 +05:30 [INF] Now listening on: http://localhost:5025
+2025-06-13 10:30:43.257 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-13 10:30:43.258 +05:30 [INF] Hosting environment: Development
+2025-06-13 10:30:43.258 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-06-13 10:30:55.615 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-06-13 10:30:55.849 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 237.4731ms
+2025-06-13 10:31:01.773 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetAllUsers - null null
+2025-06-13 10:31:01.789 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-13 10:31:01.900 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI)'
+2025-06-13 10:31:01.927 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-13 10:31:03.366 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-13 10:31:03.498 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-13 10:31:03.548 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI) in 1617.358ms
+2025-06-13 10:31:03.548 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI)'
+2025-06-13 10:31:03.558 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetAllUsers - 200 null application/json; charset=utf-8 1786.4614ms
+2025-06-13 10:31:15.520 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-06-13 10:31:15.618 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 97.5688ms
+2025-06-13 10:31:15.680 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-06-13 10:31:15.693 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.1609ms
+2025-06-13 10:31:34.027 +05:30 [INF] Application is shutting down...

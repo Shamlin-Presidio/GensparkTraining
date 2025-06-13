@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using EventManagementAPI.Hubs;
 using Serilog;
 using Microsoft.OpenApi.Models;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,23 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
+builder.Services.AddOptions();
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(options =>
+{
+    options.GeneralRules = new List<RateLimitRule>
+    {
+        new RateLimitRule
+        {
+            Endpoint = "*",
+            Period = "10s",
+            Limit = 100
+        }
+    };
+});
+
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddInMemoryRateLimiting();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -152,6 +170,7 @@ app.UseHttpsRedirection();
 
 app.UseCors();
 app.MapHub<EventHub>("/eventHub");
+app.UseIpRateLimiting();
 
 app.UseAuthentication();
 app.UseAuthorization();
