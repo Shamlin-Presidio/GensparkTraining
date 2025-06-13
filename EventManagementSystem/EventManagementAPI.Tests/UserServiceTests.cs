@@ -71,22 +71,64 @@ public class UserServiceTests
 
         Assert.IsNull(result);
     }
+    // [Test]
+    // public async Task UpdateUserAsync_ValidId_UpdatesUserAndReturnsDto()
+    // {
+    //     var user = _users[0];
+    //     // var dto = new UserUpdateDto { Username = "Updated", Email = "updated@email.com", Role = "Organizer"  };
+
+    //     _userRepoMock.Setup(r => r.GetByIdAsync(user.Id)).ReturnsAsync(user);
+    //     _mapperMock.Setup(m => m.Map(dto, user));
+    //     _userRepoMock.Setup(r => r.UpdateAsync(user)).ReturnsAsync(user);
+    //     _mapperMock.Setup(m => m.Map<UserResponseDto>(user)).Returns(new UserResponseDto { Id = user.Id });
+
+    //     var dto = new UserUpdateDto { Username = "Updated", Email = "updated@email.com", Role = "Organizer",  ProfilePicture = mockFile.Object };
+    //     var result = await _userService.UpdateUserAsync(user.Id, dto);
+
+    //     Assert.NotNull(result);
+    //     Assert.AreEqual(user.Id, result!.Id);
+    // }
+
     [Test]
     public async Task UpdateUserAsync_ValidId_UpdatesUserAndReturnsDto()
     {
         var user = _users[0];
-        var dto = new UserUpdateDto { Username = "Updated", Email = "updated@email.com" };
+
+        var mockFile = new Mock<IFormFile>();
+        var content = new MemoryStream();
+        var writer = new StreamWriter(content);
+        writer.Write("fake image");
+        writer.Flush();
+        content.Position = 0;
+
+        mockFile.Setup(f => f.FileName).Returns("photo.png");
+        mockFile.Setup(f => f.OpenReadStream()).Returns(content);
+        mockFile.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default)).Returns((Stream stream, CancellationToken _) => content.CopyToAsync(stream));
+        mockFile.Setup(f => f.Length).Returns(content.Length);
+
+        var dto = new UserUpdateDto
+        {
+            Username = "Updated",
+            Email = "updated@email.com",
+            Role = "Organizer",
+            ProfilePicture = mockFile.Object
+        };
 
         _userRepoMock.Setup(r => r.GetByIdAsync(user.Id)).ReturnsAsync(user);
         _mapperMock.Setup(m => m.Map(dto, user));
         _userRepoMock.Setup(r => r.UpdateAsync(user)).ReturnsAsync(user);
         _mapperMock.Setup(m => m.Map<UserResponseDto>(user)).Returns(new UserResponseDto { Id = user.Id });
 
+        _envMock.Setup(e => e.ContentRootPath).Returns(Directory.GetCurrentDirectory());
+
         var result = await _userService.UpdateUserAsync(user.Id, dto);
 
         Assert.NotNull(result);
         Assert.AreEqual(user.Id, result!.Id);
+    
     }
+
+
 
     [Test]
     public async Task UpdateUserAsync_UserNotFound_ReturnsNull()
@@ -119,6 +161,7 @@ public class UserServiceTests
         {
             Username = "User",
             Email = "u@example.com",
+             Role = "Organizer", 
             ProfilePicture = mockFile.Object
         };
 
@@ -139,19 +182,31 @@ public class UserServiceTests
         var id = Guid.NewGuid();
         _userRepoMock.Setup(r => r.DeleteAsync(id)).ReturnsAsync(true);
 
-        var result = await _userService.DeleteUserAsync(id);
+        var result = await _userService.DeleteUserAsync(id, id);
 
         Assert.IsTrue(result);
     }
 
+    // [Test]
+    // public async Task DeleteUserAsync_InvalidId_ReturnsFalse()
+    // {
+    //     var id = Guid.NewGuid();
+    //     var otherUserId = Guid.NewGuid();
+    //     _userRepoMock.Setup(r => r.DeleteAsync(id)).ReturnsAsync(false);
+
+    //     var result = await _userService.DeleteUserAsync(id, otherUserId);
+
+    //     Assert.IsFalse(result);
+    // }
     [Test]
-    public async Task DeleteUserAsync_InvalidId_ReturnsFalse()
+    public void DeleteUserAsync_InvalidId_ThrowsUnauthorizedAccessException()
     {
         var id = Guid.NewGuid();
-        _userRepoMock.Setup(r => r.DeleteAsync(id)).ReturnsAsync(false);
+        var otherUserId = Guid.NewGuid();
 
-        var result = await _userService.DeleteUserAsync(id);
-
-        Assert.IsFalse(result);
+        Assert.ThrowsAsync<UnauthorizedAccessException>(async () =>
+        {
+            await _userService.DeleteUserAsync(id, otherUserId);
+        });
     }
 }

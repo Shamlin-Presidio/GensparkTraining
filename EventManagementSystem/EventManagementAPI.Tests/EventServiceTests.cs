@@ -303,7 +303,7 @@ namespace EventManagementAPI.Tests
             _mapperMock.Setup(m => m.Map<EventResponseDto>(It.IsAny<Event>()))
                        .Returns(new EventResponseDto { Title = dto.Title });
 
-            var result = await _eventService.CreateEventAsync(dto, Guid.NewGuid(), null);
+            var result = await _eventService.CreateEventAsync(dto, Guid.NewGuid());
 
             Assert.That(result.Title, Is.EqualTo("New Event"));
             Assert.That(_eventsInMemory.Count, Is.EqualTo(1));
@@ -313,13 +313,14 @@ namespace EventManagementAPI.Tests
         public async Task CreateEventAsync_AddsEventToRepo_WithImage()
         {
             // Arrange
-            var dto = new EventCreateDto
-            {
-                Title = "New Event",
-                Location = "Here",
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(2)
-            };
+            // var dto = new EventCreateDto
+            // {
+            //     Title = "New Event",
+            //     Location = "Here",
+            //     StartTime = DateTime.Now,
+            //     EndTime = DateTime.Now.AddHours(2),
+            //     ImagePath = mockImage.Object
+            // };
 
             var imageContent = new MemoryStream();
             var writer = new StreamWriter(imageContent);
@@ -334,6 +335,15 @@ namespace EventManagementAPI.Tests
                      .Returns((Stream stream, CancellationToken _) => imageContent.CopyToAsync(stream));
             mockImage.Setup(f => f.Length).Returns(imageContent.Length);
 
+            var dto = new EventCreateDto
+            {
+                Title = "New Event",
+                Location = "Here",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddHours(2),
+                ImagePath = mockImage.Object
+            };
+            
             var mappedEvent = new Event
             {
                 Id = Guid.NewGuid(),
@@ -350,7 +360,7 @@ namespace EventManagementAPI.Tests
             _envMock.Setup(e => e.ContentRootPath).Returns(Directory.GetCurrentDirectory());
 
             // Act
-            var result = await _eventService.CreateEventAsync(dto, Guid.NewGuid(), mockImage.Object);
+            var result = await _eventService.CreateEventAsync(dto, Guid.NewGuid());
 
             // Assert
             Assert.That(result.Title, Is.EqualTo("New Event"));

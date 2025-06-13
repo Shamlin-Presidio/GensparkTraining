@@ -71,7 +71,7 @@ public class AuthServiceTests
             Username = "testuser",
             Password = "password123",
             Email = "test@example.com",
-            Role = "User"
+            Role = "Attendee"
         };
 
         var (token, refreshToken, userDto) = await _authService.SignUpAsync(dto);

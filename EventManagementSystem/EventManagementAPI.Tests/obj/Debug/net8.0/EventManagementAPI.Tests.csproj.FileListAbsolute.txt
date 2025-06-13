@@ -159,3 +159,4 @@
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI.Tests/obj/Debug/net8.0/EventManagementAPI.Tests.pdb
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI.Tests/obj/Debug/net8.0/EventManagementAPI.Tests.genruntimeconfig.cache
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI.Tests/obj/Debug/net8.0/ref/EventManagementAPI.Tests.dll
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI.Tests/bin/Debug/net8.0/AspNetCoreRateLimit.dll

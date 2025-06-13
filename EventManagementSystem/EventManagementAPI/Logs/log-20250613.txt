@@ -28,3 +28,8 @@ WHERE NOT (u."IsDeleted")
 2025-06-13 10:31:15.680 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
 2025-06-13 10:31:15.693 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.1609ms
 2025-06-13 10:31:34.027 +05:30 [INF] Application is shutting down...
+2025-06-13 14:47:46.816 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-06-13 14:47:47.018 +05:30 [INF] Now listening on: http://localhost:5025
+2025-06-13 14:47:47.022 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-13 14:47:47.024 +05:30 [INF] Hosting environment: Development
+2025-06-13 14:47:47.026 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI

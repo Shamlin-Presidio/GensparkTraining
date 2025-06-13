@@ -1,0 +1,43 @@
+*{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.yellow{
+    background-color: rgb(234, 232, 204);
+}
+.appName{
+    padding: 20px;
+    background-color: rgb(245, 229, 7);
+    border: 5px solid black;
+}
+.appName h2{
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}
+.na{
+    height: 90vh;
+    font-size: 30px;
+    background-color: rgb(234, 232, 204);
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+}

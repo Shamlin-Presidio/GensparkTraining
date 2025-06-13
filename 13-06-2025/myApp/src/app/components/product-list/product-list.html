@@ -1,0 +1,15 @@
+<!-- <p>product-list works!</p> -->
+<h2>
+  🛒 Cart Items: <span>{{ cartCount }}</span>
+</h2>
+
+<div class="productDiv light-blue" *ngFor="let product of products">
+    <div class="card">
+        <h3>{{ product.name }}</h3>
+        <img class="productImage" [src]="product.img" alt="{{ product.name }}">
+        <div class="controls">
+            <h3>{{ product.price }}</h3>
+            <button class="addToCart" (click)="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+</div>
