@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>🛒 Product Browser</h1>
+
+
+  <input
+    type="text"
+    placeholder="Search for products..."
+    [formControl]="searchControl"
+    class="search-input"
+  />
+
+
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-product-card>
+  </div>
+
+
+  <div class="loader" *ngIf="isLoading">
+    <p>Loading...</p>
+  </div>
+</div>
