@@ -1,0 +1,6 @@
+<input #searchInput placeholder="Search by username or role" />
+<ul>
+  <li *ngFor="let user of filteredUsers">
+    {{ user.username }} - {{ user.role }}
+  </li>
+</ul>

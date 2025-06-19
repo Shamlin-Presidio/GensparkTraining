@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="username" placeholder="Username" />
+  <div *ngIf="form.get('username')?.errors?.['bannedWord']">Banned word used</div>
+
+  <input formControlName="email" placeholder="Email" />
+  <div *ngIf="form.get('email')?.errors?.['email']">Invalid email</div>
+
+  <input formControlName="password" type="password" placeholder="Password" />
+  <div *ngIf="form.get('password')?.errors?.['weakPassword']">Weak password</div>
+
+  <input formControlName="confirmPassword" type="password" placeholder="Confirm Password" />
+  <div *ngIf="form.errors?.['passwordMismatch']">Passwords do not match</div>
+
+  <input formControlName="role" placeholder="Role" />
+
+  <button type="submit">Add User</button>
+</form>
