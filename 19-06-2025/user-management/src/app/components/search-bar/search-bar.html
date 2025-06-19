@@ -1,6 +1,7 @@
-<input #searchInput placeholder="Search by username or role" />
+<input #searchInput type="text" placeholder="Search users..." />
+
 <ul>
-  <li *ngFor="let user of filteredUsers">
+  <li *ngFor="let user of filteredUsers$ | async">
     {{ user.username }} - {{ user.role }}
   </li>
 </ul>

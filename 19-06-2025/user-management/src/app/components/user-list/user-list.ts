@@ -1,25 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../services/user';
-import { User } from '../../models/user.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../state/app.state';
+import { selectAllUsers } from '../../state/selectors/user.selector';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe],
   templateUrl: './user-list.html'
 })
 export class UserList {
-  userService = inject(UserService);
-  users$ = this.userService.users$;
-
-  ngOnInit() {
-  this.users$.subscribe(users => {
-    console.log('Users in list:', users);
-  });
+  private store = inject(Store<AppState>);
+  users$ = this.store.select(selectAllUsers);
 }
-
-
-}
-

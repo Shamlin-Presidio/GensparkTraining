@@ -1,35 +1,33 @@
 import { Component, ElementRef, ViewChild, inject, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { UserService } from '../../services/user';
-import { User } from '../../models/user.model';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../state/app.state';
+import { setSearchQuery } from '../../state/actions/user.actions';
+import { selectFilteredUsers } from '../../state/selectors/user.selector';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe],
   templateUrl: './search-bar.html',
-  styleUrl:'./search-bar.css'
+  styleUrl: './search-bar.css'
 })
 export class SearchBar implements AfterViewInit {
-
-  private userService = inject(UserService);
   @ViewChild('searchInput') searchInput!: ElementRef;
-  
-  filteredUsers: User[] = [];
+  private store = inject(Store<AppState>);
+
+  filteredUsers$ = this.store.select(selectFilteredUsers);
 
   ngAfterViewInit() {
-    fromEvent(this.searchInput.nativeElement, 'input')
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        switchMap(() =>
-          this.userService.searchUsers(this.searchInput.nativeElement.value)
-        )
-      )
-      .subscribe(users => {
-        this.filteredUsers = users;
-      });
+    fromEvent(this.searchInput.nativeElement, 'input').pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      map((event: any) => event.target.value)
+    ).subscribe(query => {
+      this.store.dispatch(setSearchQuery({ query }));
+    });
   }
 }

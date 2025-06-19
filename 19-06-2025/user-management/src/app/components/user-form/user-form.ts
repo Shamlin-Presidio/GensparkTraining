@@ -1,19 +1,21 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../services/user';
 import { User } from '../../models/user.model';
+import { Store } from '@ngrx/store';
+import { addUser } from '../../state/actions/user.actions';
+import { AppState } from '../../state/app.state';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './user-form.html',
-  styleUrl:'./user-form.css'
+  styleUrl: './user-form.css'
 })
 export class UserForm {
   private fb = inject(FormBuilder);
-  private userService = inject(UserService);
+  private store = inject(Store<AppState>);
 
   bannedWords = ['admin', 'root'];
 
@@ -43,11 +45,10 @@ export class UserForm {
     role: ['', Validators.required]
   }, { validators: this.passwordMatchValidator });
 
-
   submit() {
     if (this.form.valid) {
       const { confirmPassword, ...user } = this.form.value;
-      this.userService.addUser(user as User);
+      this.store.dispatch(addUser({ user: user as User }));
       this.form.reset();
     }
   }
