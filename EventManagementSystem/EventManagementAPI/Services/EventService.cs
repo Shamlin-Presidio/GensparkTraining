@@ -44,6 +44,8 @@ public class EventService : IEventService
         var evnt = _mapper.Map<Event>(dto);
         evnt.Id = Guid.NewGuid();
         evnt.OrganizerId = organizerId;
+        
+        Console.WriteLine($"DTO has image: {dto.ImagePath?.FileName ?? "NULL"}");
 
         if (dto.ImagePath != null)
         {
@@ -58,7 +60,7 @@ public class EventService : IEventService
             await dto.ImagePath.CopyToAsync(stream);
 
             evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
-        
+
         }
 
         var createdEvent = await _eventRepository.AddAsync(evnt);

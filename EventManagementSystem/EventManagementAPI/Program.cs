@@ -12,6 +12,7 @@ using EventManagementAPI.Hubs;
 using Serilog;
 using Microsoft.OpenApi.Models;
 using AspNetCoreRateLimit;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -165,6 +166,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "UploadedFiles")),
+    RequestPath = "/UploadedFiles"
+});
 
 app.UseHttpsRedirection();
 
