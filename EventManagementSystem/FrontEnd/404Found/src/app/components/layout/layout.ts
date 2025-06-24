@@ -6,7 +6,7 @@ import { Auth } from '../../services/auth/auth';
 
 @Component({
   selector: 'app-layout',
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './layout.html',
   styleUrl: './layout.css'
 })

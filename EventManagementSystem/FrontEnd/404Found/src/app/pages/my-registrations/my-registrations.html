@@ -3,13 +3,25 @@
   <div *ngIf="registrations.length === 0" class="mt-4 text-muted">No registrations found.</div>
 
   <div class="card mb-3" *ngFor="let reg of registrations">
-  <div class="card-body">
-    <h5 class="card-title">{{ reg.eventTitle }}</h5>
-    <p class="card-text"><strong>Registered At:</strong> {{ reg.registeredAt | date:'medium' }}</p>
+    <div class="card-body d-flex">
 
-    <a class="btn btn-primary btn-sm ms-2" [routerLink]="['/event', reg.eventId]">View Details</a>
-    <button class="btn btn-danger btn-sm ms-2" (click)="cancelRegistration(reg.id)">Cancel</button>
-</div>
-</div>
+      <img *ngIf="reg.eventImagePath"
+           [src]="'http://localhost:5025/' + reg.eventImagePath"
+           alt="Event Image"
+           class="img-thumbnail me-3"
+           style="width: 150px; height: auto;" />
 
+      <!-- E V E N T    I N F O  -->
+      <div>
+        <h5 class="card-title">{{ reg.eventTitle }}</h5>
+        <p class="card-text">
+          <strong>Registered At:</strong>
+          {{ reg.registeredAt | date:'medium' }}
+        </p>
+
+        <a class="btn btn-primary btn-sm me-2" [routerLink]="['/event', reg.eventId]">View Details</a>
+        <button class="btn btn-danger btn-sm" (click)="cancelRegistration(reg.id)">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -18,6 +18,12 @@ export class MyRegistrations implements OnInit {
   ngOnInit(): void {
     this.eventService.getMyRegistrations().subscribe(res => {
       this.registrations = res;
+      // fetch banner image
+      this.registrations.forEach(reg => {
+        this.eventService.getEventById(reg.eventId).subscribe(event => {
+          reg.eventImagePath = event.imagePath; 
+        });
+      });
     });
   }
 

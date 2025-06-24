@@ -2860,3 +2860,893 @@ WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
 2025-06-24 11:28:13.148 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 9.4225ms
 2025-06-24 11:28:13.148 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
 2025-06-24 11:28:13.148 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 23.0733ms
+2025-06-24 11:28:44.748 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:28:44.748 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:28:44.749 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:28:44.749 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:28:44.752 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:28:44.753 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:28:44.754 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 4.5205ms
+2025-06-24 11:28:44.754 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:28:44.754 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 6.3867ms
+2025-06-24 11:28:45.853 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:28:45.855 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:28:45.856 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:28:45.856 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:28:45.864 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:28:45.865 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:28:45.867 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 11.2602ms
+2025-06-24 11:28:45.868 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:28:45.868 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 14.7578ms
+2025-06-24 11:28:45.872 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:28:45.873 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:28:45.874 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.5936ms
+2025-06-24 11:28:45.875 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:28:45.875 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:28:45.876 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:28:45.877 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:28:45.883 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:28:45.883 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:28:45.884 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 6.7875ms
+2025-06-24 11:28:45.884 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:28:45.884 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 8.9988ms
+2025-06-24 11:28:52.985 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:28:52.986 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:28:52.986 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:28:52.986 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:28:52.988 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:28:52.989 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:28:52.989 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 3.1234ms
+2025-06-24 11:28:52.989 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:28:52.990 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 4.2798ms
+2025-06-24 11:29:02.501 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=1&pageSize=10 - null null
+2025-06-24 11:29:02.509 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:02.509 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:02.509 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:02.677 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__search_0_contains='?', @__search_0_contains_1='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted") AND (e."Title" LIKE @__search_0_contains OR e."Description" LIKE @__search_0_contains_1)
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:29:02.678 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:29:02.679 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 169.6145ms
+2025-06-24 11:29:02.679 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:02.679 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=1&pageSize=10 - 200 null application/json; charset=utf-8 178.1503ms
+2025-06-24 11:29:04.010 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=1&pageSize=10 - null null
+2025-06-24 11:29:04.010 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:04.010 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:04.010 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:04.014 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__search_0_contains='?', @__search_0_contains_1='?', @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted") AND (e."Title" LIKE @__search_0_contains OR e."Description" LIKE @__search_0_contains_1)
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_2 OFFSET @__p_1
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:29:04.015 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:29:04.015 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 4.2659ms
+2025-06-24 11:29:04.015 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:04.015 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=1&pageSize=10 - 200 null application/json; charset=utf-8 5.5269ms
+2025-06-24 11:29:06.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=2&pageSize=10 - null null
+2025-06-24 11:29:06.745 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:06.745 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:06.745 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:06.772 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__search_0_contains='?', @__search_0_contains_1='?', @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted") AND (e."Title" LIKE @__search_0_contains OR e."Description" LIKE @__search_0_contains_1)
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_1
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:29:06.777 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:29:06.793 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 46.7873ms
+2025-06-24 11:29:06.793 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:06.793 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?search=U&page=2&pageSize=10 - 200 null application/json; charset=utf-8 48.8095ms
+2025-06-24 11:29:08.478 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:08.478 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:08.478 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.7373ms
+2025-06-24 11:29:08.480 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:08.480 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:08.481 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:08.481 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:08.486 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:08.488 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:08.488 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 7.2598ms
+2025-06-24 11:29:08.488 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:08.489 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 8.9279ms
+2025-06-24 11:29:10.783 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:29:10.784 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:10.784 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:10.784 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:10.790 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:29:10.791 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:29:10.792 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 6.7102ms
+2025-06-24 11:29:10.792 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:10.792 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 9.2336ms
+2025-06-24 11:29:10.802 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:10.803 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:10.804 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:10.804 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:10.804 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-24 11:29:10.805 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 1.0871ms
+2025-06-24 11:29:10.806 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-24 11:29:10.807 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:10.808 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:10.809 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 4.3695ms
+2025-06-24 11:29:10.809 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:10.810 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 7.5584ms
+2025-06-24 11:29:11.752 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:11.753 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:11.753 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:11.753 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:11.757 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:11.761 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:11.761 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 7.7989ms
+2025-06-24 11:29:11.761 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:11.762 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 9.8626ms
+2025-06-24 11:29:14.811 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:29:14.812 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:14.814 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:14.814 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:14.818 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:29:14.818 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:29:14.819 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 4.5071ms
+2025-06-24 11:29:14.819 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:14.819 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 7.7779ms
+2025-06-24 11:29:14.833 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:14.833 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-24 11:29:14.833 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:14.834 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.683ms
+2025-06-24 11:29:14.834 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 0.7807ms
+2025-06-24 11:29:14.834 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-24 11:29:14.836 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:14.837 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:14.837 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:14.837 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:14.841 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:14.841 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:14.842 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.8856ms
+2025-06-24 11:29:14.842 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:14.842 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 6.047ms
+2025-06-24 11:29:15.825 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:15.826 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:15.826 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:15.827 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:15.828 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:15.829 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:15.829 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 2.5555ms
+2025-06-24 11:29:15.830 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:15.831 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 5.5668ms
+2025-06-24 11:29:16.254 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:29:16.255 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:16.255 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:16.255 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:16.257 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:29:16.258 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:29:16.259 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 3.6874ms
+2025-06-24 11:29:16.259 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:16.259 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 5.6949ms
+2025-06-24 11:29:17.309 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:17.309 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:17.309 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:17.309 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:17.312 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:17.313 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:17.314 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.9334ms
+2025-06-24 11:29:17.314 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:17.316 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 7.6859ms
+2025-06-24 11:29:17.814 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:29:17.814 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:17.814 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:17.814 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:17.818 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:29:17.820 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:29:17.820 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 5.5571ms
+2025-06-24 11:29:17.820 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:29:17.821 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 6.8453ms
+2025-06-24 11:29:17.823 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:17.825 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:17.825 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-24 11:29:17.825 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:17.826 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:17.826 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 0.4761ms
+2025-06-24 11:29:17.826 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-24 11:29:17.828 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:17.829 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:17.829 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.0795ms
+2025-06-24 11:29:17.829 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:17.829 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 6.0566ms
+2025-06-24 11:29:19.709 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:29:19.710 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:19.710 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:19.710 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:29:19.715 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:29:19.716 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:29:19.717 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 5.9098ms
+2025-06-24 11:29:19.717 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:29:19.717 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 8.5745ms
+2025-06-24 11:29:20.193 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:29:20.193 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:29:20.193 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:20.193 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:29:20.202 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:29:20.203 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:29:20.204 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 10.6507ms
+2025-06-24 11:29:20.205 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:29:20.205 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 12.026ms
+2025-06-24 11:30:38.732 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:30:38.736 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:30:38.738 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:30:38.739 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:30:38.772 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:30:38.776 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:30:38.776 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 37.4915ms
+2025-06-24 11:30:38.777 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:30:38.777 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 45.3062ms
+2025-06-24 11:31:45.978 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:31:45.981 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:45.984 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:31:45.985 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:31:46.010 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:31:46.022 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:31:46.023 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 37.742ms
+2025-06-24 11:31:46.024 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:31:46.025 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 47.4853ms
+2025-06-24 11:31:47.571 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:31:47.571 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:47.573 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.5817ms
+2025-06-24 11:31:47.573 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:31:47.575 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:47.579 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:47.579 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:31:47.583 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:31:47.584 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:31:47.584 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 4.8124ms
+2025-06-24 11:31:47.585 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:47.585 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 11.3717ms
+2025-06-24 11:31:48.974 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:31:48.975 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:48.976 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:31:48.976 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:31:48.979 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:31:48.981 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:31:48.981 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 4.4641ms
+2025-06-24 11:31:48.981 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:31:48.981 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 7.2993ms
+2025-06-24 11:31:48.994 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:31:48.994 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:48.995 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:48.995 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:31:49.001 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-24 11:31:49.004 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 3.0556ms
+2025-06-24 11:31:49.006 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-24 11:31:49.007 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:31:49.009 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:31:49.009 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 13.5136ms
+2025-06-24 11:31:49.010 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:49.010 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 16.1253ms
+2025-06-24 11:31:49.543 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:31:49.544 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:31:49.545 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:49.545 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:31:49.547 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:31:49.547 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:31:49.548 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.1892ms
+2025-06-24 11:31:49.549 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:31:49.550 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 5.9977ms
+2025-06-24 11:32:55.939 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:55.940 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:55.941 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 1.1008ms
+2025-06-24 11:32:55.945 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:55.946 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:55.948 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:55.948 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:55.955 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:55.956 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:55.957 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 8.2056ms
+2025-06-24 11:32:55.957 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:55.957 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 12.1998ms
+2025-06-24 11:32:56.614 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:56.615 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:56.616 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:56.616 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:56.635 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:56.635 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:56.637 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 21.1726ms
+2025-06-24 11:32:56.638 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:56.638 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 23.4432ms
+2025-06-24 11:32:56.845 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:56.846 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:56.857 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:56.857 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:56.869 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:56.870 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:56.870 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 13.2186ms
+2025-06-24 11:32:56.871 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:56.871 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 26.231ms
+2025-06-24 11:32:57.173 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:57.174 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:57.175 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.176 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:57.179 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:57.182 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:57.183 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 7.1755ms
+2025-06-24 11:32:57.183 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.184 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 11.0174ms
+2025-06-24 11:32:57.418 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:57.419 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:57.420 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.421 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:57.432 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:57.433 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:57.433 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 12.1497ms
+2025-06-24 11:32:57.434 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.434 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 16.3663ms
+2025-06-24 11:32:57.634 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:57.635 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:57.638 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.638 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:57.652 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:57.653 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:57.654 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 15.6184ms
+2025-06-24 11:32:57.655 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.655 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 20.6285ms
+2025-06-24 11:32:57.810 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:57.814 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:57.814 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.816 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:57.818 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:57.819 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:57.820 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.4256ms
+2025-06-24 11:32:57.821 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:57.824 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 14.2903ms
+2025-06-24 11:32:58.004 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:58.004 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:58.005 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:58.006 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:58.027 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:58.027 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:58.028 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 21.4643ms
+2025-06-24 11:32:58.028 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:58.028 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 24.5802ms
+2025-06-24 11:32:59.167 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:32:59.167 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:59.168 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:32:59.168 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:32:59.170 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:32:59.170 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:32:59.171 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 2.5488ms
+2025-06-24 11:32:59.171 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:32:59.171 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 3.8721ms
+2025-06-24 11:32:59.182 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:59.183 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:59.184 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:59.184 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:59.185 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/6af0b34b-aabc-47ac-becd-98b4e53541b1.jpg - null null
+2025-06-24 11:32:59.186 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:59.187 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:59.188 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 3.6081ms
+2025-06-24 11:32:59.188 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:59.188 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 5.7655ms
+2025-06-24 11:32:59.219 +05:30 [INF] The file /Events/6af0b34b-aabc-47ac-becd-98b4e53541b1.jpg was not modified
+2025-06-24 11:32:59.220 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/6af0b34b-aabc-47ac-becd-98b4e53541b1.jpg - 304 null image/jpeg 35.1062ms
+2025-06-24 11:32:59.975 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:32:59.976 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:32:59.976 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:59.976 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:32:59.978 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:32:59.978 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:32:59.979 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 2.441ms
+2025-06-24 11:32:59.979 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:32:59.980 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 4.5372ms
+2025-06-24 11:34:01.715 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:34:01.715 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:34:01.716 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 1.0225ms
+2025-06-24 11:34:01.717 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:34:01.719 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:34:01.725 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:34:01.726 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:34:01.730 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:34:01.732 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:34:01.732 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 6.2463ms
+2025-06-24 11:34:01.732 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:34:01.732 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 15.3869ms
+2025-06-24 11:36:28.359 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:36:28.365 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:28.365 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 9.9563ms
+2025-06-24 11:36:28.368 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:36:28.369 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:28.374 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:36:28.374 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:36:28.433 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:36:28.436 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:36:28.436 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 61.3911ms
+2025-06-24 11:36:28.436 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:36:28.436 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 68.1444ms
+2025-06-24 11:36:28.439 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:36:28.440 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:36:28.440 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:28.440 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:28.440 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:28.440 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:28.441 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:36:28.441 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:36:28.445 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:36:28.446 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:36:28.446 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 5.5321ms
+2025-06-24 11:36:28.446 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:28.447 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 6.9104ms
+2025-06-24 11:36:28.467 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:36:28.467 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:36:28.467 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 26.3402ms
+2025-06-24 11:36:28.467 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:28.467 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 28.2179ms
+2025-06-24 11:36:44.742 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:36:44.742 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:44.742 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.9321ms
+2025-06-24 11:36:44.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:36:44.749 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:44.750 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:36:44.750 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:36:44.759 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:36:44.759 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:36:44.760 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 9.1485ms
+2025-06-24 11:36:44.760 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:36:44.761 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 16.6499ms
+2025-06-24 11:36:44.773 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:36:44.774 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:44.774 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:44.773 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:36:44.775 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:36:44.775 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:36:44.782 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:44.782 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:36:44.786 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:36:44.786 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:36:44.786 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:36:44.786 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:36:44.787 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 3.9323ms
+2025-06-24 11:36:44.787 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:44.789 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 15.9816ms
+2025-06-24 11:36:44.787 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 9.4908ms
+2025-06-24 11:36:44.790 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:36:44.790 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 16.8567ms
+2025-06-24 11:38:37.735 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:38:37.737 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:37.748 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 11.0297ms
+2025-06-24 11:38:37.750 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:38:37.750 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:37.756 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:38:37.761 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:38:37.766 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:38:37.769 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:38:37.770 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 7.9684ms
+2025-06-24 11:38:37.770 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:38:37.770 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 20.2501ms
+2025-06-24 11:38:37.781 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:38:37.781 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:38:37.781 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:37.783 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:37.784 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:37.784 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:37.784 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:38:37.784 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:38:37.789 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:38:37.790 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:38:37.790 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 4.9028ms
+2025-06-24 11:38:37.790 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:37.791 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 9.7487ms
+2025-06-24 11:38:37.791 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:38:37.792 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:38:37.792 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 7.4214ms
+2025-06-24 11:38:37.793 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:37.793 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 11.7132ms
+2025-06-24 11:38:41.702 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-24 11:38:41.703 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:41.703 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:38:41.704 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:38:41.709 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-24 11:38:41.711 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:38:41.713 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 8.4958ms
+2025-06-24 11:38:41.713 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-24 11:38:41.713 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 11.3502ms
+2025-06-24 11:38:44.188 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:38:44.189 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:44.189 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Registration/GetMyRegistrations - 204 null null 0.8894ms
+2025-06-24 11:38:44.190 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - null null
+2025-06-24 11:38:44.191 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:44.193 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:38:44.193 +05:30 [INF] Route matched with {action = "GetMyRegistrations", controller = "Registration"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMyRegistrations() on controller EventManagementAPI.Controllers.RegistrationController (EventManagementAPI).
+2025-06-24 11:38:44.199 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__attendeeId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Id", r."AttendeeId", r."EventId", r."IsDeleted", r."RegisteredAt", e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title"
+FROM "Registrations" AS r
+LEFT JOIN (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+) AS e0 ON r."EventId" = e0."Id"
+WHERE r."AttendeeId" = @__attendeeId_0 AND NOT (r."IsDeleted")
+2025-06-24 11:38:44.201 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.Registration.RegistrationResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:38:44.202 +05:30 [INF] Executed action EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI) in 8.6553ms
+2025-06-24 11:38:44.202 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.RegistrationController.GetMyRegistrations (EventManagementAPI)'
+2025-06-24 11:38:44.202 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Registration/GetMyRegistrations - 200 null application/json; charset=utf-8 12.1673ms
+2025-06-24 11:38:44.208 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - null null
+2025-06-24 11:38:44.208 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - null null
+2025-06-24 11:38:44.208 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:44.208 +05:30 [INF] CORS policy execution successful.
+2025-06-24 11:38:44.209 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:44.209 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:38:44.210 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:44.210 +05:30 [INF] Route matched with {action = "GetEventById", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEventById(System.Guid) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-24 11:38:44.213 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:38:44.214 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:38:44.214 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 4.8208ms
+2025-06-24 11:38:44.214 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:44.215 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/1902234b-2a04-4c8c-9cf4-15e74f645194 - 200 null application/json; charset=utf-8 6.9938ms
+2025-06-24 11:38:44.216 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-06-24 11:38:44.217 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-06-24 11:38:44.217 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI) in 6.5998ms
+2025-06-24 11:38:44.217 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetEventById (EventManagementAPI)'
+2025-06-24 11:38:44.217 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEventById/6af0b34b-aabc-47ac-becd-98b4e53541b1 - 200 null application/json; charset=utf-8 9.8844ms
