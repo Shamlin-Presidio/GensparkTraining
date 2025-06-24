@@ -96,5 +96,9 @@ namespace EventManagementAPI.Services
 
             return await _registrationRepository.DeleteAsync(registrationId);
         }
+        public async Task<int> GetRegistrationCountAsync(Guid eventId)
+        {
+            return await _registrationRepository.GetRegistrationCountForEventAsync(eventId);
+        }
     }
 }

@@ -58,8 +58,15 @@ public class RegistrationRepository : IRegistrationRepository
     {
         // N O   checks for IsDeleted!
         return await _context.Registrations
-            .FirstOrDefaultAsync(r => 
+            .FirstOrDefaultAsync(r =>
                 r.EventId == eventId &&
                 r.AttendeeId == attendeeId);
     }
+    public async Task<int> GetRegistrationCountForEventAsync(Guid eventId)
+    {
+        return await _context.Registrations
+            .Where(r => r.EventId == eventId && !r.IsDeleted)
+            .CountAsync();
+    }
+
 }

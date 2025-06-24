@@ -45,7 +45,7 @@ public class RegistrationController : ControllerBase
             if (registration == null)
                 return BadRequest(new { Message = "Registration failed. Possibly event not found or already registered." });
 
-            return CreatedAtAction(nameof(GetMyRegistrations), null, registration); 
+            return CreatedAtAction(nameof(GetMyRegistrations), null, registration);
         }
         catch (Exception ex)
         {
@@ -65,4 +65,13 @@ public class RegistrationController : ControllerBase
 
         return Ok(new { Message = "Registration cancelled successfully." });
     }
+
+    //   G E T   No. R E G I S T R A T I O N S    F O R    E V E N T
+    [HttpGet("Count/{eventId}")]
+    public async Task<IActionResult> GetRegistrationCount(Guid eventId)
+    {
+        var count = await _registrationService.GetRegistrationCountAsync(eventId);
+        return Ok(new { Count = count });
+    }
+
 }

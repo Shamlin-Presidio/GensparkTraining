@@ -11,4 +11,6 @@ public interface IRegistrationRepository
     Task<bool> DeleteAsync(Guid id);
     Task SaveChangesAsync();
     Task<Registration?> GetByEventAndAttendeeIncludingDeletedAsync(Guid eventId, Guid attendeeId);
+    Task<int> GetRegistrationCountForEventAsync(Guid eventId);
+
 }
