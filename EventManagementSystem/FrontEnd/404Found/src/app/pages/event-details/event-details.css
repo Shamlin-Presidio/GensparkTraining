@@ -1,0 +1,28 @@
+.controls{
+    display: flex;
+}
+.controls button{
+    margin-left: 20px;
+    height: 60px;
+}
+.banner{
+    border-radius: 20px;
+    height: 400px;
+}
+.event-details{
+    display: flex;
+    justify-content: flex-start;
+}
+.details{
+    padding-left: 30px;
+    margin-top: 10vh;
+}
+
+
+
+@media (max-width: 600px) {
+    .event-details{
+        display: flex;
+        flex-direction: column;    
+    }
+}

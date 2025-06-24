@@ -1,27 +1,36 @@
-<div class="container mt-4" *ngIf="event">
-  <h2>{{ event.title }}</h2>
-  <p>{{ event.description }}</p>
+<div class="event-details container mt-4" *ngIf="event">
 
-  <div *ngIf="event.imagePath">
-    <img [src]="'http://localhost:5025/' + event.imagePath" class="img-fluid mb-3" />
+  <div class="header">
+    <h2>{{ event.title }}</h2>
+    <!-- <div *ngIf="event.imagePath"> -->
+    <img [src]="'http://localhost:5025/' + event.imagePath" class=" banner img-fluid mb-3" />
+    <!-- </div> -->
   </div>
 
-  <p><strong>Location:</strong> {{ event.location }}</p>
-  <p><strong>Organizer:</strong> {{ event.organizerName }}</p>
-  <p><strong>Start:</strong> {{ event.startTime | date:'medium' }}</p>
-  <p><strong>End:</strong> {{ event.endTime | date:'medium' }}</p>
+  <div class="details">
+    <h2>Description</h2>
+    <p>{{ event.description }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Organizer:</strong> {{ event.organizerName }}</p>
+    <p><strong>Start:</strong> {{ event.startTime | date:'medium' }}</p>
+    <p><strong>End:</strong> {{ event.endTime | date:'medium' }}</p>
 
-  <a *ngIf="event.googleMapLink" [href]="event.googleMapLink" target="_blank">📍 Google Map</a><br />
-  <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank">🔗 Online Meet</a>
+    <a *ngIf="event.googleMapLink" [href]="event.googleMapLink" target="_blank">📍 Google Map</a><br />
+    <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank">🔗 Online Meet</a>
 
-  <div *ngIf="!isOrganizer && !isRegistered" class="mt-3">
-    <button class="btn btn-success" (click)="register()">Register for this Event</button>
+
+    <div *ngIf="!isOrganizer && !isRegistered" class="mt-3">
+      <button class="btn btn-success" (click)="register()">Register for this Event</button>
+    </div>
+    <div class="controls">
+      <div *ngIf="isRegistered" class="alert alert-info mt-3">
+        ✅ You have registered for this event.
+      </div>
+      <button *ngIf="registrationId" class="btn btn-danger mt-3" (click)="cancelRegistration()">
+        Cancel Registration
+      </button>
+    </div>
   </div>
 
-  <div *ngIf="isRegistered" class="alert alert-info mt-3">
-    ✅ You have registered for this event.
-  </div>
-  <button *ngIf="registrationId" class="btn btn-danger mt-2" (click)="cancelRegistration()">
-    Cancel Registration
-  </button>
+
 </div>

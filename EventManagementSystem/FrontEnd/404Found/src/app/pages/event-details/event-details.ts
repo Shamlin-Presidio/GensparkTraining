@@ -6,6 +6,7 @@ import { Event } from '../../services/event/event';
 import { Auth } from '../../services/auth/auth';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-event-details',
   standalone: true,
