@@ -8,6 +8,8 @@ import {MyRegistrations} from './pages/my-registrations/my-registrations'
 import { authGuard } from './guards/auth-guard';
 import { guestGuard } from './guards/guest-guard';
 import { CreateEvent } from './pages/create-event/create-event';
+import { organizerGuard }from './guards/role-guard-guard';
+import { MyEvents } from './pages/my-events/my-events';
 
 
 export const routes: Routes = [
@@ -16,12 +18,18 @@ export const routes: Routes = [
     component: Layout,
     children: [
       { path: '', component: Home },
-    //   {
-    //     path: 'create-event',
-    //     canActivate: [authGuard],
-    //     loadComponent: () =>
-    //       import('./pages/create-event/create-event').then(m => m.CreateEvent),
-    //   },
+      {
+        path: 'create-event',
+        canActivate: [organizerGuard],
+        loadComponent: () =>
+          import('./pages/create-event/create-event').then(m => m.CreateEvent),
+      },
+      {
+        path: 'my-events',
+        canActivate: [organizerGuard],
+        loadComponent: () =>
+          import('./pages/my-events/my-events').then(m => m.MyEvents),
+      }
     //   {
     //     path: 'profile',
     //     canActivate: [authGuard],
@@ -34,6 +42,5 @@ export const routes: Routes = [
   { path: 'register', component: Register, canActivate: [guestGuard]  },
   { path: 'event/:id', component: EventDetails },
   {path: 'my-registrations', component: MyRegistrations},
-  { path: 'create-event', component: CreateEvent },
   { path: '**', redirectTo: '' }
 ];

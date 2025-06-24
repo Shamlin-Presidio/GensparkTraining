@@ -20,6 +20,10 @@
           <a class="btn btn-light btn-sm" routerLink="/create-event">Create Event</a>
         </li>
 
+        <li class="nav-item" *ngIf="isOrganizer">
+          <a class="btn btn-light btn-sm" routerLink="/my-events">Created Events</a>
+        </li>
+
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="btn btn-outline-light btn-sm" routerLink="/login">Login</a>
         </li>

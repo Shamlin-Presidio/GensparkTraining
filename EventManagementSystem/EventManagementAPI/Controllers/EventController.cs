@@ -52,7 +52,7 @@ public class EventController : ControllerBase
 
         return Ok(evt);
     }
-    
+
     // C R E A T E    E V E N T 
     [HttpPost("CreateEvent")]
     [Authorize(Roles = "Organizer")]
@@ -66,7 +66,7 @@ public class EventController : ControllerBase
     // U P D A T E    E V E N T 
     [HttpPut("UpdateEvent/{id}")]
     [Authorize(Roles = "Organizer")]
-    public async Task<IActionResult> UpdateEvent(Guid id,[FromForm] EventUpdateDto dto)
+    public async Task<IActionResult> UpdateEvent(Guid id, [FromForm] EventUpdateDto dto)
     {
         var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         var updated = await _eventService.UpdateEventAsync(id, dto, organizerId);
@@ -92,5 +92,14 @@ public class EventController : ControllerBase
         }
 
         return Ok(new { Message = $"Event with ID '{id}' deleted successfully." });
+    }
+
+    [HttpGet("MyEvents")]
+    [Authorize(Roles = "Organizer")]
+    public async Task<IActionResult> GetMyEvents()
+    {
+        var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        var events = await _eventService.GetEventsByOrganizerAsync(organizerId);
+        return Ok(events);
     }
 }

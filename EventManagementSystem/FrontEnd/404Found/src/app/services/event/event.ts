@@ -70,9 +70,32 @@ export class Event {
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
-      }
+        }
       }
     );
   }
+  getMyEvents() {
+  return this.http.get<any>(
+    `${this.apiUrl}/MyEvents`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
+        }
+      }
+    );
+  }
+  
+  deleteEvent(eventId: string) {
+  return this.http.delete<any>(
+    `http://localhost:5025/api/Event/DeleteEvent/${eventId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
+        }
+      }
+    );
+  }
+
+
 
 }

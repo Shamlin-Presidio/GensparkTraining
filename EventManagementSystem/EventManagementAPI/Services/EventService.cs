@@ -44,7 +44,7 @@ public class EventService : IEventService
         var evnt = _mapper.Map<Event>(dto);
         evnt.Id = Guid.NewGuid();
         evnt.OrganizerId = organizerId;
-        
+
         Console.WriteLine($"DTO has image: {dto.ImagePath?.FileName ?? "NULL"}");
 
         if (dto.ImagePath != null)
@@ -110,4 +110,11 @@ public class EventService : IEventService
         await _eventRepository.UpdateAsync(evnt);
         return true;
     }
+    public async Task<IEnumerable<EventResponseDto>> GetEventsByOrganizerAsync(Guid organizerId)
+    {
+        var events = await _eventRepository.GetByOrganizerIdAsync(organizerId);
+        return _mapper.Map<IEnumerable<EventResponseDto>>(events);
+    }
+
+
 }

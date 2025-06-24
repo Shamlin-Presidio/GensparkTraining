@@ -75,4 +75,11 @@ public class EventRepository : IEventRepository
         await _context.SaveChangesAsync();
         return true;
     }
+
+    public async Task<IEnumerable<Event>> GetByOrganizerIdAsync(Guid organizerId)
+    {
+        return await _context.Events
+            .Where(e => e.OrganizerId == organizerId && !e.IsDeleted)
+            .ToListAsync();
+    }
 }
