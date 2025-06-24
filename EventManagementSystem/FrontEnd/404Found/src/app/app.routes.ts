@@ -29,7 +29,14 @@ export const routes: Routes = [
         canActivate: [organizerGuard],
         loadComponent: () =>
           import('./pages/my-events/my-events').then(m => m.MyEvents),
+      },
+        {
+        path: 'edit-event/:id',
+        canActivate: [organizerGuard],
+        loadComponent: () =>
+        import('./pages/edit-event/edit-event').then(m => m.EditEvent),
       }
+
     //   {
     //     path: 'profile',
     //     canActivate: [authGuard],

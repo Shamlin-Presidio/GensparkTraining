@@ -95,7 +95,15 @@ export class Event {
       }
     );
   }
-
-
-
+  updateEvent(eventId: string, data: FormData) {
+    return this.http.put<any>(
+      `${this.apiUrl}/UpdateEvent/${eventId}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
+        }
+      }
+    );
+  }
 }
