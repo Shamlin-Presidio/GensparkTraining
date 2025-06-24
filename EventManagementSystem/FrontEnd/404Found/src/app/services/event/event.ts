@@ -19,6 +19,8 @@ export class Event {
     return this.http.get<any>(`${this.apiUrl}/GetEventById/${id}`);
   }
 
+  // R E G I S T R A T I O N S 
+
   registerForEvent(eventId: string) {
     return this.http.post<any>(
       `${this.apiUrl.replace('/Event', '')}/Registration/Register/${eventId}`,
@@ -56,6 +58,21 @@ export class Event {
     return this.http.get<any>(
     `http://localhost:5025/api/Registration/Count/${eventId}`
   );
+  }
+  
+
+  // E V E N T S
+
+  createEvent(formData: FormData) {
+  return this.http.post<any>(
+    'http://localhost:5025/api/Event/CreateEvent',
+    formData,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
+      }
+      }
+    );
   }
 
 }

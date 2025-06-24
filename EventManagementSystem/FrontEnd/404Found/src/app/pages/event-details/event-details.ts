@@ -52,12 +52,21 @@ export class EventDetails implements OnInit {
     });
   }
 
+  fetchRegistrationCount(eventId: string) {
+    this.eventService.getRegistrationsCount(eventId).subscribe(resp => {
+      this.registrationCount = resp.count;
+    });
+  }
+
+
   register() {
     this.eventService.registerForEvent(this.event.id).subscribe({
       next: (res) => {
         this.isRegistered = true;
         this.registrationId = res.id;
         alert('Registered successfully!');
+
+        this.fetchRegistrationCount(this.event.id);
       },
       error: (err) => {
         alert(err.error?.message || 'Registration failed');
@@ -76,6 +85,8 @@ export class EventDetails implements OnInit {
         this.isRegistered = false;
         this.registrationId = null;
         alert(res.message || 'Registration cancelled.');
+
+        this.fetchRegistrationCount(this.event.id);
       },
       error: (err) => {
         alert(err.error?.message || 'Cancellation failed.');

@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h3>Create New Event</h3>
+  <form [formGroup]="eventForm" (ngSubmit)="submit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input formControlName="title" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Start Time</label>
+      <input type="datetime-local" formControlName="startTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">End Time</label>
+      <input type="datetime-local" formControlName="endTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input formControlName="location" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Google Map Link</label>
+      <input formControlName="googleMapLink" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Online Meet URL</label>
+      <input formControlName="onlineMeetUrl" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Event Image</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Event</button>
+  </form>
+</div>

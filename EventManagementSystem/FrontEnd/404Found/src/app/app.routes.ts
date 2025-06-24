@@ -7,6 +7,7 @@ import { EventDetails } from './pages/event-details/event-details';
 import {MyRegistrations} from './pages/my-registrations/my-registrations'
 import { authGuard } from './guards/auth-guard';
 import { guestGuard } from './guards/guest-guard';
+import { CreateEvent } from './pages/create-event/create-event';
 
 
 export const routes: Routes = [
@@ -33,5 +34,6 @@ export const routes: Routes = [
   { path: 'register', component: Register, canActivate: [guestGuard]  },
   { path: 'event/:id', component: EventDetails },
   {path: 'my-registrations', component: MyRegistrations},
+  { path: 'create-event', component: CreateEvent },
   { path: '**', redirectTo: '' }
 ];
