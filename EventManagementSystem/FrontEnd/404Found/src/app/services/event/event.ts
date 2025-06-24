@@ -52,4 +52,10 @@ export class Event {
     );
   }
 
+  getRegistrationsCount(eventId: string){
+    return this.http.get<any>(
+    `http://localhost:5025/api/Registration/Count/${eventId}`
+  );
+  }
+
 }

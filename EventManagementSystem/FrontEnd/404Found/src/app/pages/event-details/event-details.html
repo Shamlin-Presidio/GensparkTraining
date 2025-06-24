@@ -17,7 +17,7 @@
 
     <a *ngIf="event.googleMapLink" [href]="event.googleMapLink" target="_blank">📍 Google Map</a><br />
     <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank">🔗 Online Meet</a>
-
+    <p><strong>Total Registrations:</strong> {{ registrationCount }}</p>
 
     <div *ngIf="!isOrganizer && !isRegistered" class="mt-3">
       <button class="btn btn-success" (click)="register()">Register for this Event</button>

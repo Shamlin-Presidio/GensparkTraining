@@ -19,6 +19,7 @@ export class EventDetails implements OnInit {
   isRegistered = false;
   isOrganizer = false;
   registrationId: string | null = null;
+  registrationCount: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,11 @@ export class EventDetails implements OnInit {
       this.event = res;
       this.isOrganizer = this.auth.role === 'Organizer';
       this.checkIfRegistered(res.id);
+
+      // No.  O F   R E G I S T R A T I O N S
+      this.eventService.getRegistrationsCount(res.id).subscribe(resp => {
+      this.registrationCount = resp.count;
+    });
     });
   }
 
