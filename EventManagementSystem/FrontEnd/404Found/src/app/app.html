@@ -1,21 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
-  <a class="navbar-brand" routerLink="/">404Found</a>
-  <div class="ms-auto d-flex gap-2 ">
-    <div class="ms-auto d-flex gap-2">
-      <a class="btn btn-primary btn-sm ms-2" [routerLink]="['/my-registrations' ]">Registered Events</a>
-      <button *ngIf="isOrganizer" routerLink="/create-event" class="btn btn-light btn-sm">
-        Create Event
-      </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <div class="container-fluid">
 
-      <button *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-outline-light btn-sm">
-        Login
-      </button>
+    <a class="navbar-brand" routerLink="/">404Found</a>
 
-      <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-outline-warning btn-sm">
-        Logout
-      </button>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+      aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- N A V   L I N K S -->
+    <div class="collapse navbar-collapse bg-dark" id="navContent">
+      <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
+        <li class="nav-item">
+          <a class="btn btn-primary btn-sm" routerLink="/my-registrations">Registered Events</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isOrganizer">
+          <a class="btn btn-light btn-sm" routerLink="/create-event">Create Event</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="btn btn-outline-light btn-sm" routerLink="/login">Login</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <button class="btn btn-outline-warning btn-sm" (click)="logout()">Logout</button>
+        </li>
+      </ul>
     </div>
-
   </div>
 </nav>
-<router-outlet />
+
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
