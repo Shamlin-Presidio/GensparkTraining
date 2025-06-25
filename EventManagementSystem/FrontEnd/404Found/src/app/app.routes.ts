@@ -10,6 +10,7 @@ import { guestGuard } from './guards/guest-guard';
 import { CreateEvent } from './pages/create-event/create-event';
 import { organizerGuard }from './guards/role-guard-guard';
 import { MyEvents } from './pages/my-events/my-events';
+import { Notifications } from './pages/notification/notification';
 
 
 export const routes: Routes = [
@@ -42,11 +43,18 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/profile/profile').then(m => m.Profile),
       },
+      {
+        path: 'notifications',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./pages/notification/notification').then(m => m.Notifications),
+      },
     ]
   },
   { path: 'login', component: Login, canActivate: [guestGuard]  },
   { path: 'register', component: Register, canActivate: [guestGuard]  },
   { path: 'event/:id', component: EventDetails },
   {path: 'my-registrations', component: MyRegistrations},
+  // { path: 'notifications', component: Notifications },
   { path: '**', redirectTo: '' }
 ];

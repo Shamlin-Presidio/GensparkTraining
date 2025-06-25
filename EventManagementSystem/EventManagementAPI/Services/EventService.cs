@@ -67,7 +67,11 @@ public class EventService : IEventService
 
         // RELOAD FROM DB,    t h i s   e n s u r e s   u s e r    n a v i g a t o n
         var fullEvent = await _eventRepository.GetByIdAsync(createdEvent.Id);
-        await _hubContext.Clients.All.SendAsync("NewEventCreated", evnt.Title);
+        // await _hubContext.Clients.All.SendAsync("NewEventCreated", evnt.Title);
+        var eventDto = _mapper.Map<EventResponseDto>(fullEvent);
+
+        await _hubContext.Clients.All.SendAsync("NewEventCreated", eventDto);
+
         return _mapper.Map<EventResponseDto>(fullEvent);
 
     }
