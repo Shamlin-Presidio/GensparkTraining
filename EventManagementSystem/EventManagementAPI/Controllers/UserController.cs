@@ -93,7 +93,7 @@ public class UserController : ControllerBase
             if (!result)
                 return NotFound();
 
-            return Ok("Your account has been deleted.");
+            return Ok(new { message = "Your account has been deleted." });
         }
         catch (UnauthorizedAccessException ex)
         {

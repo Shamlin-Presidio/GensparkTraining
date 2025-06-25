@@ -26,7 +26,13 @@ export class User {
   }
 
   deleteUser(userId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/DeleteUser/${userId}`);
+    return this.http.delete(
+      `${this.baseUrl}/DeleteUser/${userId}`,
+      { headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`
+        } 
+      }
+    );
   }
 
   getAllUsers(): Observable<any[]> {

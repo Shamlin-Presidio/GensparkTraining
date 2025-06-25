@@ -2646,3 +2646,587 @@ ORDER BY e0."CreatedAt" DESC
 2025-06-25 11:16:24.265 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 4.0662ms
 2025-06-25 11:16:24.265 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
 2025-06-25 11:16:24.266 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 16.0061ms
+2025-06-25 11:39:42.185 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:39:42.197 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:39:42.212 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:39:42.215 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:39:42.731 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:39:42.734 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:39:42.736 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 520.7217ms
+2025-06-25 11:39:42.736 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:39:42.737 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 552.0512ms
+2025-06-25 11:39:42.757 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/fd3261c0-899f-40c1-b2bd-aeaa0e912a58.png - null null
+2025-06-25 11:39:42.759 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/b77e9373-4abb-4932-8a03-84f6e7a0b930.jpg - null null
+2025-06-25 11:39:42.764 +05:30 [INF] The file /Events/b77e9373-4abb-4932-8a03-84f6e7a0b930.jpg was not modified
+2025-06-25 11:39:42.764 +05:30 [INF] The file /Events/fd3261c0-899f-40c1-b2bd-aeaa0e912a58.png was not modified
+2025-06-25 11:39:42.764 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/b77e9373-4abb-4932-8a03-84f6e7a0b930.jpg - 304 null image/jpeg 5.2831ms
+2025-06-25 11:39:42.765 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/fd3261c0-899f-40c1-b2bd-aeaa0e912a58.png - 304 null image/png 7.3285ms
+2025-06-25 11:40:18.608 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetAllUsers - null null
+2025-06-25 11:40:18.671 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/12/2025 8:44:06 AM', Current time (UTC): '6/25/2025 6:10:18 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-06-25 11:40:18.757 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/12/2025 8:44:06 AM', Current time (UTC): '6/25/2025 6:10:18 AM'.
+2025-06-25 11:40:18.758 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI)'
+2025-06-25 11:40:18.802 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:40:18.808 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:40:18.835 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-25 11:40:18.851 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI) in 48.5286ms
+2025-06-25 11:40:18.851 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetAllUsers (EventManagementAPI)'
+2025-06-25 11:40:18.851 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetAllUsers - 200 null application/json; charset=utf-8 242.9079ms
+2025-06-25 11:40:33.211 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:40:33.212 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:40:33.215 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 4.2212ms
+2025-06-25 11:40:33.218 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:40:33.220 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:40:33.221 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:40:33.223 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:40:33.236 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:40:33.390 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-25 11:40:33.390 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 167.1438ms
+2025-06-25 11:40:33.390 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:40:33.391 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 200 null application/json; charset=utf-8 172.3443ms
+2025-06-25 11:40:33.406 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:40:33.407 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:40:33.407 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:40:33.407 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:40:33.412 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:40:33.431 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:40:33.432 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 25.1338ms
+2025-06-25 11:40:33.451 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:40:33.451 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 44.4941ms
+2025-06-25 11:40:36.398 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:40:36.399 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:40:36.400 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:40:36.402 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:40:36.402 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:40:36.402 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 3.6631ms
+2025-06-25 11:40:36.408 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:40:36.410 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:40:36.414 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:40:36.415 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 12.8721ms
+2025-06-25 11:40:36.415 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:40:36.417 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 19.5957ms
+2025-06-25 11:40:40.800 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:40:40.800 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:40:40.801 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:40:40.801 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:40:40.806 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:40:40.807 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:40:40.807 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 6.5423ms
+2025-06-25 11:40:40.808 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:40:40.809 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 8.6625ms
+2025-06-25 11:43:23.406 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:43:23.419 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:43:23.420 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 15.9883ms
+2025-06-25 11:43:23.421 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:43:23.421 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:43:23.422 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:23.423 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:43:23.447 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:43:23.449 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:43:23.450 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 26.6164ms
+2025-06-25 11:43:23.451 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:23.451 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 31.2635ms
+2025-06-25 11:43:34.944 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:43:34.946 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 1.743ms
+2025-06-25 11:43:34.947 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:43:34.961 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:43:34.961 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:43:34.962 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:34.962 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:43:34.980 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:43:34.981 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:43:34.981 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 18.8103ms
+2025-06-25 11:43:34.981 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:34.982 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 20.6554ms
+2025-06-25 11:43:40.962 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:43:40.964 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 1.6019ms
+2025-06-25 11:43:40.970 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:43:40.993 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:43:40.994 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:43:40.994 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:40.994 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:43:40.998 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:43:41.000 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:43:41.001 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 6.7466ms
+2025-06-25 11:43:41.002 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:41.002 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 8.7677ms
+2025-06-25 11:43:57.309 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:43:57.311 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 1.7864ms
+2025-06-25 11:43:57.312 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:43:57.355 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:43:57.356 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:43:57.357 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:57.357 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:43:57.365 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:43:57.367 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:43:57.369 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 11.0476ms
+2025-06-25 11:43:57.370 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:43:57.370 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 14.4199ms
+2025-06-25 11:45:10.067 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:45:10.071 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 4.4159ms
+2025-06-25 11:45:10.071 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:45:10.102 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:45:10.103 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:45:10.103 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:10.104 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:45:10.229 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:45:10.230 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:45:10.231 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 126.186ms
+2025-06-25 11:45:10.231 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:10.231 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 128.9733ms
+2025-06-25 11:45:11.844 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:45:11.848 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 0.5823ms
+2025-06-25 11:45:11.849 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:45:11.871 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:45:11.876 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:45:11.877 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:11.878 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:45:11.897 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:45:11.897 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:45:11.898 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 19.5174ms
+2025-06-25 11:45:11.901 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:11.905 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 30.2794ms
+2025-06-25 11:45:15.453 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:45:15.454 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:45:15.455 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 204 null null 1.5672ms
+2025-06-25 11:45:15.457 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:45:15.460 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:45:15.472 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:45:15.511 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:45:15.529 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:45:15.573 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "IsDeleted" = @p0
+WHERE "Id" = @p1;
+2025-06-25 11:45:15.574 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-25 11:45:15.576 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI) in 65.0166ms
+2025-06-25 11:45:15.576 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:45:15.577 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null text/plain; charset=utf-8 119.0856ms
+2025-06-25 11:45:24.575 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:45:24.578 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 2.9383ms
+2025-06-25 11:45:24.579 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:45:24.726 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:45:24.726 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:45:24.726 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:24.727 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:45:24.731 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:45:24.757 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 11:45:24.975 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 248.121ms
+2025-06-25 11:45:24.975 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:45:24.975 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 404 null application/problem+json; charset=utf-8 249.4229ms
+2025-06-25 11:46:03.997 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:46:04.006 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 9.0836ms
+2025-06-25 11:46:04.007 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:46:04.204 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:46:04.205 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:04.205 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:46:04.206 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:46:04.223 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:46:04.228 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 11:46:04.232 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 25.3038ms
+2025-06-25 11:46:04.232 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:46:04.232 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 404 null application/problem+json; charset=utf-8 28.095ms
+2025-06-25 11:46:07.013 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:46:07.018 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 4.4003ms
+2025-06-25 11:46:07.020 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:46:07.055 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:46:07.061 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:07.063 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:46:07.083 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:46:07.094 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:46:07.095 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 11:46:07.096 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 12.7438ms
+2025-06-25 11:46:07.096 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:46:07.096 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 404 null application/problem+json; charset=utf-8 41.3138ms
+2025-06-25 11:46:16.427 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:46:16.429 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:16.430 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 3.4422ms
+2025-06-25 11:46:16.433 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:46:16.433 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:16.434 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:16.434 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:46:16.443 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:46:16.448 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:46:16.448 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 13.547ms
+2025-06-25 11:46:16.448 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:16.449 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 16.3732ms
+2025-06-25 11:46:19.439 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:46:19.440 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:19.442 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:19.442 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:46:19.451 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:46:19.452 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:46:19.452 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 9.6661ms
+2025-06-25 11:46:19.452 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:19.453 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 13.4098ms
+2025-06-25 11:46:44.490 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:46:44.492 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:44.493 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 2.86ms
+2025-06-25 11:46:44.495 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:46:44.496 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:46:44.501 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:44.501 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:46:44.509 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:46:44.510 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:46:44.510 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 8.6193ms
+2025-06-25 11:46:44.510 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:46:44.511 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 15.5132ms
+2025-06-25 11:47:30.240 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:47:30.243 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:30.245 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 4.1517ms
+2025-06-25 11:47:30.246 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:47:30.247 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:30.250 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:47:30.250 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:47:30.258 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:47:30.411 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-25 11:47:30.411 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 161.1352ms
+2025-06-25 11:47:30.412 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:47:30.412 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 200 null application/json; charset=utf-8 165.4611ms
+2025-06-25 11:47:30.438 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:47:30.438 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:30.439 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:47:30.442 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:47:30.443 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/undefined - null null
+2025-06-25 11:47:30.448 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/undefined - 404 0 null 4.434ms
+2025-06-25 11:47:30.449 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/undefined, Response status code: 404
+2025-06-25 11:47:30.467 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:47:30.469 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:47:30.471 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 27.7318ms
+2025-06-25 11:47:30.473 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:47:30.474 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 35.8298ms
+2025-06-25 11:47:34.190 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:47:34.192 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:34.192 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:47:34.204 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:47:34.204 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/null - null null
+2025-06-25 11:47:34.239 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/null - 404 0 null 34.689ms
+2025-06-25 11:47:34.239 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/null, Response status code: 404
+2025-06-25 11:47:34.260 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:47:34.262 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:47:34.263 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 59.3637ms
+2025-06-25 11:47:34.264 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:47:34.264 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 73.4394ms
+2025-06-25 11:47:38.305 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:47:38.306 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:38.306 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:47:38.307 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:47:38.313 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:47:38.314 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:47:38.315 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 7.5142ms
+2025-06-25 11:47:38.315 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:47:38.315 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 10.7661ms
+2025-06-25 11:47:41.869 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:47:41.870 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:41.870 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 204 null null 1.6839ms
+2025-06-25 11:47:41.873 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:47:41.874 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:41.879 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:47:41.879 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:47:41.891 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:47:41.908 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "IsDeleted" = @p0
+WHERE "Id" = @p1;
+2025-06-25 11:47:41.909 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-25 11:47:41.910 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI) in 30.8445ms
+2025-06-25 11:47:41.911 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:47:41.911 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null text/plain; charset=utf-8 39.4235ms
+2025-06-25 11:47:54.988 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:47:54.988 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:54.989 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 204 null null 1.0624ms
+2025-06-25 11:47:54.992 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:47:54.992 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:47:54.996 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:47:54.996 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:47:54.999 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:47:55.000 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 11:47:55.000 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI) in 3.9066ms
+2025-06-25 11:47:55.001 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:47:55.001 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 404 null application/problem+json; charset=utf-8 8.862ms
+2025-06-25 11:49:03.131 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:49:03.132 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:49:03.133 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 2.5808ms
+2025-06-25 11:49:03.139 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:49:03.139 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:49:03.140 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:49:03.141 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:49:03.145 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:49:03.147 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:49:03.147 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 6.002ms
+2025-06-25 11:49:03.147 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:49:03.148 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 8.756ms
+2025-06-25 11:52:32.249 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:52:32.259 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:32.261 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 12.2124ms
+2025-06-25 11:52:32.264 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:52:32.269 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:32.275 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:52:32.277 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:52:32.337 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:52:32.491 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-25 11:52:32.492 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 214.5364ms
+2025-06-25 11:52:32.494 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:52:32.494 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 200 null application/json; charset=utf-8 229.7989ms
+2025-06-25 11:52:32.515 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:52:32.517 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:32.521 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:52:32.522 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:52:32.524 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/undefined - null null
+2025-06-25 11:52:32.525 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/undefined - 404 0 null 1.197ms
+2025-06-25 11:52:32.529 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/undefined, Response status code: 404
+2025-06-25 11:52:32.541 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:52:32.544 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:52:32.547 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 24.4213ms
+2025-06-25 11:52:32.547 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:52:32.547 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 32.3871ms
+2025-06-25 11:52:40.275 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:52:40.276 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:40.278 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:52:40.279 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:52:40.300 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:52:40.301 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:52:40.301 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 18.445ms
+2025-06-25 11:52:40.302 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:52:40.303 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 27.376ms
+2025-06-25 11:52:47.701 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:52:47.702 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:47.703 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 204 null null 1.6098ms
+2025-06-25 11:52:47.708 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:52:47.714 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:52:47.722 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:52:47.722 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:52:47.730 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:52:47.756 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "IsDeleted" = @p0
+WHERE "Id" = @p1;
+2025-06-25 11:52:47.757 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-25 11:52:47.758 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI) in 35.319ms
+2025-06-25 11:52:47.758 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:52:47.758 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null text/plain; charset=utf-8 50.5341ms
+2025-06-25 11:57:45.980 +05:30 [INF] Application is shutting down...
+2025-06-25 11:57:58.680 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-06-25 11:57:58.817 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-06-25 11:57:58.848 +05:30 [INF] Now listening on: http://localhost:5025
+2025-06-25 11:57:58.851 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-25 11:57:58.852 +05:30 [INF] Hosting environment: Development
+2025-06-25 11:57:58.852 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-06-25 11:58:28.188 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - null null
+2025-06-25 11:58:28.250 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-25 11:58:28.252 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:28.261 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/Auth/login - 204 null null 76.4975ms
+2025-06-25 11:58:28.267 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 39
+2025-06-25 11:58:28.271 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:28.345 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:58:28.374 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-06-25 11:58:29.823 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-25 11:58:30.321 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-25 11:58:30.355 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 1978.3005ms
+2025-06-25 11:58:30.356 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-06-25 11:58:30.369 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 200 null application/json; charset=utf-8 2101.9043ms
+2025-06-25 11:58:30.381 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-25 11:58:30.383 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/undefined - null null
+2025-06-25 11:58:30.389 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:30.392 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:58:30.398 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/undefined - 404 0 null 15.4198ms
+2025-06-25 11:58:30.400 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5025/undefined, Response status code: 404
+2025-06-25 11:58:30.403 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-25 11:58:30.570 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-25 11:58:30.623 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:58:30.633 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 229.985ms
+2025-06-25 11:58:30.634 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-25 11:58:30.634 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 252.5452ms
+2025-06-25 11:58:33.807 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:58:33.809 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:33.811 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:58:33.823 +05:30 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:58:33.886 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:58:33.890 +05:30 [INF] Executing OkObjectResult, writing value of type 'EventManagementAPI.Models.DTOs.User.UserResponseDto'.
+2025-06-25 11:58:33.891 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI) in 67.2631ms
+2025-06-25 11:58:33.891 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetUserById (EventManagementAPI)'
+2025-06-25 11:58:33.891 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/GetUserById/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 83.9065ms
+2025-06-25 11:58:37.927 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:58:37.937 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:37.938 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 204 null null 10.3119ms
+2025-06-25 11:58:37.939 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - null null
+2025-06-25 11:58:37.940 +05:30 [INF] CORS policy execution successful.
+2025-06-25 11:58:37.997 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:58:38.003 +05:30 [INF] Route matched with {action = "DeleteUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteUser(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-06-25 11:58:38.012 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-06-25 11:58:38.095 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "IsDeleted" = @p0
+WHERE "Id" = @p1;
+2025-06-25 11:58:38.106 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-25 11:58:38.108 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI) in 104.6786ms
+2025-06-25 11:58:38.108 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.DeleteUser (EventManagementAPI)'
+2025-06-25 11:58:38.109 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5025/api/User/DeleteUser/549ec5ab-0220-4030-a8d9-cf3e06266ab1 - 200 null application/json; charset=utf-8 169.4452ms
