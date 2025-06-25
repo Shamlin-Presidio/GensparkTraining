@@ -1,0 +1,18 @@
+
+<div class="appName">
+  <h2>RecYippeee!</h2>
+</div>
+<div class="yellow">
+  @if (recipes().length > 0) {
+    <div class="yellow recipe-grid">
+      @for (item of recipes(); track item.id) {
+        <app-recipe [recipe]="item"></app-recipe>
+      }
+    </div>
+  }
+  @else {
+    <div class="na">
+      No recipes available
+    </div>
+  }
+</div>

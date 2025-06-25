@@ -1,0 +1,42 @@
+
+:host {
+  display: block;
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: Arial, sans-serif;
+}
+
+
+h2 {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+.flex-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+span {
+  font-weight: bold;
+  font-size: 18px;
+  min-width: 24px;
+  display: inline-block;
+}

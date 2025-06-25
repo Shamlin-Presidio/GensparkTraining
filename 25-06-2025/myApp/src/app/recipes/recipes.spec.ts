@@ -28,7 +28,6 @@ import { Recipes } from './recipes';
 import { RecipeService } from '../services/recipe.service';
 import { of, throwError } from 'rxjs';
 import { Recipe } from '../recipe/recipe';
-import { provideHttpClient } from '@angular/common/http';
 
 describe('Recipes', () => {
   let fixture: ComponentFixture<Recipes>;
@@ -44,10 +43,7 @@ describe('Recipes', () => {
 
     await TestBed.configureTestingModule({
       imports: [Recipes, Recipe],
-      providers: [
-        { provide: RecipeService, useValue: spy },
-        provideHttpClient() // ✅ add this to fix _HttpClient injection
-      ]
+      providers: [{ provide: RecipeService, useValue: spy }]
     }).compileComponents();
 
     recipeServiceSpy = TestBed.inject(RecipeService) as jasmine.SpyObj<RecipeService>;
@@ -71,4 +67,3 @@ describe('Recipes', () => {
     expect(component.recipes()).toEqual([]);
   });
 });
-
