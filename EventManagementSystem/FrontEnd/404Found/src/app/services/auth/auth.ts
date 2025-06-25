@@ -26,6 +26,14 @@ export class Auth {
     this.router.navigate(['/login']);
   }
 
+  updateUserInStorage(updatedUser: any) {
+    const current = this.currentUser;
+    if (!current) return;
+
+    const mergedUser = { ...current, ...updatedUser };
+    localStorage.setItem('user', JSON.stringify(mergedUser));
+  }
+
   get currentUser() {
     return JSON.parse(localStorage.getItem('user') || 'null');
   }

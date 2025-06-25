@@ -89,7 +89,8 @@ public class AuthService : IAuthService
             Id = user.Id,
             Username = user.Username,
             Email = user.Email,
-            Role = user.Role
+            Role = user.Role,
+            ProfilePicturePath = user.ProfilePicturePath
         };
 
         var token = _jwtService.GenerateAccessToken(user);

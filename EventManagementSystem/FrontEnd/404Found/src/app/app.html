@@ -28,6 +28,11 @@
           <a class="btn btn-outline-light btn-sm" routerLink="/login">Login</a>
         </li>
 
+        <button *ngIf="isLoggedIn" class="btn p-0 border-0 bg-transparent" (click)="goToProfile()" >
+          <img [src]="'http://localhost:5025/' + user.profilePicturePath || defaultImage" alt="Profile" width="32" height="32"
+            class="rounded-circle" />
+        </button>
+
         <li class="nav-item" *ngIf="isLoggedIn">
           <button class="btn btn-outline-warning btn-sm" (click)="logout()">Logout</button>
         </li>

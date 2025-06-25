@@ -14,6 +14,7 @@ export class App {
   constructor(private auth: Auth, private router: Router) {}
   
   user = JSON.parse(localStorage.getItem('user') || '{}');
+  defaultImage = './assets/default-avatar.png';
 
   get isOrganizer(): boolean {
     return this.auth.role === 'Organizer';
@@ -21,6 +22,10 @@ export class App {
 
   get isLoggedIn(): boolean {
     return this.auth.isLoggedIn;
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
 
   logout() {
