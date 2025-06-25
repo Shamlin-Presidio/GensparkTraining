@@ -1,22 +1,25 @@
 <div class="container py-3">
-  <h4>New events created are shown here</h4>
+    <h4>New events created are shown here</h4>
 
-  <div *ngIf="notifications.length === 0" class="text-muted">
-    No new events yet.
-  </div>
-
-  <div *ngFor="let e of notifications" class="card mb-3 shadow-sm">
-    <div class="row g-0">
-      <div class="col-md-4" *ngIf="e.imagePath">
-        <img [src]="'http://localhost:5025/' + e.imagePath" class="img-fluid rounded-start" />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ e.title }}</h5>
-          <p class="card-text">{{ e.description }}</p>
-          <a [routerLink]="['/event', e.id]" class="btn btn-sm btn-outline-primary">View</a>
-        </div>
-      </div>
+    <div *ngIf="notifications.length === 0" class="text-muted">
+        No new events yet.
     </div>
-  </div>
+
+    <div *ngFor="let e of notifications" class="card mb-3 shadow-sm">
+        <div class="row g-0">
+            <div class="col-md-4" *ngIf="e.imagePath">
+                <img [src]="'http://localhost:5025/' + e.imagePath" class="img-fluid rounded-start" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ e.title }}</h5>
+                    <p class="card-text">{{ e.description }}</p>
+                    <!-- <a [routerLink]="['/event', e.id]" class="btn btn-sm btn-outline-primary">View</a> -->
+                    <button (click)="viewDetails(e.id)" class="btn btn-sm btn-outline-primary">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

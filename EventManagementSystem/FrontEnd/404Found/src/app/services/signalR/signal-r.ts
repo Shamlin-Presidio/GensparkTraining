@@ -1,63 +1,58 @@
-// import { Injectable } from '@angular/core';
-// import * as signalR from '@microsoft/signalr';
-// import { Subject } from 'rxjs';
-
-// @Injectable({ providedIn: 'root' })
-// export class SignalR {
-//   private hubConnection!: signalR.HubConnection;
-//   private eventSubject = new Subject<any>();
-
-//   public newEvent$ = this.eventSubject.asObservable();
-
-//   constructor() {
-//     this.hubConnection = new signalR.HubConnectionBuilder()
-//       .withUrl('http://localhost:5025/eventHub', { withCredentials: true })
-//       .withAutomaticReconnect()
-//       .build();
-
-//     this.hubConnection.on('NewEventCreated', (event: any) => {
-//       this.eventSubject.next(event);
-//     });
-
-//     this.hubConnection
-//       .start()
-//       .then(() => console.log('SignalR Connected'))
-//       .catch(err => console.error('SignalR Connection Error:', err));
-//   }
-// }
-
-
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import { Subject,BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SignalR {
-  private hubConnection!: signalR.HubConnection;
-  public newEvent$ = new Subject<any>();
+  private connection!: signalR.HubConnection;
 
-  // Count tracker
-  private notificationCount = new BehaviorSubject<number>(0);
-  public notificationCount$ = this.notificationCount.asObservable();
+  private _notifications: any[] = [];
+  private _newEvent = new BehaviorSubject<any>(null);
+  private _notificationCount = new BehaviorSubject<number>(this.getStoredCount());
+
+  public newEvent$ = this._newEvent.asObservable();
+  public notificationCount$ = this._notificationCount.asObservable();
 
   constructor() {
-    this.hubConnection = new signalR.HubConnectionBuilder()
+    this.startConnection();
+  }
+
+  private startConnection() {
+    this.connection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:5025/eventHub', { withCredentials: true })
       .withAutomaticReconnect()
       .build();
 
-    this.hubConnection
-      .start()
-      .then(() => console.log('SignalR connected'))
-      .catch(err => console.error('SignalR connection failed:', err));
-
-    this.hubConnection.on('NewEventCreated', (eventDto: any) => {
-      this.newEvent$.next(eventDto);
-      this.notificationCount.next(this.notificationCount.value + 1);
+    this.connection.on('NewEventCreated', (event) => {
+      this._notifications.unshift(event);
+      const count = this._notificationCount.value + 1;
+      this.setStoredCount(count);
+      this._notificationCount.next(count);
+      this._newEvent.next(event);
     });
+
+    this.connection.start().catch(err => console.error('SignalR failed:', err));
+  }
+
+  markNotificationAsRead() {
+    const count = this._notificationCount.value;
+    if (count > 0) {
+      const updated = count - 1;
+      this.setStoredCount(updated);
+      this._notificationCount.next(updated);
+    }
   }
 
   resetNotificationCount() {
-    this.notificationCount.next(0);
+    this.setStoredCount(0);
+    this._notificationCount.next(0);
+  }
+
+  private getStoredCount(): number {
+    return parseInt(localStorage.getItem('notificationCount') || '0', 10);
+  }
+
+  private setStoredCount(count: number) {
+    localStorage.setItem('notificationCount', count.toString());
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SignalR } from '../../services/signalR/signal-r';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-notifications',
@@ -12,11 +13,16 @@ import { CommonModule } from '@angular/common';
 export class Notifications implements OnInit {
   notifications: any[] = [];
 
-  constructor(private signalRService: SignalR) {}
+  constructor(private signalRService: SignalR, private router: Router) {}
 
   ngOnInit(): void {
     this.signalRService.newEvent$.subscribe((event: any) => {
-      this.notifications.unshift(event);
+      if (event) this.notifications.unshift(event);
     });
+  }
+
+  viewDetails(id: string) {
+    this.signalRService.markNotificationAsRead(); 
+    this.router.navigate(['/event', id]);
   }
 }
