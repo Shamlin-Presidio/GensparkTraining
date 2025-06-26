@@ -35,14 +35,14 @@
           </a>
         </li> -->
         <li class="nav-item">
-  <button class="btn btn-link nav-link position-relative text-light" (click)="goToNotifications()">
-    <i class="bi bi-bell-fill">Notifications</i>
-    <span *ngIf="notificationCount > 0" 
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      {{ notificationCount }}
-    </span>
-  </button>
-</li>
+          <button class="btn btn-link nav-link position-relative text-light" (click)="goToNotifications()">
+            <i class="bi bi-bell-fill">Notifications</i>
+            <span *ngIf="notificationCount > 0"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ notificationCount }}
+            </span>
+          </button>
+        </li>
 
 
         <button *ngIf="isLoggedIn" class="btn p-0 border-0 bg-transparent" (click)="goToProfile()">
