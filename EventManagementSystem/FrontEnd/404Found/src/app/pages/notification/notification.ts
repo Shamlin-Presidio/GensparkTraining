@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { SignalR } from '../../services/signalR/signal-r';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-notifications',
-  imports: [RouterLink, CommonModule],
+  imports:  [CommonModule],
   templateUrl: './notification.html',
   styleUrls: ['./notification.css']
 })

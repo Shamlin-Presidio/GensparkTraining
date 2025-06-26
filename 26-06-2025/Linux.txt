@@ -1,0 +1,29 @@
+1. You have a file with permissions -rw-r--r--, and you run chmod +x file.sh. What happens?
+    # this gives execute permission to everyone (user, group and other)
+
+
+2. What is the difference between chmod 744 file.txt and chmod u=rwx,go=r file.txt?
+    # both are the same, but in different syntax
+
+
+3. What is the sticky bit, and when should you use it?
+    # when we set this on a folder , only the file's owner (or root) can delete or rename files inside that directory—even if others have write access.
+
+
+4. You are told to give the owner full access, group only execute, and others no permissions. What symbolic command achieves this?
+    # chmod u=rwx,g=x,o= fileName.ectension
+
+5. What is umask, and why is it important?
+    # The umask (user mask) sets default permissions for new files and folders by subtracting from the system defaults. It helps control who can access new files. 
+    # This prevents files from being readable or writable by others unless you explicitly allow it, which is important for maintaining security and privacy.
+
+
+
+6. If the umask is 022, what are the default permissions for a new file and a new directory?
+    #File default: 666 - 022 = 644 → rw-r--r--
+    #Directory default: 777 - 022 = 755 → rwxr-xr-x
+
+
+7. Why is umask often set to 002 in development environments but 027 or 077 in production?
+    # In development environments, umask is often set to 002 so that users in the same group can edit each other’s files, which makes collaboration easier. 
+    # In production, it's set to 027 or 077 to make files more private, allowing only the owner (and sometimes the group) to access them, which improves security
