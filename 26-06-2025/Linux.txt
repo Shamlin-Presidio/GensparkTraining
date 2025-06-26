@@ -12,6 +12,7 @@
 
 4. You are told to give the owner full access, group only execute, and others no permissions. What symbolic command achieves this?
     # chmod u=rwx,g=x,o= fileName.ectension
+    
 
 5. What is umask, and why is it important?
     # The umask (user mask) sets default permissions for new files and folders by subtracting from the system defaults. It helps control who can access new files. 
@@ -27,3 +28,8 @@
 7. Why is umask often set to 002 in development environments but 027 or 077 in production?
     # In development environments, umask is often set to 002 so that users in the same group can edit each other’s files, which makes collaboration easier. 
     # In production, it's set to 027 or 077 to make files more private, allowing only the owner (and sometimes the group) to access them, which improves security
+
+8. useradd vs adduser
+    # useradd is used to just add user, it's low level
+    # adduser : creates a user, adds group and assigns user to the group and we have to enter passwrod and other such details
+        => adduser gives complete functionality and is interactive

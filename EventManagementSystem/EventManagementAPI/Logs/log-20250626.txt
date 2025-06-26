@@ -70,3 +70,9 @@ ORDER BY e0."CreatedAt" DESC
 2025-06-26 09:11:24.298 +05:30 [INF] Executing endpoint '/eventHub/negotiate'
 2025-06-26 09:11:24.306 +05:30 [INF] Executed endpoint '/eventHub/negotiate'
 2025-06-26 09:11:24.306 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 200 316 application/json 13.2176ms
+2025-06-26 15:03:13.733 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-06-26 15:03:13.883 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-06-26 15:03:13.915 +05:30 [INF] Now listening on: http://localhost:5025
+2025-06-26 15:03:13.918 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-26 15:03:13.918 +05:30 [INF] Hosting environment: Development
+2025-06-26 15:03:13.919 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
