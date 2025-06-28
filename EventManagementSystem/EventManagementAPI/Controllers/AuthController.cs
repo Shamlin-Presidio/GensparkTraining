@@ -22,8 +22,20 @@ public class AuthController : ControllerBase
     [HttpPost("signup")]
     public async Task<IActionResult> SignUp([FromForm] UserCreateDto dto, IFormFile? profilePicture)
     {
-        var (accessToken, refreshToken, user) = await _authService.SignUpAsync(dto, profilePicture);
-        return Ok(new { accessToken, refreshToken, user });
+        try
+        {
+            var (accessToken, refreshToken, user) = await _authService.SignUpAsync(dto, profilePicture);
+            return Ok(new { accessToken, refreshToken, user });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+
     }
 
 

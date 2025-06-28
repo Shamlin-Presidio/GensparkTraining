@@ -31,10 +31,12 @@ public class AuthService : IAuthService
     {
         var validRoles = new[] { "Organizer", "Attendee" };
         if (!validRoles.Contains(dto.Role, StringComparer.OrdinalIgnoreCase))
-        {
             throw new ArgumentException("Role must be either 'Organizer' or 'Attendee'.");
-        
-        }
+
+        var existing = await _userRepository.GetByEmailAsync(dto.Email);
+        if (existing != null)
+            throw new InvalidOperationException("An account with this email already exists.");
+
         var user = new User
         {
             Id = Guid.NewGuid(),
@@ -44,7 +46,6 @@ public class AuthService : IAuthService
             Role = dto.Role,
             CreatedAt = DateTime.UtcNow
         };
-
 
         if (profilePicture != null)
         {
@@ -74,7 +75,9 @@ public class AuthService : IAuthService
         var token = _jwtService.GenerateAccessToken(user);
         var refreshToken = _jwtService.GenerateRefreshToken(user);
         return (token, refreshToken, responseDto);
+
     }
+
 
     public async Task<(string Token, string RefreshToken, UserResponseDto User)> LoginAsync(LoginRequestDto dto)
     {
@@ -95,6 +98,6 @@ public class AuthService : IAuthService
 
         var token = _jwtService.GenerateAccessToken(user);
         var refreshToken = _jwtService.GenerateRefreshToken(user);
-        return (token, refreshToken,responseDto);
+        return (token, refreshToken, responseDto);
     }
 }

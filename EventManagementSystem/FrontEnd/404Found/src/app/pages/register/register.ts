@@ -15,17 +15,24 @@ export class Register {
   username = '';
   password = '';
   email = '';
-  role = 'Attendee'; 
+  role = 'Attendee';
   profilePicture: File | null = null;
   error: string | null = null;
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private auth: Auth, private router: Router) { }
 
   onFileSelected(event: any) {
     this.profilePicture = event.target.files[0];
   }
 
   register() {
+    this.error = null;
+
+    if (!this.username || !this.email || !this.password || !this.role) {
+      this.error = 'All fields are required.';
+      return;
+    }
+
     const formData = new FormData();
     formData.append('Username', this.username);
     formData.append('Password', this.password);
@@ -41,9 +48,9 @@ export class Register {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        this.error = 'Registration failed.';
-        console.error(err);
+        this.error = err.error?.message || 'Registration failed.';
       }
     });
   }
+
 }
