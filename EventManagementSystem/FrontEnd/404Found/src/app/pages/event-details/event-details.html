@@ -19,7 +19,7 @@
     <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank">🔗 Online Meet</a>
     <p><strong>Total Registrations:</strong> {{ registrationCount }}</p>
 
-    <div *ngIf="!isOrganizer && !isRegistered" class="mt-3">
+    <div *ngIf="!isOrganizer && !isRegistered && !isExpiredEvent" class="mt-3">
       <button class="btn btn-success" (click)="register()">Register for this Event</button>
     </div>
     <div class="controls">
@@ -29,6 +29,9 @@
       <button *ngIf="registrationId" class="btn btn-danger mt-3" (click)="cancelRegistration()">
         Cancel Registration
       </button>
+      <div *ngIf="isExpiredEvent && !isOrganizer" class="alert alert-warning mt-3">
+        ❌ Registration is closed for this event.
+      </div>
     </div>
   </div>
 

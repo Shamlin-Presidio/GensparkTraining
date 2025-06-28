@@ -27,7 +27,9 @@ export class EventDetails implements OnInit {
     private eventService: Event,
     public auth: Auth,
     private http: HttpClient
-  ) {}
+  ) { }
+
+  isExpiredEvent = false;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -38,12 +40,22 @@ export class EventDetails implements OnInit {
       this.isOrganizer = this.auth.role === 'Organizer';
       this.checkIfRegistered(res.id);
 
-      // No.  O F   R E G I S T R A T I O N S
+      // Normalize both dates to ignore time when comparing
+      const today = new Date();
+      const eventStart = new Date(res.startTime);
+
+      today.setHours(0, 0, 0, 0);
+      eventStart.setHours(0, 0, 0, 0);
+
+      this.isExpiredEvent = eventStart <= today;
+
+
       this.eventService.getRegistrationsCount(res.id).subscribe(resp => {
-      this.registrationCount = resp.count;
-    });
+        this.registrationCount = resp.count;
+      });
     });
   }
+
 
   checkIfRegistered(eventId: string) {
     this.eventService.getMyRegistrations().subscribe(res => {
@@ -61,23 +73,26 @@ export class EventDetails implements OnInit {
 
 
   register() {
-  if (!this.auth.isLoggedIn) {
-    this.router.navigate(['/login']);
-    return;
+    if (!this.auth.isLoggedIn) {
+      const returnUrl = this.router.url;
+      localStorage.setItem('returnUrl', returnUrl);
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.eventService.registerForEvent(this.event.id).subscribe({
+      next: (res) => {
+        this.isRegistered = true;
+        this.registrationId = res.id;
+        alert('Registered successfully!');
+        this.fetchRegistrationCount(this.event.id);
+      },
+      error: (err) => {
+        alert(err.error?.message || 'Registration failed');
+      }
+    });
   }
 
-  this.eventService.registerForEvent(this.event.id).subscribe({
-    next: (res) => {
-      this.isRegistered = true;
-      this.registrationId = res.id;
-      alert('Registered successfully!');
-      this.fetchRegistrationCount(this.event.id);
-    },
-    error: (err) => {
-      alert(err.error?.message || 'Registration failed');
-    }
-  });
-}
 
   cancelRegistration() {
     if (!this.registrationId) {
