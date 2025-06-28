@@ -82,6 +82,10 @@ public class EventService : IEventService
         if (evnt == null || evnt.IsDeleted || evnt.OrganizerId != organizerId)
             return null;
 
+        // Prevents editing today's or past events
+        if (evnt.StartTime.Date <= DateTime.UtcNow.Date)
+            throw new InvalidOperationException("You cannot edit events scheduled for today or earlier.");
+
         _mapper.Map(dto, evnt);
 
         if (dto.ImagePath != null)
@@ -109,6 +113,10 @@ public class EventService : IEventService
         var evnt = await _eventRepository.GetByIdAsync(id);
         if (evnt == null || evnt.IsDeleted || evnt.OrganizerId != organizerId)
             return false;
+        
+        // Prevents deleting events that are scheduled for today or earlier
+        if (evnt.StartTime.Date <= DateTime.UtcNow.Date)
+            throw new InvalidOperationException("Cannot delete an event that is scheduled for today or earlier.");
 
         evnt.IsDeleted = true;
         await _eventRepository.UpdateAsync(evnt);

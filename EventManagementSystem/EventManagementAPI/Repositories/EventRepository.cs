@@ -80,6 +80,7 @@ public class EventRepository : IEventRepository
     {
         return await _context.Events
             .Where(e => e.OrganizerId == organizerId && !e.IsDeleted)
+            .OrderByDescending(e => e.CreatedAt)
             .ToListAsync();
     }
 }

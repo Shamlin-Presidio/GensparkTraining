@@ -42,14 +42,19 @@ public class RegistrationController : ControllerBase
         try
         {
             var registration = await _registrationService.RegisterForEventAsync(eventId, attendeeId);
-            if (registration == null)
-                return BadRequest(new { Message = "Registration failed. Possibly event not found or already registered." });
-
             return CreatedAtAction(nameof(GetMyRegistrations), null, registration);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { Message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { Message = ex.Message });
         }
         catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return StatusCode(500, new { Message = "An unexpected error occurred.", Details = ex.Message });
         }
     }
 

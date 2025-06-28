@@ -2151,3 +2151,60 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2025-06-26 17:04:39.925 +05:30 [INF] Executed endpoint '/eventHub'
 2025-06-26 17:04:39.925 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/eventHub?id=Aj6IeIxtfJ_dDEh3mCYU2Q - 101 null null 14200.1235ms
 2025-06-26 17:04:39.925 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/eventHub?id=kEe1QdGQhP-UFYFYG9-yfQ - 101 null null 14290.216ms
+2025-06-26 17:05:21.813 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null null
+2025-06-26 17:05:21.814 +05:30 [INF] CORS policy execution successful.
+2025-06-26 17:05:21.815 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 204 null null 1.6317ms
+2025-06-26 17:05:21.833 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null 0
+2025-06-26 17:05:21.833 +05:30 [INF] CORS policy execution successful.
+2025-06-26 17:05:21.834 +05:30 [INF] Executing endpoint '/eventHub/negotiate'
+2025-06-26 17:05:21.840 +05:30 [INF] Executed endpoint '/eventHub/negotiate'
+2025-06-26 17:05:21.840 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 200 316 application/json 7.3771ms
+2025-06-26 17:05:21.894 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-06-26 17:05:21.894 +05:30 [INF] CORS policy execution successful.
+2025-06-26 17:05:21.894 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-26 17:05:21.896 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-06-26 17:05:21.911 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/eventHub?id=Qs5-LSbQnnpHi_zErCuZOg - null null
+2025-06-26 17:05:21.912 +05:30 [INF] CORS policy execution successful.
+2025-06-26 17:05:21.912 +05:30 [INF] Executing endpoint '/eventHub'
+2025-06-26 17:05:21.936 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-06-26 17:05:21.938 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-26 17:05:21.939 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 42.3054ms
+2025-06-26 17:05:21.939 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-06-26 17:05:21.939 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 45.2978ms
+2025-06-26 17:05:21.969 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/cde2a495-d515-4128-9a33-74bddcba879b.jpg - null null
+2025-06-26 17:05:21.971 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/98e30d8d-2f7b-4cb7-80a2-3fba61bfe2bc.png - null null
+2025-06-26 17:05:21.971 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/e7704a44-42a1-403b-9cf3-c54304b2c5da.jpg - null null
+2025-06-26 17:05:21.971 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/dc18ae35-3abc-4e16-97fe-37139e5487dc.png - null null
+2025-06-26 17:05:21.972 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/282a13ba-502a-417a-bc42-46b642bd93d4.png - null null
+2025-06-26 17:05:21.972 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/bb63406e-eb4c-42b0-bc13-f0f9988505c0.jpg - null null
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/282a13ba-502a-417a-bc42-46b642bd93d4.png was not modified
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/e7704a44-42a1-403b-9cf3-c54304b2c5da.jpg was not modified
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/bb63406e-eb4c-42b0-bc13-f0f9988505c0.jpg was not modified
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/dc18ae35-3abc-4e16-97fe-37139e5487dc.png was not modified
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/98e30d8d-2f7b-4cb7-80a2-3fba61bfe2bc.png was not modified
+2025-06-26 17:05:21.990 +05:30 [INF] The file /Events/cde2a495-d515-4128-9a33-74bddcba879b.jpg was not modified
+2025-06-26 17:05:21.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/e7704a44-42a1-403b-9cf3-c54304b2c5da.jpg - 304 null image/jpeg 19.7881ms
+2025-06-26 17:05:21.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/dc18ae35-3abc-4e16-97fe-37139e5487dc.png - 304 null image/png 19.5082ms
+2025-06-26 17:05:21.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/bb63406e-eb4c-42b0-bc13-f0f9988505c0.jpg - 304 null image/jpeg 18.4306ms
+2025-06-26 17:05:21.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/98e30d8d-2f7b-4cb7-80a2-3fba61bfe2bc.png - 304 null image/png 20.2965ms
+2025-06-26 17:05:21.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/cde2a495-d515-4128-9a33-74bddcba879b.jpg - 304 null image/jpeg 22.0334ms
+2025-06-26 17:05:22.003 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/ce514c83-426e-4b7e-8222-3d59ac10e814.png - null null
+2025-06-26 17:05:22.004 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/f3f2dca7-045f-4d4b-8ae1-0f6c6240cbc5.png - null null
+2025-06-26 17:05:22.004 +05:30 [INF] The file /Events/ce514c83-426e-4b7e-8222-3d59ac10e814.png was not modified
+2025-06-26 17:05:22.009 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/ce514c83-426e-4b7e-8222-3d59ac10e814.png - 304 null image/png 5.2945ms
+2025-06-26 17:05:22.004 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/282a13ba-502a-417a-bc42-46b642bd93d4.png - 304 null image/png 31.6042ms
+2025-06-26 17:05:22.009 +05:30 [INF] The file /Events/f3f2dca7-045f-4d4b-8ae1-0f6c6240cbc5.png was not modified
+2025-06-26 17:05:22.013 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/UploadedFiles/Events/f3f2dca7-045f-4d4b-8ae1-0f6c6240cbc5.png - 304 null image/png 9.4828ms
+2025-06-26 17:16:15.403 +05:30 [INF] Executed endpoint '/eventHub'
+2025-06-26 17:16:15.422 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/eventHub?id=Qs5-LSbQnnpHi_zErCuZOg - 101 null null 653461.5678ms
+2025-06-26 17:16:22.984 +05:30 [INF] Application is shutting down...

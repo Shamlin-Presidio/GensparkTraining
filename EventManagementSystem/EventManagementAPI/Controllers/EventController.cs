@@ -63,19 +63,29 @@ public class EventController : ControllerBase
         return CreatedAtAction(nameof(GetEventById), new { id = newEvent.Id }, newEvent);
     }
 
+
     // U P D A T E    E V E N T 
     [HttpPut("UpdateEvent/{id}")]
     [Authorize(Roles = "Organizer")]
     public async Task<IActionResult> UpdateEvent(Guid id, [FromForm] EventUpdateDto dto)
     {
-        var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var updated = await _eventService.UpdateEventAsync(id, dto, organizerId);
-
-        if (updated == null)
+        try
         {
-            return NotFound(new { Message = $"Cannot update — event with ID '{id}' not found or you are unauthorized." });
+            var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var updated = await _eventService.UpdateEventAsync(id, dto, organizerId);
+
+            if (updated == null)
+            {
+                return NotFound(new { Message = $"Cannot update — event with ID '{id}' not found or you are unauthorized." });
+            }
+
+            return Ok(updated);
         }
-        return Ok(updated);
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
+
     }
 
     // D E L E T E    E V E N T
@@ -83,15 +93,22 @@ public class EventController : ControllerBase
     [Authorize(Roles = "Organizer")]
     public async Task<IActionResult> DeleteEvent(Guid id)
     {
-        var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var deleted = await _eventService.DeleteEventAsync(id, organizerId);
-
-        if (!deleted)
+        try
         {
-            return NotFound(new { Message = $"Cannot delete — event with ID '{id}' not found or you are unauthorized." });
-        }
+            var organizerId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var deleted = await _eventService.DeleteEventAsync(id, organizerId);
 
-        return Ok(new { Message = $"Event with ID '{id}' deleted successfully." });
+            if (!deleted)
+            {
+                return NotFound(new { Message = $"Cannot delete — event with ID '{id}' not found or you are unauthorized." });
+            }
+
+            return Ok(new { Message = $"Event with ID '{id}' deleted successfully." });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
     }
 
     [HttpGet("MyEvents")]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Event } from '../../services/event/event';
@@ -23,6 +23,7 @@ export class EventDetails implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private eventService: Event,
     public auth: Auth,
     private http: HttpClient
@@ -60,19 +61,23 @@ export class EventDetails implements OnInit {
 
 
   register() {
-    this.eventService.registerForEvent(this.event.id).subscribe({
-      next: (res) => {
-        this.isRegistered = true;
-        this.registrationId = res.id;
-        alert('Registered successfully!');
-
-        this.fetchRegistrationCount(this.event.id);
-      },
-      error: (err) => {
-        alert(err.error?.message || 'Registration failed');
-      }
-    });
+  if (!this.auth.isLoggedIn) {
+    this.router.navigate(['/login']);
+    return;
   }
+
+  this.eventService.registerForEvent(this.event.id).subscribe({
+    next: (res) => {
+      this.isRegistered = true;
+      this.registrationId = res.id;
+      alert('Registered successfully!');
+      this.fetchRegistrationCount(this.event.id);
+    },
+    error: (err) => {
+      alert(err.error?.message || 'Registration failed');
+    }
+  });
+}
 
   cancelRegistration() {
     if (!this.registrationId) {

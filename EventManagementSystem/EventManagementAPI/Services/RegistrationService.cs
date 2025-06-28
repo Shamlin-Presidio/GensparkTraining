@@ -56,6 +56,10 @@ namespace EventManagementAPI.Services
             var evnt = await _eventRepository.GetByIdAsync(eventId);
             if (evnt == null || evnt.IsDeleted)
                 throw new KeyNotFoundException("Event not found");
+            
+            // Prevent registration on or after event date
+            if (DateTime.UtcNow.Date >= evnt.StartTime.Date)
+                throw new InvalidOperationException("Cannot register for the event on or after the event date.");
 
             // fetch existing registration (active or soft‐deleted) (if any)
             var existing = await _registrationRepository.GetByEventAndAttendeeIncludingDeletedAsync(eventId, attendeeId);

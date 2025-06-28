@@ -41,7 +41,7 @@ export class App implements OnInit {
   }
 
   goToNotifications() {
-    this.signalR.resetNotificationCount(); // 👈 Reset badge
+    this.signalR.resetNotificationCount();
     this.router.navigate(['/notifications']);
   }
 
