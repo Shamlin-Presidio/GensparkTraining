@@ -1,0 +1,56 @@
+.login {
+  color: #123524;
+  font-weight: bold;
+  display: flex;
+  height: calc(100vh - 80px);
+  border: 1px dashed white;
+}
+
+a{
+    font-weight: normal;
+    color: #123524;
+}
+button{
+    font-weight: bold;
+    background-color: #123524;
+    color: aliceblue;
+}
+button:hover{
+    background-color: rgb(166, 214, 184);
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-panel {
+  /* Phthato green color */
+  background-color: #123524; 
+  color: aliceblue;
+}
+
+.titleCard {
+  text-align: center;
+  padding: 20px;
+}
+.titleCard img{
+  max-width: 500px;
+  color: aliceblue;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .login {
+    flex-direction: column;
+  }
+
+  .left-panel, .right-panel {
+    flex: none;
+    width: 100%;
+    height: 50vh;
+  }
+}

@@ -1,4 +1,10 @@
 .navbar {
   min-height: 80px;
+  background-color: #123524;
   top: 0;
+}
+
+.title{
+  color: aliceblue;
+  font-weight: bold;
 }
