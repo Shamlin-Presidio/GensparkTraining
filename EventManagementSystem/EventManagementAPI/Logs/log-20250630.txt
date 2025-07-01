@@ -2751,3 +2751,17 @@ ORDER BY e0."CreatedAt" DESC
 2025-06-30 15:59:13.539 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/eventHub?id=UGSu5ICS788EfeIxhTVGBA - null null
 2025-06-30 15:59:13.539 +05:30 [INF] CORS policy execution successful.
 2025-06-30 15:59:13.540 +05:30 [INF] Executing endpoint '/eventHub'
+2025-06-30 17:07:14.062 +05:30 [INF] Application is shutting down...
+2025-06-30 17:07:14.070 +05:30 [INF] Executed endpoint '/eventHub'
+2025-06-30 17:07:14.071 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/eventHub?id=UGSu5ICS788EfeIxhTVGBA - 101 null null 4080425.4791ms
+2025-06-30 17:07:14.076 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null null
+2025-06-30 17:07:14.077 +05:30 [INF] CORS policy execution successful.
+2025-06-30 17:07:14.077 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 204 null null 0.9739ms
+2025-06-30 17:07:14.078 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null 0
+2025-06-30 17:07:14.078 +05:30 [INF] CORS policy execution successful.
+2025-06-30 17:07:14.079 +05:30 [INF] Executing endpoint '/eventHub/negotiate'
+2025-06-30 17:07:14.080 +05:30 [INF] Executed endpoint '/eventHub/negotiate'
+2025-06-30 17:07:14.080 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 200 316 application/json 1.7237ms
+2025-06-30 17:07:14.083 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/eventHub?id=DsWqhYBRo7kT5HLkPyUkiA - null null
+2025-06-30 17:07:14.084 +05:30 [INF] CORS policy execution successful.
+2025-06-30 17:07:14.084 +05:30 [INF] Executing endpoint '/eventHub'

@@ -1,0 +1,19 @@
+# Use the .NET SDK image
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS migrate
+
+WORKDIR /src
+
+# Copy project files
+COPY . .
+
+# Install dotnet-ef CLI tool
+RUN dotnet tool install --global dotnet-ef
+
+# Make sure dotnet tools path is available
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Restore dependencies
+RUN dotnet restore ./EventManagementAPI.csproj
+
+# Run EF Core database update
+CMD ["dotnet", "ef", "database", "update"]
