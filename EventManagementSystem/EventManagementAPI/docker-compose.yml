@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  frontend:
+    build:
+      context: ../FrontEnd/404Found
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80" 
+    depends_on:
+      - api
+
   db:
     image: postgres:15
     environment:
@@ -18,6 +27,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5025:8080"
+      - "5026:8081"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"

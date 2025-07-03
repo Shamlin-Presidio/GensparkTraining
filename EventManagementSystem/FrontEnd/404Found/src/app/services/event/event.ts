@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class Event {
   private apiUrl = 'http://localhost:5025/api/Event';
+  // private apiUrl = 'http://api:8080/api/Event'; //Container
 
   constructor(private http: HttpClient) {}
 
