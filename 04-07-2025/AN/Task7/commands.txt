@@ -1,0 +1,15 @@
+docker service update --image nginx:alpine nginx-web
+
+# C H E C K 
+docker service ps nginx-web
+
+TERMINAL OP:
+(base) shamlin@C02YQTPHLVDC-shamlin AN % docker service ps nginx-web
+
+ID             NAME              IMAGE          NODE             DESIRED STATE   CURRENT STATE             ERROR     PORTS
+1185boevm3yz   nginx-web.1       nginx:alpine   docker-desktop   Running         Running 16 seconds ago              
+3p6o0icw4mzu    \_ nginx-web.1   nginx:latest   docker-desktop   Shutdown        Shutdown 16 seconds ago             
+4fuoiq885snj   nginx-web.2       nginx:alpine   docker-desktop   Running         Running 8 seconds ago               
+wkf2movhl55l    \_ nginx-web.2   nginx:latest   docker-desktop   Shutdown        Shutdown 9 seconds ago              
+rbsfpdlvccoj   nginx-web.3       nginx:alpine   docker-desktop   Running         Running 12 seconds ago              
+jj4tbs0hvk54    \_ nginx-web.3   nginx:latest   docker-desktop   Shutdown        Shutdown 12 seconds ago       

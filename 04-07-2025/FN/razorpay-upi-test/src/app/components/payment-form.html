@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="name" placeholder="Name" />
+  <input formControlName="email" placeholder="Email" />
+  <input formControlName="contact" placeholder="Contact Number" />
+  <input formControlName="amount" placeholder="Amount" type="number" />
+  <button type="submit" [disabled]="form.invalid">Pay</button>
+</form>
+
+<div *ngIf="paymentStatus">
+  <p *ngIf="paymentStatus === 'success'"> :) Payment Successful! ID: {{ paymentId }}</p>
+  <p *ngIf="paymentStatus === 'cancelled'"> :( Payment Cancelled</p>
+</div>

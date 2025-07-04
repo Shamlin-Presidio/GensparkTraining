@@ -1,0 +1,5 @@
+# B U I L D
+docker build -t hello-node .
+
+# R U N 
+docker run -p 3000:3000 hello-node

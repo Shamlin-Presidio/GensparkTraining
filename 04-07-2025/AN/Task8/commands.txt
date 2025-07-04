@@ -1,0 +1,10 @@
+#  U P S C A L E
+docker service scale nginx-web=5
+
+# C H E C K 
+#TERMINAL OP:
+
+(base) shamlin@C02YQTPHLVDC-shamlin AN % docker service ls
+
+ID             NAME                  MODE         REPLICAS   IMAGE                   PORTS
+xmnpz26vda4c   nginx-web             replicated   5/5        nginx:alpine            *:8080->80/tcp

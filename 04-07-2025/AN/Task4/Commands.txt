@@ -1,0 +1,13 @@
+# B A C K E N D:
+docker build -t my-backend .
+docker network create app-network 
+docker run -d --name backend --network app-network my-backend
+
+# F R O N T E N D
+docker build -t my-frontend .
+docker run -d --name frontend \
+  --network app-network \
+  -p 80:80 my-frontend
+
+
+# open http://localhost:80

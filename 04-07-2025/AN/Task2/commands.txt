@@ -1,0 +1,36 @@
+# S E T U P
+docker pull mysql:latest
+
+# R U N N I NG   FOR FIRST TIME AND SETTING VOLUME
+docker run --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD=rootpass \
+  -e MYSQL_DATABASE=testdb \
+  -v mydbdata:/var/lib/mysql \
+  -p 3306:3306 \
+  -d mysql:latest
+
+docker exec -it mysql-container mysql -uroot -prootpass
+
+
+# these were in mysql 
+USE testdb;
+CREATE TABLE demo (id INT);
+INSERT INTO demo VALUES (1);
+
+exit
+
+docker stop mysql-container
+docker rm mysql-container
+
+
+# R U N N I N G   C O N T A I N E R    A G A I N 
+docker run --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD=rootpass \
+  -e MYSQL_DATABASE=testdb \
+  -v mydbdata:/var/lib/mysql \
+  -p 3306:3306 \
+  -d mysql:latest
+
+# CHECK DATA PERSISTENCE
+docker exec -it mysql-container mysql -uroot -prootpass
+SELECT * FROM demo;

@@ -1,0 +1,15 @@
+docker service create \
+  --name nginx-web \
+  --replicas 3 \
+  -p 8080:80 \
+  nginx
+
+# C H E C K 
+docker service ls
+
+O P E N :   http://localhost:8080
+
+TERMINAL OP:
+(base) shamlin@C02YQTPHLVDC-shamlin AN % docker service ls
+ID             NAME                  MODE         REPLICAS   IMAGE                   PORTS
+xmnpz26vda4c   nginx-web             replicated   3/3        nginx:latest            *:8080->80/tcp

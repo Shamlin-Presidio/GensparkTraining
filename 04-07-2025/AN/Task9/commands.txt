@@ -1,0 +1,39 @@
+# C R E A T E    S E R V I C E    W I T H    D E L A Y
+docker service create \
+  --name webapp \
+  --replicas 3 \
+  --update-delay 10s \
+  -p 8081:80 \
+  httpd
+
+# C H E C K 
+docker service ps webapp
+
+TERMINAL OP:
+(base) shamlin@C02YQTPHLVDC-shamlin AN % docker service ps webapp
+
+ID             NAME       IMAGE          NODE             DESIRED STATE   CURRENT STATE                ERROR     PORTS
+hzbcozkw642m   webapp.1   httpd:latest   docker-desktop   Running         Running about a minute ago             
+3n3roooj7ozv   webapp.2   httpd:latest   docker-desktop   Running         Running about a minute ago             
+dvfyjjlf01r9   webapp.3   httpd:latest   docker-desktop   Running         Running about a minute ago   
+------------------------------------------------------------------------------------------------------------------------
+
+
+docker service update \
+  --image httpd:alpine \
+  webapp
+# takes 10 seconds for each update, so in total 30s
+
+# C H E C K 
+docker service ps webapp
+
+TERMINAL OP:
+(base) shamlin@C02YQTPHLVDC-shamlin AN % docker service ps webapp
+
+ID             NAME           IMAGE          NODE             DESIRED STATE   CURRENT STATE                 ERROR     PORTS
+28rjznidn139   webapp.1       httpd:alpine   docker-desktop   Running         Running 57 seconds ago                  
+hzbcozkw642m    \_ webapp.1   httpd:latest   docker-desktop   Shutdown        Shutdown 57 seconds ago                 
+urox11f2e1jn   webapp.2       httpd:alpine   docker-desktop   Running         Running 42 seconds ago                  
+3n3roooj7ozv    \_ webapp.2   httpd:latest   docker-desktop   Shutdown        Shutdown 42 seconds ago                 
+zgtuxph744sa   webapp.3       httpd:alpine   docker-desktop   Running         Running about a minute ago              
+dvfyjjlf01r9    \_ webapp.3   httpd:latest   docker-desktop   Shutdown        Shutdown about a minute ago      
