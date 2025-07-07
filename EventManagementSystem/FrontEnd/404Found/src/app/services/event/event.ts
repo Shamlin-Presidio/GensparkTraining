@@ -8,14 +8,25 @@ export class Event {
 
   constructor(private http: HttpClient) {}
 
-  getEvents(search = '', page = 1, pageSize = 10) {
-    let url = `${this.apiUrl}/GetEvents/?`;
+  // getEvents(search = '', page = 1, pageSize = 10) {
+  //   let url = `${this.apiUrl}/GetEvents/?`;
 
-    if (search) url += `search=${search}&`;
-    url += `page=${page}&pageSize=${pageSize}`;
+  //   if (search) url += `search=${search}&`;
+  //   url += `page=${page}&pageSize=${pageSize}`;
 
-    return this.http.get<any>(url);
-  }
+  //   return this.http.get<any>(url);
+  // }
+
+  getEvents(search = '', date?: string, page = 1, pageSize = 10) {
+  let url = `${this.apiUrl}/GetEvents/?`;
+
+  if (search) url += `search=${search}&`;
+  if (date) url += `date=${date}&`;
+  url += `page=${page}&pageSize=${pageSize}`;
+
+  return this.http.get<any>(url);
+}
+
   getEventById(id: string) {
     return this.http.get<any>(`${this.apiUrl}/GetEventById/${id}`);
   }

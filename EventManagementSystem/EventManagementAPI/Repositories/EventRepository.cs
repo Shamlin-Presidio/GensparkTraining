@@ -10,16 +10,39 @@ public class EventRepository : IEventRepository
     private readonly AppDbContext _context;
     public EventRepository(AppDbContext context) => _context = context;
 
-    public async Task<IEnumerable<Event>> GetAllAsync(string? search = null, int page = 1, int pageSize = 10)
+    public async Task<IEnumerable<Event>> GetAllAsync(string? search = null,  DateTime? date =null, int page = 1, int pageSize = 10)
     {
         var query = _context.Events
             .Include(e => e.Organizer)
             .Where(e => !e.IsDeleted);
 
+        // if (!string.IsNullOrWhiteSpace(search))
+        // {
+        //     query = query.Where(e =>
+        //         e.Title.Contains(search) || e.Description.Contains(search) || e.Location.Contains(search));
+        // }
+
+        // M O R E   S E A R C H    F I L T E R S 
         if (!string.IsNullOrWhiteSpace(search))
         {
+            var lowered = search.ToLower();
             query = query.Where(e =>
-                e.Title.Contains(search) || e.Description.Contains(search));
+                e.Title.ToLower().Contains(lowered) ||
+                e.Description.ToLower().Contains(lowered) ||
+                e.Location.ToLower().Contains(lowered) 
+                // e.StartTime.ToString("dd MMM yyyy").ToLower().Contains(lowered) ||    
+                // e.StartTime.ToString("d MMMM yyyy").ToLower().Contains(lowered) ||    
+                // e.StartTime.ToString("dd").ToLower().Contains(lowered) ||             
+                // e.StartTime.ToString("MMMM").ToLower().Contains(lowered)              
+            );
+        }
+        if (date.HasValue)
+        {
+            // var selectedDate = date.Value.Date;
+
+            // query = query.Where(e => e.StartTime.Date == selectedDate);
+            var selectedDate = DateTime.SpecifyKind(date.Value.Date, DateTimeKind.Utc);
+            query = query.Where(e => e.StartTime.Date == selectedDate);
         }
 
         query = query.OrderByDescending(e => e.CreatedAt);

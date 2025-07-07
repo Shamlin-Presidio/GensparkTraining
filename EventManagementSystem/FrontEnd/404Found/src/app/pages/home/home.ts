@@ -15,6 +15,7 @@ export class Home implements OnInit {
   events: any[] = [];
   searchTerm = '';
   currentPage = 1;
+  filterDate: string = '';
 
   constructor(private event : Event) {}
 
@@ -23,7 +24,7 @@ export class Home implements OnInit {
   }
 
   loadEvents() {
-    this.event.getEvents(this.searchTerm, this.currentPage).subscribe((res) => {
+    this.event.getEvents(this.searchTerm,this.filterDate, this.currentPage, 10).subscribe((res) => {
       this.events = res.events;
     });
   }

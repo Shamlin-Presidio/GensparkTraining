@@ -1,8 +1,13 @@
 <div class="container mild py-3">
 
+
   <div class="input-group mb-3">
     <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search events..." />
     <button (click)="loadEvents()" class="btn btn-primary">Search</button>
+    <div class="input-group mb-3">
+  <input type="date" class="form-control" [(ngModel)]="filterDate" />
+</div>
+
   </div>
 
   <div *ngIf="events.length === 0" class="text-center text-muted">

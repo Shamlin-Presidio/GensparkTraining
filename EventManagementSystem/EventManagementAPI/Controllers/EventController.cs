@@ -19,9 +19,9 @@ public class EventController : ControllerBase
 
     // G E T    A L L     E V E N T S 
     [HttpGet("GetEvents")]
-    public async Task<IActionResult> GetAllEvents([FromQuery] string? search, int page = 1, int pageSize = 10)
+    public async Task<IActionResult> GetAllEvents([FromQuery] string? search, [FromQuery] DateTime? date, int page = 1, int pageSize = 10)
     {
-        var events = await _eventService.GetAllEventsAsync(search, page, pageSize);
+        var events = await _eventService.GetAllEventsAsync(search, date, page, pageSize);
 
         if (!events.Any())
         {

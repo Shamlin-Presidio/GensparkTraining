@@ -24,9 +24,9 @@ public class EventService : IEventService
         _hubContext = hubContext;
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, int page = 1, int pageSize = 10)
+    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date=null , int page = 1, int pageSize = 10)
     {
-        var events = await _eventRepository.GetAllAsync(search, page, pageSize);
+        var events = await _eventRepository.GetAllAsync(search,date, page, pageSize);
         return _mapper.Map<IEnumerable<EventResponseDto>>(events);
     }
 
@@ -127,6 +127,5 @@ public class EventService : IEventService
         var events = await _eventRepository.GetByOrganizerIdAsync(organizerId);
         return _mapper.Map<IEnumerable<EventResponseDto>>(events);
     }
-
 
 }
