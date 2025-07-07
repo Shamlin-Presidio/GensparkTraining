@@ -1,12 +1,65 @@
+# version: '3.8'
+
+# services:
+#   frontend:
+#     build:
+#       context: ../FrontEnd/404Found
+#       dockerfile: Dockerfile
+#     ports:
+#       - "4200:80" 
+#     depends_on:
+#       - api
+
+#   db:
+#     image: postgres:15
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: shamlin
+#       POSTGRES_DB: EventManagementSystemDB
+#     ports:
+#       - "5433:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+#   api:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "5025:8080"
+#       - "5026:8081"
+#     environment:
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+#     depends_on:
+#       - db
+
+#   migrate:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.migrate
+#     depends_on:
+#       - db
+#     environment:
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+
+
+# volumes:
+#   pgdata:
+
+
 version: '3.8'
 
 services:
   frontend:
-    build:
-      context: ../FrontEnd/404Found
-      dockerfile: Dockerfile
+    image: event-frontend:latest
     ports:
-      - "4200:80" 
+      - "4200:80"
+    deploy:
+      replicas: 2                
+      restart_policy:
+        condition: on-failure
     depends_on:
       - api
 
@@ -20,11 +73,12 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    deploy:
+      placement:
+        constraints: [node.role == manager]  
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: event-api:latest
     ports:
       - "5025:8080"
       - "5026:8081"
@@ -33,17 +87,21 @@ services:
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
     depends_on:
       - db
+    deploy:
+      replicas: 3               
+      restart_policy:
+        condition: on-failure
 
   migrate:
-    build:
-      context: .
-      dockerfile: Dockerfile.migrate
+    image: event-migrate:latest  
     depends_on:
       - db
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
-
+    deploy:
+      restart_policy:
+        condition: on-failure
 
 volumes:
   pgdata:

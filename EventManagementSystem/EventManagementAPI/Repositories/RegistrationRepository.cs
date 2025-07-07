@@ -69,4 +69,13 @@ public class RegistrationRepository : IRegistrationRepository
             .CountAsync();
     }
 
+    public async Task<IEnumerable<User>> GetAttendeesByEventIdAsync(Guid eventId)
+    {
+        return await _context.Registrations
+            .Where(r => r.EventId == eventId && !r.IsDeleted)
+            .Select(r => r.Attendee)
+            .ToListAsync();
+    }
+
+
 }

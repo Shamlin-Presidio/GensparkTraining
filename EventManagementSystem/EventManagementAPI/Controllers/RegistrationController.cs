@@ -79,4 +79,13 @@ public class RegistrationController : ControllerBase
         return Ok(new { Count = count });
     }
 
+
+    // G E T   L I S T    O F    R E G I S T E R E D   U S E R S 
+    [HttpGet("event/{eventId}/attendees")]
+    public async Task<IActionResult> GetAttendees(Guid eventId)
+    {
+        var attendees = await _registrationService.GetAttendeesForEventAsync(eventId);
+        return Ok(attendees);
+    }
+
 }

@@ -12,5 +12,7 @@ public interface IRegistrationRepository
     Task SaveChangesAsync();
     Task<Registration?> GetByEventAndAttendeeIncludingDeletedAsync(Guid eventId, Guid attendeeId);
     Task<int> GetRegistrationCountForEventAsync(Guid eventId);
+    Task<IEnumerable<User>> GetAttendeesByEventIdAsync(Guid eventId);
+
 
 }

@@ -2,6 +2,7 @@ using AutoMapper;
 using EventManagementAPI.Interfaces;
 using EventManagementAPI.Models;
 using EventManagementAPI.Models.DTOs.Registration;
+using EventManagementAPI.Models.DTOs.User;
 
 namespace EventManagementAPI.Services
 {
@@ -56,7 +57,7 @@ namespace EventManagementAPI.Services
             var evnt = await _eventRepository.GetByIdAsync(eventId);
             if (evnt == null || evnt.IsDeleted)
                 throw new KeyNotFoundException("Event not found");
-            
+
             // Prevent registration on or after event date
             if (DateTime.UtcNow.Date >= evnt.StartTime.Date)
                 throw new InvalidOperationException("Cannot register for the event on or after the event date.");
@@ -104,5 +105,11 @@ namespace EventManagementAPI.Services
         {
             return await _registrationRepository.GetRegistrationCountForEventAsync(eventId);
         }
+        public async Task<IEnumerable<UserResponseDto>> GetAttendeesForEventAsync(Guid eventId)
+        {
+            var users = await _registrationRepository.GetAttendeesByEventIdAsync(eventId);
+            return _mapper.Map<IEnumerable<UserResponseDto>>(users);
+        }
+
     }
 }
