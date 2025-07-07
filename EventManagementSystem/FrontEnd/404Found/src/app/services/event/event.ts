@@ -60,6 +60,12 @@ export class Event {
     `http://localhost:5025/api/Registration/Count/${eventId}`
   );
   }
+
+  getRegisteredAttendees(eventId: string){
+    return this.http.get<any>(
+      `http://localhost:5025/api/Registration/event/${eventId}/attendees`
+    );
+  }
   
 
   // E V E N T S

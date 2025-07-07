@@ -35,5 +35,20 @@
     </div>
   </div>
 
+  <div class="mt-4">
+    <button class="btn btn-primary" (click)="showAttendees = !showAttendees">
+      {{ showAttendees ? 'Hide Attendees' : 'Show All Attendees' }}
+    </button>
+
+    <ul *ngIf="showAttendees" class="list-group mt-3">
+      <li class="list-group-item" *ngFor="let attendee of attendees">
+        <!-- 👤 {{ attendee.username }} ({{ attendee.email }}) -->
+        <img [src]="'http://localhost:5025/' + attendee.profilePicturePath" alt="{{ attendee.username }}"
+          class="rounded-circle me-2" width="40" height="40" style="object-fit: cover;" />
+        <span>{{ attendee.username }} ({{ attendee.email }})</span>
+      </li>
+    </ul>
+  </div>
+
 
 </div>

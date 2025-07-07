@@ -20,6 +20,9 @@ export class EventDetails implements OnInit {
   isOrganizer = false;
   registrationId: string | null = null;
   registrationCount: number = 0;
+  attendees: any[] = [];
+  showAttendees = false;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -49,10 +52,11 @@ export class EventDetails implements OnInit {
 
       this.isExpiredEvent = eventStart <= today;
 
-
       this.eventService.getRegistrationsCount(res.id).subscribe(resp => {
         this.registrationCount = resp.count;
       });
+
+      this.getAttendees(res.id);
     });
   }
 
@@ -70,6 +74,18 @@ export class EventDetails implements OnInit {
       this.registrationCount = resp.count;
     });
   }
+
+  getAttendees(eventId: string) {
+    this.eventService.getRegisteredAttendees(eventId).subscribe({
+      next: (res) => {
+        this.attendees = res;
+      },
+      error: (err) => {
+        alert(err.error?.message || 'Failed to fetch attendees');
+      }
+    });
+  }
+
 
 
   register() {
