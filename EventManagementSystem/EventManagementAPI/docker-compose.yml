@@ -56,10 +56,7 @@ services:
     image: event-frontend:latest
     ports:
       - "4200:80"
-    deploy:
-      replicas: 2                
-      restart_policy:
-        condition: on-failure
+
     depends_on:
       - api
 
@@ -87,10 +84,7 @@ services:
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
     depends_on:
       - db
-    deploy:
-      replicas: 3               
-      restart_policy:
-        condition: on-failure
+
 
   migrate:
     image: event-migrate:latest  
