@@ -67,6 +67,10 @@
               "target": "Package",
               "version": "[1.2.0, )"
             },
+            "Microsoft.Azure.Storage.Blob": {
+              "target": "Package",
+              "version": "[11.2.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.5, )"
@@ -84,6 +88,10 @@
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.AzureBlobStorage": {
+              "target": "Package",
+              "version": "[4.0.5, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

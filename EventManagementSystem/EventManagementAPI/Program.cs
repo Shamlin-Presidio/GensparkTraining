@@ -13,6 +13,7 @@ using Serilog;
 using Microsoft.OpenApi.Models;
 using AspNetCoreRateLimit;
 using Microsoft.Extensions.FileProviders;
+using Serilog.Sinks.AzureBlobStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -145,9 +146,18 @@ builder.Services.AddCors(options => {
 
 
 #region Logging
+// builder.Host.UseSerilog((ctx, lc) =>
+//     lc.WriteTo.Console()
+//       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
 builder.Host.UseSerilog((ctx, lc) =>
+{
     lc.WriteTo.Console()
-      .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
+      .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+      .WriteTo.AzureBlobStorage(
+          connectionString: builder.Configuration["AzureBlobSettingsFS:ConnectionString"],
+          storageContainerName: "event-logs"
+      );
+});
 #endregion
 
 

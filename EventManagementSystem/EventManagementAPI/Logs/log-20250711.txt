@@ -1,0 +1,7 @@
+2025-07-11 13:26:32.822 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-11 13:26:32.955 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-11 13:26:32.985 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-11 13:26:32.987 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 13:26:32.988 +05:30 [INF] Hosting environment: Development
+2025-07-11 13:26:32.988 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-11 13:26:48.336 +05:30 [INF] Application is shutting down...
