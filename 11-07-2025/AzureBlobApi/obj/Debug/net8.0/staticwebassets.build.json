@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "i+JNta2LkKQfqQmYdLrPnkCRgOfoSiCpeiXdkkhb5AY=",
+  "Source": "AzureBlobApi",
+  "BasePath": "_content/AzureBlobApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
