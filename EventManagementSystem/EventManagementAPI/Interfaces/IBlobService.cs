@@ -4,7 +4,7 @@ namespace EventManagementAPI.Interfaces;
 
 public interface IBlobService    
 {
-    Task<string> UploadAsync(IFormFile file);
+    Task<string> UploadAsync(IFormFile file, string blobFileName);
     Task<byte[]> DownloadAsync(string fileName);
 }
 

@@ -15,13 +15,15 @@ public class EventService : IEventService
     private readonly IMapper _mapper;
     private readonly IWebHostEnvironment _env;
     private readonly IHubContext<EventHub> _hubContext;
+    private readonly IBlobService _blobService;
 
-    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext)
+    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext, IBlobService blobService)
     {
         _eventRepository = eventRepository;
         _mapper = mapper;
         _env = env;
         _hubContext = hubContext;
+        _blobService = blobService;
     }
 
     public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date=null , int page = 1, int pageSize = 10)
@@ -49,17 +51,22 @@ public class EventService : IEventService
 
         if (dto.ImagePath != null)
         {
-            var folder = Path.Combine("UploadedFiles", "Events");
-            var extension = Path.GetExtension(dto.ImagePath.FileName);
-            var fileName = $"{evnt.Id}{extension}";
-            var folderPath = Path.Combine(_env.ContentRootPath, folder);
-            Directory.CreateDirectory(folderPath);
-            var filePath = Path.Combine(folderPath, fileName);
+            // var folder = Path.Combine("UploadedFiles", "Events");
+            // var extension = Path.GetExtension(dto.ImagePath.FileName);
+            // var fileName = $"{evnt.Id}{extension}";
+            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            // Directory.CreateDirectory(folderPath);
+            // var filePath = Path.Combine(folderPath, fileName);
 
-            using var stream = new FileStream(filePath, FileMode.Create);
-            await dto.ImagePath.CopyToAsync(stream);
+            // using var stream = new FileStream(filePath, FileMode.Create);
+            // await dto.ImagePath.CopyToAsync(stream);
 
-            evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+            // evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+
+            // using Azure blob
+            var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
+            var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName); // new overload with filename
+            evnt.ImagePath = blobUrl;
 
         }
 
@@ -90,21 +97,24 @@ public class EventService : IEventService
 
         if (dto.ImagePath != null)
         {
-            var folder = Path.Combine("UploadedFiles", "Events");
-            var extension = Path.GetExtension(dto.ImagePath.FileName);
-            var fileName = $"{evnt.Id}{extension}";
-            var folderPath = Path.Combine(_env.ContentRootPath, folder);
-            Directory.CreateDirectory(folderPath);
-            var filePath = Path.Combine(folderPath, fileName);
+            // var folder = Path.Combine("UploadedFiles", "Events");
+            // var extension = Path.GetExtension(dto.ImagePath.FileName);
+            // var fileName = $"{evnt.Id}{extension}";
+            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            // Directory.CreateDirectory(folderPath);
+            // var filePath = Path.Combine(folderPath, fileName);
 
-            using var stream = new FileStream(filePath, FileMode.Create);
-            await dto.ImagePath.CopyToAsync(stream);
+            // using var stream = new FileStream(filePath, FileMode.Create);
+            // await dto.ImagePath.CopyToAsync(stream);
 
-            evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+            // evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+
+            var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
+            var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName);
+            evnt.ImagePath = blobUrl;
         }
 
         await _eventRepository.UpdateAsync(evnt);
-        Console.WriteLine(evnt);
         return _mapper.Map<EventResponseDto>(evnt);
     }
 

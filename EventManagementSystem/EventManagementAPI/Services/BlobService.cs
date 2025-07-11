@@ -13,9 +13,9 @@ public class BlobService : IBlobService
         _container = new BlobContainerClient(new Uri($"{blobUri}{sasToken}"));
     }
 
-    public async Task<string> UploadAsync(IFormFile file)
+    public async Task<string> UploadAsync(IFormFile file, string blobFileName)
         {
-            var blobClient = _container.GetBlobClient(file.FileName);
+            var blobClient = _container.GetBlobClient(blobFileName);
             await using var stream = file.OpenReadStream();
             var blobHttpHeaders = new BlobHttpHeaders
             {

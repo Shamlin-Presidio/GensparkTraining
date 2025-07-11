@@ -11,13 +11,14 @@ public class UserService : IUserService
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment _env;
+        private readonly IBlobService _blobService;
 
-
-        public UserService(IUserRepository userRepository, IMapper mapper, IWebHostEnvironment env)
-        {
-            _userRepository = userRepository;
-            _mapper = mapper;
-            _env = env;
+    public UserService(IUserRepository userRepository, IMapper mapper, IWebHostEnvironment env, IBlobService blobService)
+    {
+        _userRepository = userRepository;
+        _mapper = mapper;
+        _env = env;
+        _blobService = blobService;
         }
 
         public async Task<IEnumerable<UserResponseDto>> GetAllUsersAsync()
@@ -58,19 +59,24 @@ public class UserService : IUserService
             _mapper.Map(dto, user);
 
 
-            if (dto.ProfilePicture != null)
-            {
-                var folder = Path.Combine("UploadedFiles", "Users");
+        if (dto.ProfilePicture != null)
+        {
+            // var folder = Path.Combine("UploadedFiles", "Users");
+            // var extension = Path.GetExtension(dto.ProfilePicture.FileName);
+            // var fileName = $"{user.Id}{extension}";
+            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            // Directory.CreateDirectory(folderPath);
+            // var filePath = Path.Combine(folderPath, fileName);
+
+            // using var stream = new FileStream(filePath, FileMode.Create);
+            // await dto.ProfilePicture.CopyToAsync(stream);
+
+            // user.ProfilePicturePath = Path.Combine(folder, fileName).Replace("\\", "/");
+                
                 var extension = Path.GetExtension(dto.ProfilePicture.FileName);
-                var fileName = $"{user.Id}{extension}";
-                var folderPath = Path.Combine(_env.ContentRootPath, folder);
-                Directory.CreateDirectory(folderPath);
-                var filePath = Path.Combine(folderPath, fileName);
-
-                using var stream = new FileStream(filePath, FileMode.Create);
-                await dto.ProfilePicture.CopyToAsync(stream);
-
-                user.ProfilePicturePath = Path.Combine(folder, fileName).Replace("\\", "/");
+                var blobFileName = $"Users/{user.Id}{extension}";
+                var blobUrl = await _blobService.UploadAsync(dto.ProfilePicture, blobFileName);
+                user.ProfilePicturePath = blobUrl;
             }
 
             await _userRepository.UpdateAsync(user);

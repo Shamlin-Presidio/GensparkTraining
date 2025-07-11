@@ -13,17 +13,20 @@ public class AuthService : IAuthService
     private readonly IUserService _userService;
     private readonly IUserRepository _userRepository;
     private readonly IJwtService _jwtService;
+    private readonly IBlobService _blobService;
     private readonly IWebHostEnvironment _env;
 
     public AuthService(
         IUserService userService,
         IUserRepository userRepository,
         IJwtService jwtService,
-        IWebHostEnvironment env)
+        IWebHostEnvironment env,
+        IBlobService blobService)
     {
         _userService = userService;
         _userRepository = userRepository;
         _jwtService = jwtService;
+        _blobService = blobService;
         _env = env;
     }
 
@@ -49,17 +52,22 @@ public class AuthService : IAuthService
 
         if (profilePicture != null)
         {
-            var folder = Path.Combine("UploadedFiles", "Users");
+            // var folder = Path.Combine("UploadedFiles", "Users");
+            // var extension = Path.GetExtension(profilePicture.FileName);
+            // var fileName = $"{user.Id}{extension}";
+            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            // Directory.CreateDirectory(folderPath);
+            // var filePath = Path.Combine(folderPath, fileName);
+
+            // using var stream = new FileStream(filePath, FileMode.Create);
+            // await profilePicture.CopyToAsync(stream);
+
+            // user.ProfilePicturePath = Path.Combine(folder, fileName).Replace("\\", "/");
+
             var extension = Path.GetExtension(profilePicture.FileName);
-            var fileName = $"{user.Id}{extension}";
-            var folderPath = Path.Combine(_env.ContentRootPath, folder);
-            Directory.CreateDirectory(folderPath);
-            var filePath = Path.Combine(folderPath, fileName);
-
-            using var stream = new FileStream(filePath, FileMode.Create);
-            await profilePicture.CopyToAsync(stream);
-
-            user.ProfilePicturePath = Path.Combine(folder, fileName).Replace("\\", "/");
+            var blobFileName = $"Users/{user.Id}{extension}";
+            var blobUrl = await _blobService.UploadAsync(profilePicture, blobFileName);
+            user.ProfilePicturePath = blobUrl;
         }
 
         await _userRepository.AddAsync(user);
@@ -70,6 +78,7 @@ public class AuthService : IAuthService
             Username = user.Username,
             Email = user.Email,
             Role = user.Role,
+            ProfilePicturePath = user.ProfilePicturePath
         };
 
         var token = _jwtService.GenerateAccessToken(user);
