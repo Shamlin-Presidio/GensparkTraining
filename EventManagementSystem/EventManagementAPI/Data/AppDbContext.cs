@@ -22,7 +22,7 @@ public class AppDbContext : DbContext
             entity.Property(u => u.Username).IsRequired().HasMaxLength(100);
             entity.Property(u => u.PasswordHash).IsRequired();
             entity.Property(u => u.Role).IsRequired();
-            entity.Property(u => u.ProfilePicturePath).HasMaxLength(255);
+            // entity.Property(u => u.ProfilePicturePath).HasMaxLength(255);
             entity.Property(u => u.CreatedAt).HasDefaultValueSql("NOW()");
         });
 
@@ -54,8 +54,8 @@ public class AppDbContext : DbContext
             entity.Property(e => e.OnlineMeetUrl)
                   .HasMaxLength(300);
 
-            entity.Property(e => e.ImagePath)
-                  .HasMaxLength(255);
+            // entity.Property(e => e.ImagePath)
+                  // .HasMaxLength(255);
 
             entity.Property(e => e.CreatedAt)
                   .HasDefaultValueSql("NOW()");

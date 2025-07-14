@@ -177,3 +177,5 @@
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/Microsoft.Azure.KeyVault.Core.dll
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/Microsoft.Azure.Storage.Blob.dll
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/Microsoft.Azure.Storage.Common.dll
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/Azure.Security.KeyVault.Secrets.dll

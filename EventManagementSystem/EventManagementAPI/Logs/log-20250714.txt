@@ -1,0 +1,1264 @@
+2025-07-14 13:24:40.694 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 13:24:40.857 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 13:24:40.895 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 13:24:40.899 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 13:24:40.900 +05:30 [INF] Hosting environment: Development
+2025-07-14 13:24:40.900 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 13:24:50.797 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-bundle.js - null null
+2025-07-14 13:24:50.918 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-14 13:24:50.922 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/swagger-ui-bundle.js - 200 1484234 text/javascript 128.36ms
+2025-07-14 13:24:51.067 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 13:24:51.249 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 182.1979ms
+2025-07-14 13:25:26.310 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundary2eItW7t9I9gzFZES 112510
+2025-07-14 13:25:26.317 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 13:25:26.319 +05:30 [INF] CORS policy execution successful.
+2025-07-14 13:25:26.411 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 13:25:26.449 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 13:25:26.724 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 271.753ms
+2025-07-14 13:25:26.725 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 13:25:26.726 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'uriString')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
+   at System.Uri..ctor(String uriString)
+   at BlobService..ctor(IConfiguration configuration) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 21
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 13:25:26.760 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 450.5887ms
+2025-07-14 13:26:38.598 +05:30 [INF] Application is shutting down...
+2025-07-14 13:26:54.194 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 13:26:54.341 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 13:26:54.372 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 13:26:54.375 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 13:26:54.376 +05:30 [INF] Hosting environment: Development
+2025-07-14 13:26:54.376 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 13:26:56.943 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundaryE0g55H4Eoopl43SZ 112510
+2025-07-14 13:26:56.988 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 13:26:56.990 +05:30 [INF] CORS policy execution successful.
+2025-07-14 13:26:57.069 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 13:26:57.096 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 13:26:59.905 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2803.9754ms
+2025-07-14 13:26:59.908 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 13:26:59.910 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.Identity.CredentialUnavailableException: DefaultAzureCredential failed to retrieve a token from the included credentials. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/defaultazurecredential/troubleshoot
+- EnvironmentCredential authentication unavailable. Environment variables are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/environmentcredential/troubleshoot
+- WorkloadIdentityCredential authentication unavailable. The workload options are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/workloadidentitycredential/troubleshoot
+- ManagedIdentityCredential authentication unavailable. No response received from the managed identity endpoint.
+- VisualStudioCredential authentication failed: Visual Studio Token provider can't be accessed at /Users/shamlin/.IdentityService/AzureServiceAuth/tokenprovider.json
+- AzureCliCredential authentication failed: Azure CLI not installed
+- AzurePowerShellCredential authentication failed: PowerShell is not installed.
+- AzureDeveloperCliCredential authentication failed: Azure Developer CLI could not be found.
+ ---> System.AggregateException: Multiple exceptions were encountered while attempting to authenticate. (EnvironmentCredential authentication unavailable. Environment variables are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/environmentcredential/troubleshoot) (WorkloadIdentityCredential authentication unavailable. The workload options are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/workloadidentitycredential/troubleshoot) (ManagedIdentityCredential authentication unavailable. No response received from the managed identity endpoint.) (VisualStudioCredential authentication failed: Visual Studio Token provider can't be accessed at /Users/shamlin/.IdentityService/AzureServiceAuth/tokenprovider.json) (AzureCliCredential authentication failed: Azure CLI not installed) (AzurePowerShellCredential authentication failed: PowerShell is not installed.) (AzureDeveloperCliCredential authentication failed: Azure Developer CLI could not be found.)
+ ---> Azure.Identity.CredentialUnavailableException: EnvironmentCredential authentication unavailable. Environment variables are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/environmentcredential/troubleshoot
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.EnvironmentCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.EnvironmentCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) Azure.Identity.CredentialUnavailableException: WorkloadIdentityCredential authentication unavailable. The workload options are not fully configured. See the troubleshooting guide for more information. https://aka.ms/azsdk/net/identity/workloadidentitycredential/troubleshoot
+   at Azure.Identity.WorkloadIdentityCredential.GetTokenCoreAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.WorkloadIdentityCredential.GetTokenCoreAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.WorkloadIdentityCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+ ---> (Inner Exception #2) Azure.Identity.CredentialUnavailableException: ManagedIdentityCredential authentication unavailable. No response received from the managed identity endpoint.
+ ---> System.Threading.Tasks.TaskCanceledException: The operation was cancelled because it exceeded the configured timeout of 0:00:01. Network timeout can be adjusted in ClientOptions.Retry.NetworkTimeout.
+ ---> System.Threading.Tasks.TaskCanceledException: A task was canceled.
+ ---> System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellation(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.HttpMessageHandlerStage.Send(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpMessageHandlerStage.Send(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.Metrics.MetricsHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpMessageHandlerStage.Send(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.SocketsHttpHandler.Send(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.Send(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpClient.HandleFailure(Exception e, Boolean telemetryStarted, HttpResponseMessage response, CancellationTokenSource cts, CancellationToken cancellationToken, CancellationTokenSource pendingRequestsCts)
+   at System.Net.Http.HttpClient.Send(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.HttpClientTransport.ProcessSyncOrAsync(HttpMessage message, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.HttpClientTransport.Process(HttpMessage message)
+   at Azure.Core.Pipeline.HttpPipelineTransportPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.RequestActivityPolicy.ProcessNextAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.RequestActivityPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.ResponseBodyPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   --- End of inner exception stack trace ---
+   at Azure.Core.Pipeline.ResponseBodyPolicy.ThrowIfCancellationRequestedOrTimeout(CancellationToken originalToken, CancellationToken timeoutToken, Exception inner, TimeSpan timeout)
+   at Azure.Core.Pipeline.ResponseBodyPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.ResponseBodyPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.LoggingPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.RedirectPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.RedirectPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.RetryPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.RetryPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.RetryPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Identity.DefaultAzureCredentialImdsRetryPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipeline.Send(HttpMessage message, CancellationToken cancellationToken)
+   at Azure.Identity.ManagedIdentitySource.AuthenticateAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.ImdsManagedIdentityProbeSource.AuthenticateAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.ImdsManagedIdentityProbeSource.AuthenticateAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.ManagedIdentityClient.AuthenticateCoreAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.ManagedIdentityClient.AuthenticateAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.ManagedIdentityCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.ManagedIdentityCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.ManagedIdentityCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+ ---> (Inner Exception #3) Azure.Identity.CredentialUnavailableException: VisualStudioCredential authentication failed: Visual Studio Token provider can't be accessed at /Users/shamlin/.IdentityService/AzureServiceAuth/tokenprovider.json
+ ---> Azure.Identity.CredentialUnavailableException: Visual Studio Token provider can't be accessed at /Users/shamlin/.IdentityService/AzureServiceAuth/tokenprovider.json
+ ---> System.IO.DirectoryNotFoundException: Could not find a part of the path '/Users/shamlin/.IdentityService/AzureServiceAuth/tokenprovider.json'.
+   at Interop.ThrowExceptionForIoErrno(ErrorInfo errorInfo, String path, Boolean isDirError)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String path, OpenFlags flags, Int32 mode, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, UnixFileMode openPermissions, Int64& fileLength, UnixFileMode& filePermissions, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at Azure.Identity.FileSystemService.ReadAllText(String path)
+   at Azure.Identity.VisualStudioCredential.GetTokenProviderContent(String tokenProviderPath)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.VisualStudioCredential.GetTokenProviderContent(String tokenProviderPath)
+   at Azure.Identity.VisualStudioCredential.GetTokenProviders(String tokenProviderPath)
+   at Azure.Identity.VisualStudioCredential.GetTokenImplAsync(TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.VisualStudioCredential.GetTokenImplAsync(TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.VisualStudioCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+ ---> (Inner Exception #4) Azure.Identity.CredentialUnavailableException: AzureCliCredential authentication failed: Azure CLI not installed
+ ---> Azure.Identity.CredentialUnavailableException: Azure CLI not installed
+   at Azure.Identity.AzureCliCredential.RequestCliAccessTokenAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.AzureCliCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.AzureCliCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.AzureCliCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+ ---> (Inner Exception #5) Azure.Identity.CredentialUnavailableException: AzurePowerShellCredential authentication failed: PowerShell is not installed.
+ ---> Azure.Identity.CredentialUnavailableException: PowerShell is not installed.
+   at Azure.Identity.AzurePowerShellCredential.CheckForErrors(String output, Int32 exitCode)
+   at Azure.Identity.AzurePowerShellCredential.RequestAzurePowerShellAccessTokenAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.AzurePowerShellCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.AzurePowerShellCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.AzurePowerShellCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+ ---> (Inner Exception #6) Azure.Identity.CredentialUnavailableException: AzureDeveloperCliCredential authentication failed: Azure Developer CLI could not be found.
+ ---> Azure.Identity.CredentialUnavailableException: Azure Developer CLI could not be found.
+   at Azure.Identity.AzureDeveloperCliCredential.RequestCliAccessTokenAsync(Boolean async, TokenRequestContext context, CancellationToken cancellationToken)
+   at Azure.Identity.AzureDeveloperCliCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.AzureDeveloperCliCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.AzureDeveloperCliCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)<---
+
+   --- End of inner exception stack trace ---
+   at Azure.Identity.DefaultAzureCredential.GetTokenFromSourcesAsync(TokenCredential[] sources, TokenRequestContext requestContext, Boolean async, CancellationToken cancellationToken)
+   at Azure.Identity.DefaultAzureCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Identity.CredentialDiagnosticScope.FailWrapAndThrow(Exception ex, String additionalMessage, Boolean isCredentialUnavailable)
+   at Azure.Identity.DefaultAzureCredential.GetTokenImplAsync(Boolean async, TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Identity.DefaultAzureCredential.GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.AccessTokenCache.SetResultOnTcsFromCredentialAsync(TokenRequestContext context, TaskCompletionSource`1 targetTcs, Boolean async, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.AccessTokenCache.GetAuthHeaderValueAsync(HttpMessage message, TokenRequestContext context, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](Task`1 task)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.AccessTokenCache.TokenRequestState.GetCurrentHeaderValue(Boolean async, Boolean checkForCompletion, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.AccessTokenCache.GetAuthHeaderValueAsync(HttpMessage message, TokenRequestContext context, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.AuthenticateAndAuthorizeRequest(HttpMessage message, TokenRequestContext context)
+   at Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.AuthorizeRequestOnChallengeAsyncInternal(HttpMessage message, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](ValueTask`1 task)
+   at Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.AuthorizeRequestOnChallenge(HttpMessage message)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.BearerTokenAuthenticationPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.RedirectPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.RedirectPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.RetryPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.RetryPolicy.ProcessAsync(HttpMessage message, ReadOnlyMemory`1 pipeline, Boolean async)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted(ValueTask task)
+   at Azure.Core.Pipeline.RetryPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNext(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipelineSynchronousPolicy.Process(HttpMessage message, ReadOnlyMemory`1 pipeline)
+   at Azure.Core.Pipeline.HttpPipeline.Send(HttpMessage message, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.HttpPipeline.SendRequest(Request request, CancellationToken cancellationToken)
+   at Azure.Security.KeyVault.KeyVaultPipeline.SendRequest(Request request, CancellationToken cancellationToken)
+   at Azure.Security.KeyVault.KeyVaultPipeline.SendRequest[TResult](RequestMethod method, Func`1 resultFactory, CancellationToken cancellationToken, String[] path)
+   at Azure.Security.KeyVault.Secrets.SecretClient.GetSecret(String name, String version, CancellationToken cancellationToken)
+   at BlobService..ctor(IConfiguration configuration) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 23
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 13:26:59.987 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 3045.8716ms
+2025-07-14 13:27:46.664 +05:30 [INF] Application is shutting down...
+2025-07-14 15:18:43.376 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:18:43.516 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:18:43.551 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:18:43.554 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:18:43.555 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:18:43.555 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:19:51.470 +05:30 [INF] Application is shutting down...
+2025-07-14 15:19:55.951 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:19:56.068 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:19:56.090 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:19:56.093 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:19:56.094 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:19:56.094 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:21:46.857 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:21:47.080 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 227.6254ms
+2025-07-14 15:22:27.429 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundary428WEIGIq8Gsag61 112510
+2025-07-14 15:22:27.444 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:22:27.448 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:22:27.552 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:22:27.588 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:22:29.265 +05:30 [INF] Executed DbCommand (59ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:22:29.884 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2290.5829ms
+2025-07-14 15:22:29.884 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:22:29.888 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.RequestFailedException: This request is not authorized to perform this operation using this permission.
+RequestId:bdd0b59d-901e-0024-44a5-f4f86e000000
+Time:2025-07-14T09:52:29.8318276Z
+Status: 403 (This request is not authorized to perform this operation using this permission.)
+ErrorCode: AuthorizationPermissionMismatch
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:bdd0b59d-901e-0024-44a5-f4f86e000000
+Time:2025-07-14T09:52:29.8318276Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: bdd0b59d-901e-0024-44a5-f4f86e000000
+x-ms-client-request-id: cbcd50fa-2949-4e62-8b9e-85358a812d7f
+x-ms-version: 2024-11-04
+x-ms-error-code: AuthorizationPermissionMismatch
+Date: Mon, 14 Jul 2025 09:52:29 GMT
+Content-Length: 279
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(Stream content, BlobUploadOptions options, CancellationToken cancellationToken)
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 25
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 31
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 69
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:22:29.937 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 2509.4101ms
+2025-07-14 15:25:05.731 +05:30 [INF] Application is shutting down...
+2025-07-14 15:25:11.133 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:25:11.262 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:25:11.288 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:25:11.291 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:25:11.292 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:25:11.292 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:25:23.649 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundaryJizjUUILBiLvdIoq 112510
+2025-07-14 15:25:23.701 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:25:23.702 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:25:23.783 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:25:23.806 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:25:25.320 +05:30 [INF] Executed DbCommand (72ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:25:26.094 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2283.9716ms
+2025-07-14 15:25:26.095 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:25:26.099 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.RequestFailedException: Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:b562f42e-901e-0056-19a5-f4ff21000000
+Time:2025-07-14T09:55:26.0406998Z
+Status: 401 (Server failed to authenticate the request. Please refer to the information in the www-authenticate header.)
+ErrorCode: NoAuthenticationInformation
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>NoAuthenticationInformation</Code><Message>Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:b562f42e-901e-0056-19a5-f4ff21000000
+Time:2025-07-14T09:55:26.0406998Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: b562f42e-901e-0056-19a5-f4ff21000000
+x-ms-client-request-id: 01d0fa05-9d78-4bfc-8636-dfcb53359dc5
+x-ms-version: 2024-11-04
+x-ms-error-code: NoAuthenticationInformation
+WWW-Authenticate: Bearer authorization_uri=https://login.microsoftonline.com/2a731c61-a2b2-4661-8409-5b861cf40d0c/oauth2/authorize resource_id=https://storage.azure.com
+Date: Mon, 14 Jul 2025 09:55:25 GMT
+Content-Length: 302
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(Stream content, BlobUploadOptions options, CancellationToken cancellationToken)
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 25
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 31
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 69
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:25:26.152 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 2505.4456ms
+2025-07-14 15:25:34.133 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-07-14 15:25:34.244 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 112.199ms
+2025-07-14 15:25:34.321 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:25:34.458 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 137.004ms
+2025-07-14 15:25:57.612 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundaryvximvkFEBvi6J8A0 112510
+2025-07-14 15:25:57.617 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:25:57.621 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:25:57.622 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:25:57.690 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:25:58.229 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 607.1263ms
+2025-07-14 15:25:58.230 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:25:58.231 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.RequestFailedException: Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:e17e6d3d-701e-004e-5fa5-f42046000000
+Time:2025-07-14T09:55:58.1916192Z
+Status: 401 (Server failed to authenticate the request. Please refer to the information in the www-authenticate header.)
+ErrorCode: NoAuthenticationInformation
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>NoAuthenticationInformation</Code><Message>Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:e17e6d3d-701e-004e-5fa5-f42046000000
+Time:2025-07-14T09:55:58.1916192Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: e17e6d3d-701e-004e-5fa5-f42046000000
+x-ms-client-request-id: c5497baa-6f53-4249-854d-e03620dccb6b
+x-ms-version: 2024-11-04
+x-ms-error-code: NoAuthenticationInformation
+WWW-Authenticate: Bearer authorization_uri=https://login.microsoftonline.com/2a731c61-a2b2-4661-8409-5b861cf40d0c/oauth2/authorize resource_id=https://storage.azure.com
+Date: Mon, 14 Jul 2025 09:55:57 GMT
+Content-Length: 302
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(Stream content, BlobUploadOptions options, CancellationToken cancellationToken)
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 25
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 31
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 69
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:25:58.239 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 626.7578ms
+2025-07-14 15:30:40.070 +05:30 [INF] Application is shutting down...
+2025-07-14 15:30:46.237 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:30:46.354 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:30:46.375 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:30:46.377 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:30:46.378 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:30:46.378 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:30:57.071 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundarya9qQjNYft2w44Bl3 112510
+2025-07-14 15:30:57.118 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:30:57.119 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:30:57.197 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:30:57.221 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:30:58.651 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:30:59.256 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2031.7235ms
+2025-07-14 15:30:59.257 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:30:59.261 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.RequestFailedException: Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:7b038219-601e-0042-10a6-f4b74e000000
+Time:2025-07-14T10:00:59.2289124Z
+Status: 401 (Server failed to authenticate the request. Please refer to the information in the www-authenticate header.)
+ErrorCode: NoAuthenticationInformation
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>NoAuthenticationInformation</Code><Message>Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:7b038219-601e-0042-10a6-f4b74e000000
+Time:2025-07-14T10:00:59.2289124Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: 7b038219-601e-0042-10a6-f4b74e000000
+x-ms-client-request-id: 8f48cc52-4f84-4e87-b443-4bccfcd635fd
+x-ms-version: 2024-11-04
+x-ms-error-code: NoAuthenticationInformation
+WWW-Authenticate: Bearer authorization_uri=https://login.microsoftonline.com/2a731c61-a2b2-4661-8409-5b861cf40d0c/oauth2/authorize resource_id=https://storage.azure.com
+Date: Mon, 14 Jul 2025 10:00:58 GMT
+Content-Length: 302
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(Stream content, BlobUploadOptions options, CancellationToken cancellationToken)
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 25
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 31
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 69
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:30:59.300 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 2230.6169ms
+2025-07-14 15:31:01.952 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-07-14 15:31:02.069 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 117.8263ms
+2025-07-14 15:31:02.160 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:31:02.297 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 136.2871ms
+2025-07-14 15:31:31.003 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 48
+2025-07-14 15:31:31.017 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:31:31.024 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:31:31.036 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-07-14 15:31:31.166 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-07-14 15:31:31.264 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 15:31:31.281 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 244.172ms
+2025-07-14 15:31:31.281 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:31:31.281 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 278.7706ms
+2025-07-14 15:31:49.822 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundary5fBvMrJlWjL3JoHP 112510
+2025-07-14 15:31:49.823 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:31:49.827 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:31:49.828 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:31:49.870 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:31:50.408 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 579.772ms
+2025-07-14 15:31:50.408 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:31:50.409 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Azure.RequestFailedException: Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:7b03e743-601e-0042-38a6-f4b74e000000
+Time:2025-07-14T10:01:50.3911424Z
+Status: 401 (Server failed to authenticate the request. Please refer to the information in the www-authenticate header.)
+ErrorCode: NoAuthenticationInformation
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>NoAuthenticationInformation</Code><Message>Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+RequestId:7b03e743-601e-0042-38a6-f4b74e000000
+Time:2025-07-14T10:01:50.3911424Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: 7b03e743-601e-0042-38a6-f4b74e000000
+x-ms-client-request-id: e56f63b5-8119-42e1-9bd6-c3c28bad9681
+x-ms-version: 2024-11-04
+x-ms-error-code: NoAuthenticationInformation
+WWW-Authenticate: Bearer authorization_uri=https://login.microsoftonline.com/2a731c61-a2b2-4661-8409-5b861cf40d0c/oauth2/authorize resource_id=https://storage.azure.com
+Date: Mon, 14 Jul 2025 10:01:49 GMT
+Content-Length: 302
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(Stream content, BlobUploadOptions options, CancellationToken cancellationToken)
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 25
+   at BlobService.UploadAsync(IFormFile file, String blobFileName) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/BlobService.cs:line 31
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 69
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:31:50.419 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 596.7455ms
+2025-07-14 15:32:57.228 +05:30 [INF] Application is shutting down...
+2025-07-14 15:33:02.020 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:33:02.143 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:33:02.166 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:33:02.169 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:33:02.170 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:33:02.170 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:33:08.176 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundarynXnjsCJln8qiAPHd 112510
+2025-07-14 15:33:08.214 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:33:08.216 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:33:08.280 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:33:08.304 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:33:09.639 +05:30 [INF] Executed DbCommand (56ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:33:10.836 +05:30 [ERR] Failed executing DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Id", "CreatedAt", "Email", "IsDeleted", "PasswordHash", "ProfilePicturePath", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-07-14 15:33:10.864 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'EventManagementAPI.Data.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-14 15:33:10.875 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2568.0645ms
+2025-07-14 15:33:10.876 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:33:10.879 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EventManagementAPI.Repositories.UserRepository.AddAsync(User user) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Repositories/UserRepository.cs:line 29
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 73
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:33:10.908 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 2732.9185ms
+2025-07-14 15:34:56.207 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 48
+2025-07-14 15:34:56.221 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:34:56.231 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:34:56.244 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-07-14 15:34:56.405 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-07-14 15:34:56.426 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 15:34:56.450 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 204.0274ms
+2025-07-14 15:34:56.450 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:34:56.450 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 244.1491ms
+2025-07-14 15:34:59.018 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 48
+2025-07-14 15:34:59.020 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:34:59.025 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:34:59.026 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-07-14 15:34:59.062 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-07-14 15:34:59.063 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 15:34:59.064 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 38.2393ms
+2025-07-14 15:34:59.065 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:34:59.065 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 46.7788ms
+2025-07-14 15:36:03.956 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 48
+2025-07-14 15:36:03.962 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:36:03.963 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:36:03.964 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-07-14 15:36:03.967 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-07-14 15:36:03.971 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-14 15:36:03.972 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 8.1474ms
+2025-07-14 15:36:03.973 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 15:36:03.973 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 401 null application/json; charset=utf-8 39.2331ms
+2025-07-14 15:36:07.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-07-14 15:36:07.829 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 85.39ms
+2025-07-14 15:36:07.909 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:36:08.038 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 128.5665ms
+2025-07-14 15:39:01.696 +05:30 [INF] Application is shutting down...
+2025-07-14 15:39:08.486 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:39:08.612 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:39:08.634 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:39:08.636 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:39:08.637 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:39:08.637 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:39:15.218 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-07-14 15:39:15.391 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 174.4741ms
+2025-07-14 15:39:15.506 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:39:15.690 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 184.7048ms
+2025-07-14 15:39:38.033 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundary29ST39S4yGOYfu7j 112510
+2025-07-14 15:39:38.068 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:39:38.070 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:39:38.154 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:39:38.178 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:39:39.543 +05:30 [INF] Executed DbCommand (52ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:39:40.728 +05:30 [ERR] Failed executing DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Id", "CreatedAt", "Email", "IsDeleted", "PasswordHash", "ProfilePicturePath", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-07-14 15:39:40.750 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'EventManagementAPI.Data.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-14 15:39:40.762 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2580.0841ms
+2025-07-14 15:39:40.762 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:39:40.765 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EventManagementAPI.Repositories.UserRepository.AddAsync(User user) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Repositories/UserRepository.cs:line 29
+   at EventManagementAPI.Services.AuthService.SignUpAsync(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/AuthService.cs:line 73
+   at AuthController.SignUp(UserCreateDto dto, IFormFile profilePicture) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/AuthController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 15:39:40.790 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 500 null text/plain; charset=utf-8 2756.6028ms
+2025-07-14 15:42:26.678 +05:30 [INF] Application is shutting down...
+2025-07-14 15:43:32.833 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-14 15:43:33.132 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-07-14 15:43:33.141 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-14 15:43:33.146 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-07-14 15:43:33.148 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-14 15:43:33.157 +05:30 [INF] Applying migration '20250714101319_RemoveMaxLengthFrom_ProfilePicturePath'.
+2025-07-14 15:43:33.178 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Users" ALTER COLUMN "ProfilePicturePath" TYPE text;
+2025-07-14 15:43:33.179 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250714101319_RemoveMaxLengthFrom_ProfilePicturePath', '9.0.5');
+2025-07-14 15:43:39.392 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 15:43:39.517 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 15:43:39.545 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 15:43:39.547 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 15:43:39.548 +05:30 [INF] Hosting environment: Development
+2025-07-14 15:43:39.548 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 15:43:47.443 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/index.html - null null
+2025-07-14 15:43:47.593 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/index.html - 200 null text/html;charset=utf-8 151.4854ms
+2025-07-14 15:43:47.849 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - null null
+2025-07-14 15:43:47.987 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 138.6411ms
+2025-07-14 15:44:07.139 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/signup - multipart/form-data; boundary=----WebKitFormBoundary1bmB2G1irUED5hoZ 112510
+2025-07-14 15:44:07.161 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 15:44:07.168 +05:30 [INF] CORS policy execution successful.
+2025-07-14 15:44:07.257 +05:30 [INF] Executing endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:44:07.280 +05:30 [INF] Route matched with {action = "SignUp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SignUp(EventManagementAPI.Models.DTOs.User.UserCreateDto, Microsoft.AspNetCore.Http.IFormFile) on controller AuthController (EventManagementAPI).
+2025-07-14 15:44:08.673 +05:30 [INF] Executed DbCommand (55ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-07-14 15:44:09.991 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Id", "CreatedAt", "Email", "IsDeleted", "PasswordHash", "ProfilePicturePath", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-07-14 15:44:10.025 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-14 15:44:10.062 +05:30 [INF] Executed action AuthController.SignUp (EventManagementAPI) in 2777.9743ms
+2025-07-14 15:44:10.062 +05:30 [INF] Executed endpoint 'AuthController.SignUp (EventManagementAPI)'
+2025-07-14 15:44:10.073 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/signup - 200 null application/json; charset=utf-8 2933.4219ms
+2025-07-14 16:05:39.757 +05:30 [INF] Application is shutting down...
+2025-07-14 16:07:51.434 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 16:07:51.565 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 16:07:51.595 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 16:07:51.598 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 16:07:51.599 +05:30 [INF] Hosting environment: Development
+2025-07-14 16:07:51.599 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 16:08:09.659 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Auth/login - application/json 48
+2025-07-14 16:08:09.709 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 16:08:09.711 +05:30 [INF] CORS policy execution successful.
+2025-07-14 16:08:09.797 +05:30 [INF] Executing endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 16:08:09.827 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(EventManagementAPI.Models.DTOs.Auth.LoginRequestDto) on controller AuthController (EventManagementAPI).
+2025-07-14 16:08:15.486 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-07-14 16:08:15.959 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[EventManagementAPI.Models.DTOs.User.UserResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-14 16:08:15.999 +05:30 [INF] Executed action AuthController.Login (EventManagementAPI) in 6167.303ms
+2025-07-14 16:08:16.000 +05:30 [INF] Executed endpoint 'AuthController.Login (EventManagementAPI)'
+2025-07-14 16:08:16.011 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Auth/login - 200 null application/json; charset=utf-8 6355.8131ms
+2025-07-14 16:09:23.186 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - multipart/form-data; boundary=----WebKitFormBoundarym4xPgC2zVlTCshV7 3919895
+2025-07-14 16:09:23.192 +05:30 [INF] CORS policy execution successful.
+2025-07-14 16:09:23.253 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:09:23.265 +05:30 [INF] Route matched with {action = "CreateEvent", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateEvent(EventManagementAPI.Models.DTOs.Event.EventCreateDto) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-07-14 16:09:29.047 +05:30 [ERR] Failed executing DbCommand (25ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (DbType = Guid), @p9='?' (DbType = DateTime), @p10='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Events" ("Id", "CreatedAt", "Description", "EndTime", "GoogleMapLink", "ImagePath", "Location", "OnlineMeetUrl", "OrganizerId", "StartTime", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "IsDeleted";
+2025-07-14 16:09:29.078 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'EventManagementAPI.Data.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-14 16:09:29.084 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI) in 5819.508ms
+2025-07-14 16:09:29.085 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:09:29.087 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 22001: value too long for type character varying(255)
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 22001
+    MessageText: value too long for type character varying(255)
+    File: varchar.c
+    Line: 640
+    Routine: varchar
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EventManagementAPI.Repositories.EventRepository.AddAsync(Event ev) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Repositories/EventRepository.cs:line 82
+   at EventService.CreateEventAsync(EventCreateDto dto, Guid organizerId) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Services/EventService.cs:line 73
+   at EventManagementAPI.Controllers.EventController.CreateEvent(EventCreateDto dto) in /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/Controllers/EventController.cs:line 62
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-14 16:09:29.114 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - 500 null text/plain; charset=utf-8 5930.7818ms
+2025-07-14 16:10:00.146 +05:30 [INF] Application is shutting down...
+2025-07-14 16:10:46.132 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-14 16:10:46.455 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-07-14 16:10:46.465 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-14 16:10:46.467 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-07-14 16:10:46.469 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-14 16:10:46.477 +05:30 [INF] Applying migration '20250714104033_RemoveMaxLengthFrom_ImagePath'.
+2025-07-14 16:10:46.496 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Events" ALTER COLUMN "ImagePath" TYPE text;
+2025-07-14 16:10:46.497 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250714104033_RemoveMaxLengthFrom_ImagePath', '9.0.5');
+2025-07-14 16:10:52.935 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 16:10:53.062 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 16:10:53.085 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 16:10:53.087 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 16:10:53.088 +05:30 [INF] Hosting environment: Development
+2025-07-14 16:10:53.088 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 16:11:03.100 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - multipart/form-data; boundary=----WebKitFormBoundarylmJLyAbOEBSpbiV4 3919895
+2025-07-14 16:11:03.150 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 16:11:03.152 +05:30 [INF] CORS policy execution successful.
+2025-07-14 16:11:03.286 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:11:03.315 +05:30 [INF] Route matched with {action = "CreateEvent", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateEvent(EventManagementAPI.Models.DTOs.Event.EventCreateDto) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-07-14 16:11:12.909 +05:30 [INF] Executed DbCommand (65ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (DbType = Guid), @p9='?' (DbType = DateTime), @p10='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Events" ("Id", "CreatedAt", "Description", "EndTime", "GoogleMapLink", "ImagePath", "Location", "OnlineMeetUrl", "OrganizerId", "StartTime", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "IsDeleted";
+2025-07-14 16:11:13.294 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-07-14 16:11:13.340 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-07-14 16:11:13.435 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI) in 10115.592ms
+2025-07-14 16:11:13.435 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:11:13.449 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - 201 null application/json; charset=utf-8 10350.4913ms
+2025-07-14 16:11:41.405 +05:30 [INF] Application is shutting down...
+2025-07-14 16:12:21.282 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 16:12:21.404 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-14 16:12:21.426 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-14 16:12:21.428 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 16:12:21.429 +05:30 [INF] Hosting environment: Development
+2025-07-14 16:12:21.429 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-14 16:12:40.302 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - multipart/form-data; boundary=----WebKitFormBoundary2kOXTXOAPUvzl3RW 3919899
+2025-07-14 16:12:40.341 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-14 16:12:40.342 +05:30 [INF] CORS policy execution successful.
+2025-07-14 16:12:40.452 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:12:40.477 +05:30 [INF] Route matched with {action = "CreateEvent", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateEvent(EventManagementAPI.Models.DTOs.Event.EventCreateDto) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-07-14 16:12:50.872 +05:30 [INF] Executed DbCommand (63ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (DbType = Guid), @p9='?' (DbType = DateTime), @p10='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Events" ("Id", "CreatedAt", "Description", "EndTime", "GoogleMapLink", "ImagePath", "Location", "OnlineMeetUrl", "OrganizerId", "StartTime", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "IsDeleted";
+2025-07-14 16:12:51.222 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title", u."Id", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Events" AS e
+INNER JOIN "Users" AS u ON e."OrganizerId" = u."Id"
+WHERE NOT (e."IsDeleted") AND e."Id" = @__id_0 AND NOT (e."IsDeleted")
+LIMIT 1
+2025-07-14 16:12:51.268 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'EventManagementAPI.Models.DTOs.Event.EventResponseDto'.
+2025-07-14 16:12:51.353 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI) in 10864.7148ms
+2025-07-14 16:12:51.354 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.CreateEvent (EventManagementAPI)'
+2025-07-14 16:12:51.366 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/api/Event/CreateEvent - 201 null application/json; charset=utf-8 11057.8543ms
+2025-07-14 16:12:59.234 +05:30 [INF] Application is shutting down...
