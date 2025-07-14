@@ -14,8 +14,15 @@ using Microsoft.OpenApi.Models;
 using AspNetCoreRateLimit;
 using Microsoft.Extensions.FileProviders;
 using Serilog.Sinks.AzureBlobStorage;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var keyVaultUrl = builder.Configuration["AzureVaultSettings:VaultUri"];
+builder.Configuration.AddAzureKeyVault(
+    new Uri(keyVaultUrl),
+    new DefaultAzureCredential());
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -150,15 +157,27 @@ builder.Services.AddCors(options => {
 // builder.Host.UseSerilog((ctx, lc) =>
 //     lc.WriteTo.Console()
 //       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
+
+// builder.Host.UseSerilog((ctx, lc) =>
+// {
+//     lc.WriteTo.Console()
+//       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+//       .WriteTo.AzureBlobStorage(
+//           connectionString: builder.Configuration["AzureBlobSettingsFS:ConnectionString"],
+//           storageContainerName: "event-logs"
+//       );
+// });
+
 builder.Host.UseSerilog((ctx, lc) =>
 {
     lc.WriteTo.Console()
       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
       .WriteTo.AzureBlobStorage(
-          connectionString: builder.Configuration["AzureBlobSettingsFS:ConnectionString"],
+          connectionString: ctx.Configuration["eventAPI-BlobConnectionString"], 
           storageContainerName: "event-logs"
       );
 });
+
 #endregion
 
 
