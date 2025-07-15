@@ -3,7 +3,9 @@
   <div class="header">
     <h2>{{ event.title }}</h2>
     <!-- <div *ngIf="event.imagePath"> -->
-    <img [src]="'http://localhost:5025/' + event.imagePath" class=" banner img-fluid mb-3" />
+    <!-- <img [src]="'http://localhost:5025/' + event.imagePath" class=" banner img-fluid mb-3" /> -->
+     <img [src]="event.imagePath?.startsWith('http') ? event.imagePath : 'http://localhost:5025/' + event.imagePath"
+     class="banner img-fluid mb-3" />
     <!-- </div> -->
   </div>
 

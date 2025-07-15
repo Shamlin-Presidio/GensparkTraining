@@ -107,14 +107,6 @@ namespace EventManagementAPI.Services
                 byte[]? pdf = null;
                 try
                 {
-                    Console.WriteLine("🧾 Generating PDF...");
-                    Console.WriteLine($"📦 Generating PDF with values:");
-                    Console.WriteLine($"    Username: {user.Username}");
-                    Console.WriteLine($"    Event Title: {evnt.Title}");
-                    Console.WriteLine($"    Description: {evnt.Description}");
-                    Console.WriteLine($"    Start: {evnt.StartTime}");
-                    Console.WriteLine($"    End: {evnt.EndTime}");
-
                     pdf = PdfGenerator.GenerateEventRegistrationPdf(
                         user.Username,
                         evnt.Title,
@@ -122,11 +114,11 @@ namespace EventManagementAPI.Services
                         evnt.StartTime,
                         evnt.EndTime
                     );
-                    Console.WriteLine("✅ PDF generated");
+                    Console.WriteLine("PDF generated");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("❌ Failed to generate PDF: " + ex.Message);
+                    Console.WriteLine("Failed to generate PDF: " + ex.Message);
                 }
 
                 // Send email
@@ -135,7 +127,7 @@ namespace EventManagementAPI.Services
                     Console.WriteLine("📨 Preparing to send email to user...");
                     await _emailService.SendEmailAsync(
                         user.Email,
-                        "✅ Event Registration Confirmation",
+                        "Event Registration Confirmation",
                         $"<p>Hi {user.Username},</p><p>You have successfully registered for <strong>{evnt.Title}</strong>.</p><p>Find the attached confirmation.</p>",
                         pdf,
                         $"{evnt.Title}-Confirmation.pdf"
@@ -143,7 +135,7 @@ namespace EventManagementAPI.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("❌ Error sending email: " + ex.Message);
+                    Console.WriteLine("Error sending email: " + ex.Message);
                 }
             }
             return _mapper.Map<RegistrationResponseDto>(created);
