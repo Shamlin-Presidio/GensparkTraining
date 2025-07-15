@@ -1,5 +1,6 @@
 using AutoMapper;
 using EventManagementAPI.Interfaces;
+using EventManagementAPI.Misc;
 using EventManagementAPI.Models;
 using EventManagementAPI.Models.DTOs.Registration;
 using EventManagementAPI.Models.DTOs.User;
@@ -11,14 +12,21 @@ namespace EventManagementAPI.Services
         private readonly IRegistrationRepository _registrationRepository;
         private readonly IEventRepository _eventRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
+        private readonly IUserRepository _userRepository;
 
         public RegistrationService(
             IRegistrationRepository registrationRepository,
             IEventRepository eventRepository,
+            IUserRepository userRepository,
+            IEmailService emailService,
+
             IMapper mapper)
         {
             _registrationRepository = registrationRepository;
             _eventRepository = eventRepository;
+            _userRepository = userRepository;
+            _emailService = emailService;
             _mapper = mapper;
         }
 
@@ -90,6 +98,54 @@ namespace EventManagementAPI.Services
             };
 
             var created = await _registrationRepository.AddAsync(registration);
+
+            // Fetch user details
+            var user = await _userRepository.GetByIdAsync(attendeeId);
+            if (user != null && !string.IsNullOrWhiteSpace(user.Email))
+            {
+                // Generate PDF
+                byte[]? pdf = null;
+                try
+                {
+                    Console.WriteLine("🧾 Generating PDF...");
+                    Console.WriteLine($"📦 Generating PDF with values:");
+                    Console.WriteLine($"    Username: {user.Username}");
+                    Console.WriteLine($"    Event Title: {evnt.Title}");
+                    Console.WriteLine($"    Description: {evnt.Description}");
+                    Console.WriteLine($"    Start: {evnt.StartTime}");
+                    Console.WriteLine($"    End: {evnt.EndTime}");
+
+                    pdf = PdfGenerator.GenerateEventRegistrationPdf(
+                        user.Username,
+                        evnt.Title,
+                        evnt.Description,
+                        evnt.StartTime,
+                        evnt.EndTime
+                    );
+                    Console.WriteLine("✅ PDF generated");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Failed to generate PDF: " + ex.Message);
+                }
+
+                // Send email
+                try
+                {
+                    Console.WriteLine("📨 Preparing to send email to user...");
+                    await _emailService.SendEmailAsync(
+                        user.Email,
+                        "✅ Event Registration Confirmation",
+                        $"<p>Hi {user.Username},</p><p>You have successfully registered for <strong>{evnt.Title}</strong>.</p><p>Find the attached confirmation.</p>",
+                        pdf,
+                        $"{evnt.Title}-Confirmation.pdf"
+                    );
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Error sending email: " + ex.Message);
+                }
+            }
             return _mapper.Map<RegistrationResponseDto>(created);
         }
 
