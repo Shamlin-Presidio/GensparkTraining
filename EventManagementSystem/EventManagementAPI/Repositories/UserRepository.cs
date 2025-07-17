@@ -51,4 +51,13 @@ public class UserRepository : IUserRepository
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
+    // C O I N S 
+    public async Task UpdateCoinsAsync(Guid userId, int coins)
+    {
+        var user = await _context.Users.FindAsync(userId);
+        if (user == null) throw new Exception("User not found");
+        user.Coins += coins;
+        await _context.SaveChangesAsync();
+    }
+
 }

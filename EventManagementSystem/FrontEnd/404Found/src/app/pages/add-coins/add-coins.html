@@ -1,0 +1,15 @@
+<!-- <h2>Your Current Coins: {{ user?.coins }}</h2>
+
+<input type="number" [(ngModel)]="amount" placeholder="Enter amount in ₹" />
+<p>You’ll get {{ amount }} coins.</p>
+
+<button (click)="payAndAddCoins()">Pay and Add Coins</button> -->
+
+
+<div class="container">
+  <h2>Add Coins</h2>
+  <p>Current Coins: {{ coins }}</p>
+
+  <input type="number" [(ngModel)]="amount" placeholder="Enter amount" />
+  <button (click)="payAndAddCoins()">Add Coins</button>
+</div>

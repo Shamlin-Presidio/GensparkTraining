@@ -9,4 +9,7 @@ public interface IUserService
     // Task<UserResponseDto> CreateUserAsync(UserCreateDto dto);
     Task<UserResponseDto?> UpdateUserAsync(Guid id, UserUpdateDto dto);
     Task<bool> DeleteUserAsync(Guid id, Guid currentUserId);
+
+    Task<int> GetCoinsAsync(Guid userId);
+    Task UpdateCoinsAsync(Guid userId, int coins);
 }

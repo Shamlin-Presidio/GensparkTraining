@@ -10,5 +10,6 @@ public interface IUserRepository
     Task<User?> UpdateAsync(User user);
     Task<bool> DeleteAsync(Guid id);
     Task<User?> GetByEmailAsync(string email);
+    Task UpdateCoinsAsync(Guid userId, int coins);
 
 }

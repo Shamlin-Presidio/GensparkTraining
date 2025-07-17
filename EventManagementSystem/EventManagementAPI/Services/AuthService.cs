@@ -78,7 +78,8 @@ public class AuthService : IAuthService
             Username = user.Username,
             Email = user.Email,
             Role = user.Role,
-            ProfilePicturePath = user.ProfilePicturePath
+            ProfilePicturePath = user.ProfilePicturePath,
+            Coins = user.Coins
         };
 
         var token = _jwtService.GenerateAccessToken(user);
@@ -102,7 +103,8 @@ public class AuthService : IAuthService
             Username = user.Username,
             Email = user.Email,
             Role = user.Role,
-            ProfilePicturePath = user.ProfilePicturePath
+            ProfilePicturePath = user.ProfilePicturePath,
+            Coins = user.Coins
         };
 
         var token = _jwtService.GenerateAccessToken(user);

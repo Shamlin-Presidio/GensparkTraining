@@ -11,6 +11,7 @@ import { CreateEvent } from './pages/create-event/create-event';
 import { organizerGuard }from './guards/role-guard-guard';
 import { MyEvents } from './pages/my-events/my-events';
 import { Notifications } from './pages/notification/notification';
+import { AddCoins } from './pages/add-coins/add-coins';
 
 
 export const routes: Routes = [
@@ -48,6 +49,12 @@ export const routes: Routes = [
         canActivate: [authGuard],
         loadComponent: () =>
           import('./pages/notification/notification').then(m => m.Notifications),
+      },
+      {
+        path: 'add-coins',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./pages/add-coins/add-coins').then(m => m.AddCoins),
       },
     ]
   },

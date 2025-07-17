@@ -104,4 +104,31 @@ public class UserController : ControllerBase
             });
         }
     }
+
+
+    // C O I N S
+
+    // GET: api/User/{id}/coins
+    [HttpGet("{id}/coins")]
+    public async Task<IActionResult> GetCoins(Guid id)
+    {
+        try
+        {
+            int coins = await _userService.GetCoinsAsync(id);
+            return Ok(coins);
+        }
+        catch (Exception ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
+
+    // PUT: api/User/{id}/coins
+    [HttpPut("{id}/coins")]
+    public async Task<IActionResult> UpdateCoins(Guid id, [FromQuery] int coins)
+    {
+        await _userService.UpdateCoinsAsync(id, coins);
+        return NoContent();
+    }
+
 }
