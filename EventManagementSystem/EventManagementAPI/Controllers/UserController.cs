@@ -130,5 +130,21 @@ public class UserController : ControllerBase
         await _userService.UpdateCoinsAsync(id, coins);
         return NoContent();
     }
+    
+    // PUT: api/User/{id}/coins
+    [HttpPut("{id}/deduct-coin")]
+    public async Task<IActionResult> DeductCoin(Guid id)
+    {
+
+        try
+        {
+            int updatedCoins = await _userService.DeductCoinAsync(id);
+            return Ok(updatedCoins);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 
 }

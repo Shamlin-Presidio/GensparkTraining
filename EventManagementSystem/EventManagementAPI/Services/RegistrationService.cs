@@ -84,6 +84,19 @@ namespace EventManagementAPI.Services
                 existing.RegisteredAt = DateTime.UtcNow;
                 await _registrationRepository.SaveChangesAsync();
 
+                // Deduct coin
+                var userToUpdate = await _userRepository.GetByIdAsync(attendeeId);
+                if (userToUpdate == null)
+                    throw new KeyNotFoundException("User not found");
+
+                if (userToUpdate.Coins <= 0)
+                    throw new InvalidOperationException("Insufficient coins");
+
+                userToUpdate.Coins -= 1;
+                await _userRepository.UpdateAsync(userToUpdate);
+
+                await _registrationRepository.SaveChangesAsync();
+
                 return _mapper.Map<RegistrationResponseDto>(existing);
             }
 
@@ -96,11 +109,21 @@ namespace EventManagementAPI.Services
                 RegisteredAt = DateTime.UtcNow,
                 IsDeleted = false
             };
+            // Deduct coin
+            var user = await _userRepository.GetByIdAsync(attendeeId);
+            if (user == null)
+                throw new KeyNotFoundException("User not found");
+
+            if (user.Coins <= 0)
+                throw new InvalidOperationException("Insufficient coins");
+
+            user.Coins -= 1;
+            await _userRepository.UpdateAsync(user);
 
             var created = await _registrationRepository.AddAsync(registration);
 
             // Fetch user details
-            var user = await _userRepository.GetByIdAsync(attendeeId);
+            // var user = await _userRepository.GetByIdAsync(attendeeId);
             if (user != null && !string.IsNullOrWhiteSpace(user.Email))
             {
                 // Generate PDF

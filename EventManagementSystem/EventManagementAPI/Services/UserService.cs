@@ -104,5 +104,19 @@ public class UserService : IUserService
     {
         await _userRepository.UpdateCoinsAsync(userId, coins);
     }
+    public async Task<int> DeductCoinAsync(Guid userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null)
+            throw new Exception("User not found");
+
+        if (user.Coins <= 0)
+            throw new Exception("Insufficient coins");
+
+        user.Coins -= 1;
+        await _userRepository.UpdateAsync(user);
+
+        return user.Coins;
+    }
 }
     

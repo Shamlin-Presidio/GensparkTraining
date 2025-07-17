@@ -12,4 +12,6 @@ public interface IUserService
 
     Task<int> GetCoinsAsync(Guid userId);
     Task UpdateCoinsAsync(Guid userId, int coins);
+    Task<int> DeductCoinAsync(Guid userId);
+
 }
