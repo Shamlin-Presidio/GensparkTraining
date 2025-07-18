@@ -3895,3 +3895,56 @@ ORDER BY e0."CreatedAt" DESC
 2025-07-18 11:50:13.844 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 1123.5416ms
 2025-07-18 11:50:13.844 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
 2025-07-18 11:50:13.844 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 1127.3529ms
+2025-07-18 11:56:22.476 +05:30 [INF] User profile is available. Using '/Users/shamlin/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-18 11:56:22.607 +05:30 [WRN] The WebRootPath was not found: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/wwwroot. Static files may be unavailable.
+2025-07-18 11:56:22.654 +05:30 [INF] Now listening on: http://localhost:5025
+2025-07-18 11:56:22.658 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-18 11:56:22.659 +05:30 [INF] Hosting environment: Development
+2025-07-18 11:56:22.659 +05:30 [INF] Content root path: /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI
+2025-07-18 11:56:26.699 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/User/17d3fe10-7565-4037-9b36-589b99b49fd3/coins - null null
+2025-07-18 11:56:26.699 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null null
+2025-07-18 11:56:26.722 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - null null
+2025-07-18 11:56:26.775 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-18 11:56:26.777 +05:30 [INF] CORS policy execution successful.
+2025-07-18 11:56:26.777 +05:30 [INF] CORS policy execution successful.
+2025-07-18 11:56:26.786 +05:30 [INF] CORS policy execution successful.
+2025-07-18 11:56:26.792 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 204 null null 96.091ms
+2025-07-18 11:56:26.801 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - null 0
+2025-07-18 11:56:26.803 +05:30 [INF] CORS policy execution successful.
+2025-07-18 11:56:26.996 +05:30 [INF] Executing endpoint '/eventHub/negotiate'
+2025-07-18 11:56:26.996 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-07-18 11:56:27.037 +05:30 [INF] Executed endpoint '/eventHub/negotiate'
+2025-07-18 11:56:27.038 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5025/eventHub/negotiate?negotiateVersion=1 - 200 316 application/json 236.6833ms
+2025-07-18 11:56:27.043 +05:30 [INF] Route matched with {action = "GetAllEvents", controller = "Event"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEvents(System.String, System.Nullable`1[System.DateTime], Int32, Int32) on controller EventManagementAPI.Controllers.EventController (EventManagementAPI).
+2025-07-18 11:56:27.047 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5025/eventHub?id=uvuXaorYx1DIYgtKimJXvQ - null null
+2025-07-18 11:56:27.048 +05:30 [INF] CORS policy execution successful.
+2025-07-18 11:56:27.052 +05:30 [INF] Executing endpoint '/eventHub'
+2025-07-18 11:56:30.062 +05:30 [INF] Executing endpoint 'EventManagementAPI.Controllers.UserController.GetCoins (EventManagementAPI)'
+2025-07-18 11:56:30.068 +05:30 [INF] Route matched with {action = "GetCoins", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCoins(System.Guid) on controller EventManagementAPI.Controllers.UserController (EventManagementAPI).
+2025-07-18 11:56:30.586 +05:30 [INF] Executed DbCommand (127ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT e0."Id", e0."CreatedAt", e0."Description", e0."EndTime", e0."GoogleMapLink", e0."ImagePath", e0."IsDeleted", e0."Location", e0."OnlineMeetUrl", e0."OrganizerId", e0."StartTime", e0."Title", u."Id", u."Coins", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM (
+    SELECT e."Id", e."CreatedAt", e."Description", e."EndTime", e."GoogleMapLink", e."ImagePath", e."IsDeleted", e."Location", e."OnlineMeetUrl", e."OrganizerId", e."StartTime", e."Title"
+    FROM "Events" AS e
+    WHERE NOT (e."IsDeleted")
+    ORDER BY e."CreatedAt" DESC
+    LIMIT @__p_1 OFFSET @__p_0
+) AS e0
+INNER JOIN "Users" AS u ON e0."OrganizerId" = u."Id"
+ORDER BY e0."CreatedAt" DESC
+2025-07-18 11:56:30.820 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`1[[System.Collections.Generic.IEnumerable`1[[EventManagementAPI.Models.DTOs.Event.EventResponseDto, EventManagementAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-18 11:56:30.970 +05:30 [INF] Executed action EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI) in 3919.4481ms
+2025-07-18 11:56:30.971 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.EventController.GetAllEvents (EventManagementAPI)'
+2025-07-18 11:56:30.993 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/Event/GetEvents/?page=1&pageSize=10 - 200 null application/json; charset=utf-8 4271.025ms
+2025-07-18 11:56:31.658 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Coins", u."CreatedAt", u."Email", u."IsDeleted", u."PasswordHash", u."ProfilePicturePath", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0 AND NOT (u."IsDeleted")
+LIMIT 1
+2025-07-18 11:56:31.662 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-07-18 11:56:31.670 +05:30 [INF] Executed action EventManagementAPI.Controllers.UserController.GetCoins (EventManagementAPI) in 1601.4664ms
+2025-07-18 11:56:31.670 +05:30 [INF] Executed endpoint 'EventManagementAPI.Controllers.UserController.GetCoins (EventManagementAPI)'
+2025-07-18 11:56:31.671 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/api/User/17d3fe10-7565-4037-9b36-589b99b49fd3/coins - 200 null application/json; charset=utf-8 4976.0501ms
+2025-07-18 11:56:38.842 +05:30 [INF] Executed endpoint '/eventHub'
+2025-07-18 11:56:38.843 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5025/eventHub?id=uvuXaorYx1DIYgtKimJXvQ - 101 null null 11795.9385ms
+2025-07-18 11:56:43.121 +05:30 [INF] Application is shutting down...
