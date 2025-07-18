@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Event } from '../../services/event/event';
+import { Event as EventService } from '../../services/event/event';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -17,7 +17,7 @@ export class Home implements OnInit {
   currentPage = 1;
   filterDate: string = '';
 
-  constructor(private event : Event) {}
+  constructor(private event : EventService) {}
 
   ngOnInit(): void {
     this.loadEvents();
@@ -28,6 +28,14 @@ export class Home implements OnInit {
       this.events = res.events;
     });
   }
+  handleImageError(event: any) {
+  const imgElement = event.target as HTMLImageElement;
+  imgElement.src = 'assets/default-event.png';
+}
+onImgError(event: any) {
+  event.target.src = 'assets/default-event.png';
+}
+
   goToPage(page: number) {
     if (page < 1) return;
     this.currentPage = page;

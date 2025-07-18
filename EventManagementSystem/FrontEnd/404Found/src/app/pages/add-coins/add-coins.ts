@@ -8,6 +8,7 @@ import { PaymentService } from '../../services/payment/payment';
 @Component({
   selector: 'app-add-coins',
   templateUrl: './add-coins.html',
+  styleUrl:'./add-coins.css',
   imports: [FormsModule]
 })
 export class AddCoins implements OnInit {

@@ -4,20 +4,20 @@
     <a class=" title navbar-brand" routerLink="/">404Found</a>
 
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+    <button class="navbar-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
       aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- N A V   L I N K S -->
     <div class="collapse navbar-collapse " id="navContent">
-      <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
+      <ul class="navbar-nav ms-auto d-flex align-items-center gap-3 py-2">
         <li class="nav-item" *ngIf="isLoggedIn">
           <a class="btn btn-primary btn-sm" routerLink="/my-registrations">Registered Events</a>
         </li>
 
         <li class="nav-item" *ngIf="isOrganizer">
-          <a class="btn btn-light btn-sm" routerLink="/create-event">Create an Event</a>
+          <a class="btn btn-outline-warning btn-sm" routerLink="/create-event">Create an Event</a>
         </li>
 
         <li class="nav-item" *ngIf="isOrganizer">
@@ -34,9 +34,9 @@
             <i class="bi bi-bell-fill">Notifications</i>
           </a>
         </li> -->
-        <li class="nav-item" *ngIf="isLoggedIn" >
+        <li class="nav-item" *ngIf="isLoggedIn">
           <button class="btn btn-link nav-link position-relative text-light" (click)="goToNotifications()">
-            <i class="bi bi-bell-fill">Notifications</i>
+            <i class="bi bi-bell-fill"></i>
             <span *ngIf="notificationCount > 0"
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {{ notificationCount }}
@@ -44,10 +44,18 @@
           </button>
         </li>
 
+        <li class="nav-item d-flex align-items-center text-light" *ngIf="isLoggedIn">
+          <button class="btn btn-link nav-link position-relative text-light" (click)="goToCoins()">
+            <i class="bi bi-coin fs-5 me-1 text-warning"></i>
+            <span>{{ coins }}</span>
+          </button>
+
+        </li>
+
 
         <button *ngIf="isLoggedIn" class="btn p-0 border-0 bg-transparent" (click)="goToProfile()">
-          <img [src]="'http://localhost:5025/' + user.profilePicturePath || defaultImage" alt="Profile" width="32"
-            height="32" class="rounded-circle" />
+          <img [src]="getProfileImage()" alt="Profile" width="32" height="32" class="rounded-circle" />
+
         </button>
 
         <li class="nav-item" *ngIf="isLoggedIn">
@@ -59,6 +67,6 @@
 </nav>
 
 
-<div >
+<div>
   <router-outlet></router-outlet>
 </div>

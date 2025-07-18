@@ -48,7 +48,13 @@ export class Profile implements OnInit {
         role: user.role
       });
 
-      this.profilePicPreview = user.profilePicturePath ? `http://localhost:5025/${user.profilePicturePath}` : '';
+      // this.profilePicPreview = user.profilePicturePath ? `http://localhost:5025/${user.profilePicturePath}` : '';
+      const path = user.profilePicturePath;
+      this.profilePicPreview = path
+      ? path.startsWith('http') 
+        ? path 
+        : `http://localhost:5025/${path}`
+      : '';
     });
   }
 
