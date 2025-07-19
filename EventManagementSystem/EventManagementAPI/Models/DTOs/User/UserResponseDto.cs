@@ -8,5 +8,4 @@ public class UserResponseDto
     public string Role { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public string? ProfilePicturePath { get; set; }
-    public int Coins { get; set; }
 }

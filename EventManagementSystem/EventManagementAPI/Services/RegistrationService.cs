@@ -89,10 +89,10 @@ namespace EventManagementAPI.Services
                 if (userToUpdate == null)
                     throw new KeyNotFoundException("User not found");
 
-                if (userToUpdate.Coins <= 0)
+                if (userToUpdate.Wallet.Coins <= 0)
                     throw new InvalidOperationException("Insufficient coins");
 
-                userToUpdate.Coins -= 1;
+                userToUpdate.Wallet.Coins -= 1;
                 await _userRepository.UpdateAsync(userToUpdate);
 
                 await _registrationRepository.SaveChangesAsync();
@@ -114,10 +114,10 @@ namespace EventManagementAPI.Services
             if (user == null)
                 throw new KeyNotFoundException("User not found");
 
-            if (user.Coins <= 0)
+            if (user.Wallet.Coins <= 0)
                 throw new InvalidOperationException("Insufficient coins");
 
-            user.Coins -= 1;
+            user.Wallet.Coins -= 1;
             await _userRepository.UpdateAsync(user);
 
             var created = await _registrationRepository.AddAsync(registration);

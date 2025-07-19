@@ -19,10 +19,10 @@ using Azure.Security.KeyVault.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var keyVaultUrl = builder.Configuration["AzureVaultSettings:VaultUri"];
-builder.Configuration.AddAzureKeyVault(
-    new Uri(keyVaultUrl),
-    new DefaultAzureCredential());
+// var keyVaultUrl = builder.Configuration["AzureVaultSettings:VaultUri"];
+// builder.Configuration.AddAzureKeyVault(
+//     new Uri(keyVaultUrl),
+//     new DefaultAzureCredential());
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -88,6 +88,8 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IRegistrationRepository, RegistrationRepository>();
+builder.Services.AddScoped<IWalletRepository, WalletRepository>();
+builder.Services.AddScoped<IWalletTransactionsRepository, WalletTransactionsRepository>();
 #endregion
 
 #region Services
@@ -95,7 +97,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
-builder.Services.AddScoped<IBlobService, BlobService>();
+builder.Services.AddScoped<IWalletService, WalletService>();
+// builder.Services.AddScoped<IBlobService, BlobService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 #endregion
 
@@ -155,9 +158,9 @@ builder.Services.AddCors(options => {
 
 
 #region Logging
-// builder.Host.UseSerilog((ctx, lc) =>
-//     lc.WriteTo.Console()
-//       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
+builder.Host.UseSerilog((ctx, lc) =>
+    lc.WriteTo.Console()
+      .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
 
 // builder.Host.UseSerilog((ctx, lc) =>
 // {
@@ -169,15 +172,15 @@ builder.Services.AddCors(options => {
 //       );
 // });
 
-builder.Host.UseSerilog((ctx, lc) =>
-{
-    lc.WriteTo.Console()
-      .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
-      .WriteTo.AzureBlobStorage(
-          connectionString: ctx.Configuration["eventAPI-BlobConnectionString"], 
-          storageContainerName: "event-logs"
-      );
-});
+// builder.Host.UseSerilog((ctx, lc) =>
+// {
+//     lc.WriteTo.Console()
+//       .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+//       .WriteTo.AzureBlobStorage(
+//           connectionString: ctx.Configuration["eventAPI-BlobConnectionString"], 
+//           storageContainerName: "event-logs"
+//       );
+// });
 
 #endregion
 
