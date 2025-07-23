@@ -10,7 +10,7 @@ public class EventRepository : IEventRepository
     private readonly AppDbContext _context;
     public EventRepository(AppDbContext context) => _context = context;
 
-    public async Task<IEnumerable<Event>> GetAllAsync(string? search = null,  DateTime? date =null, int page = 1, int pageSize = 10)
+    public async Task<IEnumerable<Event>> GetAllAsync(string? search = null, DateTime? date = null, int page = 1, int pageSize = 10)
     {
         var query = _context.Events
             .Include(e => e.Organizer)
@@ -29,11 +29,11 @@ public class EventRepository : IEventRepository
             query = query.Where(e =>
                 e.Title.ToLower().Contains(lowered) ||
                 e.Description.ToLower().Contains(lowered) ||
-                e.Location.ToLower().Contains(lowered) 
-                // e.StartTime.ToString("dd MMM yyyy").ToLower().Contains(lowered) ||    
-                // e.StartTime.ToString("d MMMM yyyy").ToLower().Contains(lowered) ||    
-                // e.StartTime.ToString("dd").ToLower().Contains(lowered) ||             
-                // e.StartTime.ToString("MMMM").ToLower().Contains(lowered)              
+                e.Location.ToLower().Contains(lowered)
+            // e.StartTime.ToString("dd MMM yyyy").ToLower().Contains(lowered) ||    
+            // e.StartTime.ToString("d MMMM yyyy").ToLower().Contains(lowered) ||    
+            // e.StartTime.ToString("dd").ToLower().Contains(lowered) ||             
+            // e.StartTime.ToString("MMMM").ToLower().Contains(lowered)              
             );
         }
         if (date.HasValue)
@@ -101,9 +101,17 @@ public class EventRepository : IEventRepository
 
     public async Task<IEnumerable<Event>> GetByOrganizerIdAsync(Guid organizerId)
     {
-        return await _context.Events
+        return await _context.Events.Include(e => e.Registrations)
             .Where(e => e.OrganizerId == organizerId && !e.IsDeleted)
             .OrderByDescending(e => e.CreatedAt)
             .ToListAsync();
+    }
+
+    public async Task<Event> MarkAsWithdrawn(Guid eventId)
+    {
+        var evnt = await GetByIdAsync(eventId);
+        evnt!.IsWithdrawn = true;
+        evnt = await UpdateAsync(evnt);
+        return evnt;
     }
 }

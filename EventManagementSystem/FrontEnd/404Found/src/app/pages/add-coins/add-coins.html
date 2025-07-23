@@ -15,7 +15,7 @@
 
 <div class="container py-5 my-5">
   <div class="text-center mb-4">
-    <h2>Add Coins</h2>
+    <h2>Wallet</h2>
 
     <!-- Coin count with large icon -->
     <div class="d-flex justify-content-center align-items-center my-3">
@@ -23,14 +23,17 @@
       <h1 class="display-4">{{ coins }}</h1>
     </div>
 
+    @if (auth.currentUser.role == "Attendee") {
     <div class="alert info w-50 mx-auto">
       <p class="mb-0">
         You get <strong>1 coin</strong> for every <strong>1 rupee</strong> you
         top up.
       </p>
     </div>
+    }
   </div>
 
+  @if (auth.currentUser.role == "Attendee") {
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="input-group mb-3">
@@ -46,7 +49,7 @@
       </div>
     </div>
   </div>
-
+  } @if (auth.currentUser.role == "Attendee") {
   <div class="row">
     <div class="col">
       <h4 class="mb-3">Transaction History</h4>
@@ -86,4 +89,54 @@
       </div>
     </div>
   </div>
+  } @else {
+  <div class="row">
+    <div class="col">
+      <h4 class="mb-3">
+        Withdraw (Amount can be withdrawn only after 5 days from the end of the
+        event)
+      </h4>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Event Name</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Total Registrations</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Withdraw</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (event of events; track $index) {
+            <tr>
+              <td>{{ event.title }}</td>
+              <td>{{ event.endTime | date: 'medium' }}</td>
+              <td>{{ event.totalRegistrations }}</td>
+              <td>
+                <i class="bi bi-coin text-warning me-1"></i> {{
+                event.registeredCoins }}
+              </td>
+              <td>
+                @if (event.isWithdrawn) {
+                <span class="badge bg-success py-2">Withdrawn</span>
+                } @else {
+                <button
+                  class="btn btn-primary btn-sm"
+                  (click)="onWithdraw($index)"
+                  [disabled]="canWithdraw(event.endTime)"
+                >
+                  Withdraw
+                </button>
+                }
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  }
 </div>

@@ -60,4 +60,20 @@ export class WalletService {
     const userId = this.auth.currentUser.id;
     return this.http.get(`${this.baseUrl}/Transactions/${userId}`);
   }
+
+  getEventWithdawDetails() {
+    return this.http.get(`${this.baseUrl}/Withdraw/List`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`,
+      },
+    });
+  }
+
+  withdrawEventCoins(eventId: string) {
+    return this.http.post(`${this.baseUrl}/Withdraw/${eventId}`, null, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`,
+      },
+    });
+  }
 }

@@ -16,6 +16,7 @@ public class Event
     public User? Organizer { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public bool IsDeleted { get; set; } = false;
+    public bool IsWithdrawn { get; set; } = false;
 
     public ICollection<Registration>? Registrations { get; set; }
 }

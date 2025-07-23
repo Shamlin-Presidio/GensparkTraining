@@ -3,6 +3,7 @@ using EventManagementAPI.Data;
 using EventManagementAPI.Interfaces;
 using EventManagementAPI.Models;
 using EventManagementAPI.Models.DTOs.Wallet;
+using EventManagementAPI.Repositories;
 
 namespace EventManagementAPI.Services;
 
@@ -11,12 +12,14 @@ public class WalletService : IWalletService
     private readonly AppDbContext _context;
     private readonly IWalletRepository _walletRepository;
     private readonly IWalletTransactionsRepository _walletTransactionsRepository;
+    private readonly IEventRepository _eventRepository;
 
-    public WalletService(AppDbContext context, IWalletRepository walletRepository, IWalletTransactionsRepository walletTransactionsRepository)
+    public WalletService(AppDbContext context, IWalletRepository walletRepository, IWalletTransactionsRepository walletTransactionsRepository, IEventRepository eventRepository)
     {
         _context = context;
         _walletRepository = walletRepository;
         _walletTransactionsRepository = walletTransactionsRepository;
+        _eventRepository = eventRepository;
     }
 
     public async Task<int> AddCoinsToWallet(Guid userId, int coins, string type)
@@ -101,6 +104,20 @@ public class WalletService : IWalletService
         return wallet.Coins;
     }
 
+    public async Task<IEnumerable<EventWithdrawResponseDto>> GetEventWithdrawDetails(Guid organizerId)
+    {
+        var events = await _eventRepository.GetByOrganizerIdAsync(organizerId);
+        return events.Select(e => new EventWithdrawResponseDto()
+        {
+            Id = e.Id,
+            Title = e.Title,
+            EndTime = e.EndTime,
+            TotalRegistrations = e.Registrations.Count(r => !r.IsDeleted),
+            RegisteredCoins = e.Registrations.Count(r => !r.IsDeleted) * e.RegistrationFee,
+            IsWithdrawn = e.IsWithdrawn
+        });
+    }
+
     public async Task<List<TransactionHistoryDto>> GetWalletTransactionHistory(Guid userId)
     {
         var wallet = await _walletRepository.GetByUserIdAsync(userId);
@@ -117,5 +134,27 @@ public class WalletService : IWalletService
         });
 
         return walletTransactions.OrderByDescending(wt => wt.Date).ToList();
+    }
+
+    public async Task<bool> WithdrawEventCoins(Guid eventId, Guid organizerId)
+    {
+        var eventWithdrawDetails = await GetEventWithdrawDetails(organizerId);
+        var evnt = eventWithdrawDetails.FirstOrDefault(e => e.Id == eventId);
+        var today = DateTime.UtcNow;
+
+        if (evnt == null || (today-evnt.EndTime).TotalDays < 5 || evnt.IsWithdrawn)
+            return false;
+
+        try
+        {
+            await AddCoinsToWallet(organizerId, evnt.RegisteredCoins, "Withdraw");
+            await _eventRepository.MarkAsWithdrawn(evnt.Id);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+        
     }
 }

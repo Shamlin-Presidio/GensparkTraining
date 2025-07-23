@@ -30,9 +30,9 @@ public class EventService : IEventService
         // _blobService = blobService;
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date=null , int page = 1, int pageSize = 10)
+    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date = null, int page = 1, int pageSize = 10)
     {
-        var events = await _eventRepository.GetAllAsync(search,date, page, pageSize);
+        var events = await _eventRepository.GetAllAsync(search, date, page, pageSize);
         return _mapper.Map<IEnumerable<EventResponseDto>>(events);
     }
 

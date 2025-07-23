@@ -12,4 +12,6 @@ public interface IWalletService
 
     public Task<int> GetCoinsInWallet(Guid userId);
     public Task<List<TransactionHistoryDto>> GetWalletTransactionHistory(Guid userId);
+    Task<IEnumerable<EventWithdrawResponseDto>> GetEventWithdrawDetails(Guid organizerId);
+    Task<bool> WithdrawEventCoins(Guid eventId, Guid organizerId);
 }
