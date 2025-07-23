@@ -1,3 +1,8 @@
-.info{
-    background-color: rgb(166, 214, 184);
+.info {
+  background-color: rgb(166, 214, 184);
+}
+
+th {
+  background-color: #123524;
+  color: white;
 }

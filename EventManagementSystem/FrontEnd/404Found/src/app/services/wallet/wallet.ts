@@ -34,6 +34,9 @@ export class WalletService {
       name: '404 Found',
       description: 'Add Coins',
       handler: (response: any) => {
+        alert(
+          'Payment successful! The wallet will be updated in a few minutes'
+        );
         this.http
           .put(`${this.baseUrl}/TopupCoins/${userId}?coins=${coins}`, null)
           .subscribe({
@@ -51,5 +54,10 @@ export class WalletService {
 
     const rzp = new Razorpay(options);
     rzp.open();
+  }
+
+  getTransactionHistory() {
+    const userId = this.auth.currentUser.id;
+    return this.http.get(`${this.baseUrl}/Transactions/${userId}`);
   }
 }

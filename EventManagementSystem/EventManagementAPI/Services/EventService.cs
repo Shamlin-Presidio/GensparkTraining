@@ -15,9 +15,10 @@ public class EventService : IEventService
     private readonly IMapper _mapper;
     private readonly IWebHostEnvironment _env;
     private readonly IHubContext<EventHub> _hubContext;
+    private readonly IRegistrationService _registrationService;
     // private readonly IBlobService _blobService;
 
-    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext
+    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext, IRegistrationService registrationService
     // ,IBlobService blobService
     )
     {
@@ -25,6 +26,7 @@ public class EventService : IEventService
         _mapper = mapper;
         _env = env;
         _hubContext = hubContext;
+        _registrationService = registrationService;
         // _blobService = blobService;
     }
 
@@ -131,7 +133,15 @@ public class EventService : IEventService
             throw new InvalidOperationException("Cannot delete an event that is scheduled for today or earlier.");
 
         evnt.IsDeleted = true;
+        
+        var registrations = await _registrationService.GetRegistrationsForEventAsync(evnt.Id);
+        foreach (var registration in registrations)
+        {
+            await _registrationService.CancelRegistrationAsync(registration.Id, registration.AttendeeId);
+        }
+
         await _eventRepository.UpdateAsync(evnt);
+
         return true;
     }
     public async Task<IEnumerable<EventResponseDto>> GetEventsByOrganizerAsync(Guid organizerId)

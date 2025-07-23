@@ -6,6 +6,7 @@ public class EventCreateDto
     public string? Description { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
+    public int RegistrationFee { get; set; }
     public string Location { get; set; } = string.Empty;
     public string? GoogleMapLink { get; set; }
     public string? OnlineMeetUrl { get; set; }

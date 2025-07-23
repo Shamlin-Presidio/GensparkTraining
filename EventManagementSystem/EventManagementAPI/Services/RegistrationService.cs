@@ -14,19 +14,22 @@ namespace EventManagementAPI.Services
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly IUserRepository _userRepository;
+        private readonly IWalletService _walletService;
+
 
         public RegistrationService(
             IRegistrationRepository registrationRepository,
             IEventRepository eventRepository,
             IUserRepository userRepository,
             IEmailService emailService,
-
+            IWalletService walletService,
             IMapper mapper)
         {
             _registrationRepository = registrationRepository;
             _eventRepository = eventRepository;
             _userRepository = userRepository;
             _emailService = emailService;
+            _walletService = walletService;
             _mapper = mapper;
         }
 
@@ -73,95 +76,83 @@ namespace EventManagementAPI.Services
             // fetch existing registration (active or soft‐deleted) (if any)
             var existing = await _registrationRepository.GetByEventAndAttendeeIncludingDeletedAsync(eventId, attendeeId);
 
+            Wallet? wallet;
+
             if (existing != null)
             {
                 if (!existing.IsDeleted)
                 {
                     throw new InvalidOperationException("Already registered for this event");
                 }
+
                 // existing.IsDeleted == true → reactivate
                 existing.IsDeleted = false;
                 existing.RegisteredAt = DateTime.UtcNow;
                 await _registrationRepository.SaveChangesAsync();
 
-                // Deduct coin
-                var userToUpdate = await _userRepository.GetByIdAsync(attendeeId);
-                if (userToUpdate == null)
-                    throw new KeyNotFoundException("User not found");
-
-                if (userToUpdate.Wallet.Coins <= 0)
-                    throw new InvalidOperationException("Insufficient coins");
-
-                userToUpdate.Wallet.Coins -= 1;
-                await _userRepository.UpdateAsync(userToUpdate);
+                var coins = await _walletService.DeductCoinsFromWallet(attendeeId, evnt.RegistrationFee, "Registration");
 
                 await _registrationRepository.SaveChangesAsync();
 
                 return _mapper.Map<RegistrationResponseDto>(existing);
             }
-
-            // No existing registration, create new 
-            var registration = new Registration
+            else
             {
-                Id = Guid.NewGuid(),
-                EventId = eventId,
-                AttendeeId = attendeeId,
-                RegisteredAt = DateTime.UtcNow,
-                IsDeleted = false
-            };
-            // Deduct coin
-            var user = await _userRepository.GetByIdAsync(attendeeId);
-            if (user == null)
-                throw new KeyNotFoundException("User not found");
-
-            if (user.Wallet.Coins <= 0)
-                throw new InvalidOperationException("Insufficient coins");
-
-            user.Wallet.Coins -= 1;
-            await _userRepository.UpdateAsync(user);
-
-            var created = await _registrationRepository.AddAsync(registration);
-
-            // Fetch user details
-            // var user = await _userRepository.GetByIdAsync(attendeeId);
-            if (user != null && !string.IsNullOrWhiteSpace(user.Email))
-            {
-                // Generate PDF
-                byte[]? pdf = null;
-                try
+                // No existing registration, create new 
+                var registration = new Registration
                 {
-                    pdf = PdfGenerator.GenerateEventRegistrationPdf(
-                        user.Username,
-                        evnt.Title,
-                        evnt.Description,
-                        evnt.StartTime,
-                        evnt.EndTime
-                    );
-                    Console.WriteLine("PDF generated");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Failed to generate PDF: " + ex.Message);
-                }
+                    Id = Guid.NewGuid(),
+                    EventId = eventId,
+                    AttendeeId = attendeeId,
+                    RegisteredAt = DateTime.UtcNow,
+                    IsDeleted = false
+                };
+                // Deduct coin
+                var coins = await _walletService.DeductCoinsFromWallet(attendeeId, evnt.RegistrationFee, "Registration");
 
-                // Send email
-                try
+                var created = await _registrationRepository.AddAsync(registration);
+
+                // Fetch user details
+                var user = await _userRepository.GetByIdAsync(attendeeId);
+                if (user != null && !string.IsNullOrWhiteSpace(user.Email))
                 {
-                    Console.WriteLine("📨 Preparing to send email to user...");
-                    await _emailService.SendEmailAsync(
-                        user.Email,
-                        "Event Registration Confirmation",
-                        $"<p>Hi {user.Username},</p><p>You have successfully registered for <strong>{evnt.Title}</strong>.</p><p>Find the attached confirmation.</p>",
-                        pdf,
-                        $"{evnt.Title}-Confirmation.pdf"
-                    );
+                    // Generate PDF
+                    byte[]? pdf = null;
+                    try
+                    {
+                        pdf = PdfGenerator.GenerateEventRegistrationPdf(
+                            user.Username,
+                            evnt.Title,
+                            evnt.Description,
+                            evnt.StartTime,
+                            evnt.EndTime
+                        );
+                        Console.WriteLine("PDF generated");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Failed to generate PDF: " + ex.Message);
+                    }
+
+                    // Send email
+                    try
+                    {
+                        Console.WriteLine("📨 Preparing to send email to user...");
+                        await _emailService.SendEmailAsync(
+                            user.Email,
+                            "Event Registration Confirmation",
+                            $"<p>Hi {user.Username},</p><p>You have successfully registered for <strong>{evnt.Title}</strong>.</p><p>Find the attached confirmation.</p>",
+                            pdf,
+                            $"{evnt.Title}-Confirmation.pdf"
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error sending email: " + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error sending email: " + ex.Message);
-                }
+                return _mapper.Map<RegistrationResponseDto>(created);
             }
-            return _mapper.Map<RegistrationResponseDto>(created);
         }
 
         public async Task<bool> CancelRegistrationAsync(Guid registrationId, Guid attendeeId)
@@ -169,6 +160,10 @@ namespace EventManagementAPI.Services
             var reg = await _registrationRepository.GetByIdAsync(registrationId);
             if (reg == null || reg.AttendeeId != attendeeId)
                 return false;
+
+
+            var evnt = await _eventRepository.GetByIdAsync(reg.EventId);
+            var coins = await _walletService.AddCoinsToWallet(attendeeId, evnt.RegistrationFee, "Refund");
 
             return await _registrationRepository.DeleteAsync(registrationId);
         }
@@ -180,6 +175,12 @@ namespace EventManagementAPI.Services
         {
             var users = await _registrationRepository.GetAttendeesByEventIdAsync(eventId);
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
+        }
+
+        public async Task<IEnumerable<Registration>> GetRegistrationsForEventAsync(Guid eventId)
+        {
+            var registrations = await _registrationRepository.GetByEventAsync(eventId);
+            return registrations;
         }
 
     }

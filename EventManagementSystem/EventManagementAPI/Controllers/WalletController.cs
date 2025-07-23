@@ -33,4 +33,11 @@ public class WalletController : ControllerBase
         coins = await _walletService.AddCoinsToWallet(userId, coins, "Topup");
         return Ok(coins);
     }
+
+    [HttpGet("Transactions/{userId}")]
+    public async Task<IActionResult> GetTransactionHistory(Guid userId)
+    {
+        var transactionHistory = await _walletService.GetWalletTransactionHistory(userId);
+        return Ok(transactionHistory);
+    }
 }

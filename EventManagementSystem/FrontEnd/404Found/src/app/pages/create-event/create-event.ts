@@ -68,7 +68,6 @@
 //   }
 // }
 
-
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -76,7 +75,7 @@ import {
   ReactiveFormsModule,
   Validators,
   AbstractControl,
-  ValidationErrors
+  ValidationErrors,
 } from '@angular/forms';
 import { Event } from '../../services/event/event';
 import { Router, RouterModule } from '@angular/router';
@@ -86,7 +85,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-create-event',
   templateUrl: './create-event.html',
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  styleUrls: ['./create-event.css']
+  styleUrls: ['./create-event.css'],
 })
 export class CreateEvent {
   eventForm: FormGroup;
@@ -103,13 +102,14 @@ export class CreateEvent {
         description: [''],
         startTime: ['', [Validators.required]],
         endTime: ['', [Validators.required]],
+        registrationFee: [0, Validators.required],
         location: ['', Validators.required],
         googleMapLink: [''],
         onlineMeetUrl: [''],
-        image: [null]
+        image: [null],
       },
       {
-        validators: [this.dateRangeValidator]
+        validators: [this.dateRangeValidator],
       }
     );
   }
@@ -157,19 +157,20 @@ export class CreateEvent {
     formData.append('Location', formValue.location);
     formData.append('GoogleMapLink', formValue.googleMapLink);
     formData.append('OnlineMeetUrl', formValue.onlineMeetUrl);
+    formData.append('RegistrationFee', formValue.registrationFee);
 
     if (this.selectedFile) {
       formData.append('ImagePath', this.selectedFile, this.selectedFile.name);
     }
 
     this.eventService.createEvent(formData).subscribe({
-      next: res => {
+      next: (res) => {
         alert('Event created successfully!');
         this.router.navigate(['/']);
       },
-      error: err => {
+      error: (err) => {
         alert(err.error?.message || 'Event creation failed');
-      }
+      },
     });
   }
 }

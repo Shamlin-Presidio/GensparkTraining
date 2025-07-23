@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Event } from '../../services/event/event';
 import { CommonModule } from '@angular/common';
@@ -8,7 +13,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-edit-event',
   templateUrl: './edit-event.html',
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  styleUrls: ['./edit-event.css']
+  styleUrls: ['./edit-event.css'],
 })
 export class EditEvent implements OnInit {
   eventForm: FormGroup;
@@ -29,7 +34,7 @@ export class EditEvent implements OnInit {
       location: [''],
       googleMapLink: [''],
       onlineMeetUrl: [''],
-      image: [null]
+      image: [null],
     });
   }
 
@@ -37,7 +42,7 @@ export class EditEvent implements OnInit {
     // const eventId = this.route.snapshot.paramMap.get('id');
     this.eventId = this.route.snapshot.paramMap.get('id') || '';
 
-      this.eventService.getEventById(this.eventId!).subscribe(event => {
+    this.eventService.getEventById(this.eventId!).subscribe((event) => {
       this.eventForm.patchValue({
         title: event.title,
         description: event.description,
@@ -45,16 +50,23 @@ export class EditEvent implements OnInit {
         endTime: this.formatDateForInput(event.endTime),
         location: event.location,
         googleMapLink: event.googleMapLink,
-        onlineMeetUrl: event.onlineMeetUrl
+        onlineMeetUrl: event.onlineMeetUrl,
       });
     });
   }
 
   formatDateForInput(dateStr: string): string {
     const date = new Date(dateStr);
-    return date.toISOString().slice(0, 16);
-  }
 
+    const pad = (n: any) => String(n).padStart(2, '0');
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -86,9 +98,9 @@ export class EditEvent implements OnInit {
         alert('Event updated successfully!');
         this.router.navigate(['/my-events']);
       },
-      error: err => {
+      error: (err) => {
         alert(err.error?.message || 'Update failed');
-      }
+      },
     });
   }
 }

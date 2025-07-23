@@ -5,14 +5,14 @@ import { RouterModule } from '@angular/router';
 import { Event } from '../../services/event/event';
 import { Auth } from '../../services/auth/auth';
 import { HttpClient } from '@angular/common/http';
-
+import { WalletService } from '../../services/wallet/wallet';
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './event-details.html',
-  styleUrl: './event-details.css'
+  styleUrl: './event-details.css',
 })
 export class EventDetails implements OnInit {
   event: any;
@@ -23,14 +23,13 @@ export class EventDetails implements OnInit {
   attendees: any[] = [];
   showAttendees = false;
 
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private eventService: Event,
     public auth: Auth,
-    private http: HttpClient
-  ) { }
+    private wallet: WalletService
+  ) {}
 
   isExpiredEvent = false;
 
@@ -38,7 +37,7 @@ export class EventDetails implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
 
-    this.eventService.getEventById(id).subscribe(res => {
+    this.eventService.getEventById(id).subscribe((res) => {
       this.event = res;
       this.isOrganizer = this.auth.role === 'Organizer';
       this.checkIfRegistered(res.id);
@@ -52,7 +51,7 @@ export class EventDetails implements OnInit {
 
       this.isExpiredEvent = eventStart <= today;
 
-      this.eventService.getRegistrationsCount(res.id).subscribe(resp => {
+      this.eventService.getRegistrationsCount(res.id).subscribe((resp) => {
         this.registrationCount = resp.count;
       });
 
@@ -60,9 +59,8 @@ export class EventDetails implements OnInit {
     });
   }
 
-
   checkIfRegistered(eventId: string) {
-    this.eventService.getMyRegistrations().subscribe(res => {
+    this.eventService.getMyRegistrations().subscribe((res) => {
       const reg = res.find((r: any) => r.eventId === eventId);
       this.isRegistered = !!reg;
       this.registrationId = reg?.id || null;
@@ -70,7 +68,7 @@ export class EventDetails implements OnInit {
   }
 
   fetchRegistrationCount(eventId: string) {
-    this.eventService.getRegistrationsCount(eventId).subscribe(resp => {
+    this.eventService.getRegistrationsCount(eventId).subscribe((resp) => {
       this.registrationCount = resp.count;
     });
   }
@@ -82,11 +80,9 @@ export class EventDetails implements OnInit {
       },
       error: (err) => {
         alert(err.error?.message || 'Failed to fetch attendees');
-      }
+      },
     });
   }
-
-
 
   register() {
     if (!this.auth.isLoggedIn) {
@@ -95,20 +91,25 @@ export class EventDetails implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-
-    this.eventService.registerForEvent(this.event.id).subscribe({
-      next: (res) => {
-        this.isRegistered = true;
-        this.registrationId = res.id;
-        alert('Registered successfully!');
-        this.fetchRegistrationCount(this.event.id);
-      },
-      error: (err) => {
-        alert(err.error?.message || 'Registration failed');
-      }
-    });
+    if (
+      confirm(
+        `Registering for this event will cost ${this.event.registrationFee} coins. Do you want to register for this event?`
+      )
+    ) {
+      this.eventService.registerForEvent(this.event.id).subscribe({
+        next: (res) => {
+          this.isRegistered = true;
+          this.registrationId = res.id;
+          alert('Registered successfully!');
+          this.fetchRegistrationCount(this.event.id);
+          this.wallet.getUserCoins();
+        },
+        error: (err) => {
+          alert(err.error?.message || 'Registration failed');
+        },
+      });
+    }
   }
-
 
   cancelRegistration() {
     if (!this.registrationId) {
@@ -123,10 +124,11 @@ export class EventDetails implements OnInit {
         alert(res.message || 'Registration cancelled.');
 
         this.fetchRegistrationCount(this.event.id);
+        this.wallet.getUserCoins();
       },
       error: (err) => {
         alert(err.error?.message || 'Cancellation failed.');
-      }
+      },
     });
   }
 }
