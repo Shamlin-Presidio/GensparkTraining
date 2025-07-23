@@ -1,0 +1,14 @@
+<h1>{{ title }}</h1>
+
+<div *ngIf="videos.length === 0">
+  No videos found.
+</div>
+
+<div *ngFor="let video of videos" class="video-card">
+  <h3>{{ video.title }}</h3>
+  <p>{{ video.description }}</p>
+  <video width="480" controls>
+    <source [src]="video.blobUrl" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
