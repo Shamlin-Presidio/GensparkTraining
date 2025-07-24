@@ -50,7 +50,7 @@ export class AddCoins implements OnInit {
       : this.loadWithdrawDetails();
   }
 
-  canWithdraw(endTime: string) {
+  cannotWithdraw(endTime: string) {
     const endDate = new Date(endTime);
     const today = new Date();
     const diffInMs = today.getTime() - endDate.getTime();
