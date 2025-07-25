@@ -34,6 +34,11 @@ public class RegistrationRepository : IRegistrationRepository
                 !r.IsDeleted);
     }
 
+    public async Task<IEnumerable<Registration>> GetByEventAsync(Guid eventId)
+    {
+        return await _context.Registrations.Where(r => r.EventId == eventId && !r.IsDeleted).ToListAsync();
+    }
+
     public async Task<Registration> AddAsync(Registration registration)
     {
         _context.Registrations.Add(registration);

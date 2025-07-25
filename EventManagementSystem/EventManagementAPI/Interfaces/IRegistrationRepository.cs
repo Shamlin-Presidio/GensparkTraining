@@ -13,6 +13,5 @@ public interface IRegistrationRepository
     Task<Registration?> GetByEventAndAttendeeIncludingDeletedAsync(Guid eventId, Guid attendeeId);
     Task<int> GetRegistrationCountForEventAsync(Guid eventId);
     Task<IEnumerable<User>> GetAttendeesByEventIdAsync(Guid eventId);
-
-
+    Task<IEnumerable<Registration>> GetByEventAsync(Guid eventId);
 }

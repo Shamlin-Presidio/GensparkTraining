@@ -2,43 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth } from './services/auth/auth';
-import { SignalR } from './services/signalR/signal-r'; 
-import { PaymentService } from './services/payment/payment';
+import { SignalR } from './services/signalR/signal-r';
+import { WalletService } from './services/wallet/wallet';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App implements OnInit {
   protected title = '404Found';
   user = JSON.parse(localStorage.getItem('user') || '{}');
   defaultImage = './assets/default-avatar.png';
-  notificationCount = 0; 
+  notificationCount = 0;
   coins: number = 0;
 
   constructor(
     private auth: Auth,
     private router: Router,
-    private paymentService: PaymentService,
-    private signalR: SignalR 
+    private walletService: WalletService,
+    private signalR: SignalR
   ) {}
 
   ngOnInit(): void {
-    this.signalR.notificationCount$.subscribe(count => {
+    this.signalR.notificationCount$.subscribe((count) => {
       this.notificationCount = count;
     });
 
     if (this.user?.id && this.isLoggedIn) {
-      this.paymentService.getCoins(this.user.id).subscribe({
-        next: (coinCount) => {
-          this.coins = coinCount;
-        },
-        error: (err) => {
-          console.error('Error fetching coins:', err);
-        }
+      this.walletService.coins$.subscribe({
+        next: (coins: any) => (this.coins = coins),
       });
+      this.walletService.getUserCoins();
     }
   }
 
@@ -65,7 +61,7 @@ export class App implements OnInit {
     this.router.navigate(['/notifications']);
   }
 
-  goToCoins(){
+  goToCoins() {
     this.router.navigate(['/add-coins']);
   }
 

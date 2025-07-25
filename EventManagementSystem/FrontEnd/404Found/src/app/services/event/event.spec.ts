@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Event } from './event';
 import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import {
+  provideHttpClientTesting,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 describe('Event Service', () => {
   let service: Event;
@@ -9,11 +12,7 @@ describe('Event Service', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        Event,
-        provideHttpClient(),
-        provideHttpClientTesting()
-      ]
+      providers: [Event, provideHttpClient(), provideHttpClientTesting()],
     });
 
     service = TestBed.inject(Event);
@@ -29,11 +28,13 @@ describe('Event Service', () => {
   it('should fetch events', () => {
     const mockEvents = { events: [], total: 0 };
 
-    service.getEvents('tech', 1, 5).subscribe(res => {
+    service.getEvents('tech', '', 1, 5).subscribe((res) => {
       expect(res).toEqual(mockEvents);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Event/GetEvents/?search=tech&page=1&pageSize=5');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Event/GetEvents/?search=tech&page=1&pageSize=5'
+    );
     expect(req.request.method).toBe('GET');
     req.flush(mockEvents);
   });
@@ -41,11 +42,13 @@ describe('Event Service', () => {
   it('should fetch event by ID', () => {
     const mockEvent = { id: '1', title: 'Mock Event' };
 
-    service.getEventById('1').subscribe(res => {
+    service.getEventById('1').subscribe((res) => {
       expect(res).toEqual(mockEvent);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Event/GetEventById/1');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Event/GetEventById/1'
+    );
     expect(req.request.method).toBe('GET');
     req.flush(mockEvent);
   });
@@ -53,11 +56,13 @@ describe('Event Service', () => {
   it('should register for event', () => {
     const mockResponse = { success: true };
 
-    service.registerForEvent('123').subscribe(res => {
+    service.registerForEvent('123').subscribe((res) => {
       expect(res).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Registration/Register/123');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Registration/Register/123'
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush(mockResponse);
@@ -66,11 +71,13 @@ describe('Event Service', () => {
   it('should get my registrations', () => {
     const mockRegs = [{ eventId: '1' }];
 
-    service.getMyRegistrations().subscribe(res => {
+    service.getMyRegistrations().subscribe((res) => {
       expect(res).toEqual(mockRegs);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Registration/GetMyRegistrations');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Registration/GetMyRegistrations'
+    );
     expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush(mockRegs);
@@ -79,7 +86,9 @@ describe('Event Service', () => {
   it('should cancel registration', () => {
     service.cancelRegistration('abc').subscribe();
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Registration/Cancel/abc');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Registration/Cancel/abc'
+    );
     expect(req.request.method).toBe('DELETE');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush({});
@@ -88,11 +97,13 @@ describe('Event Service', () => {
   it('should get registration count', () => {
     const mockCount = 5;
 
-    service.getRegistrationsCount('abc').subscribe(res => {
+    service.getRegistrationsCount('abc').subscribe((res) => {
       expect(res).toBe(mockCount);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Registration/Count/abc');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Registration/Count/abc'
+    );
     expect(req.request.method).toBe('GET');
     req.flush(mockCount);
   });
@@ -103,11 +114,13 @@ describe('Event Service', () => {
 
     const mockEvent = { id: '1', title: 'New Event' };
 
-    service.createEvent(formData).subscribe(res => {
+    service.createEvent(formData).subscribe((res) => {
       expect(res).toEqual(mockEvent);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Event/CreateEvent');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Event/CreateEvent'
+    );
     expect(req.request.method).toBe('POST');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush(mockEvent);
@@ -116,7 +129,7 @@ describe('Event Service', () => {
   it('should get my events', () => {
     const myEvents = [{ id: '1', title: 'My Event' }];
 
-    service.getMyEvents().subscribe(res => {
+    service.getMyEvents().subscribe((res) => {
       expect(res).toEqual(myEvents);
     });
 
@@ -129,7 +142,9 @@ describe('Event Service', () => {
   it('should delete event', () => {
     service.deleteEvent('123').subscribe();
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Event/DeleteEvent/123');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Event/DeleteEvent/123'
+    );
     expect(req.request.method).toBe('DELETE');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush({});
@@ -141,11 +156,13 @@ describe('Event Service', () => {
 
     const updatedEvent = { id: '123', title: 'Updated Event' };
 
-    service.updateEvent('123', formData).subscribe(res => {
+    service.updateEvent('123', formData).subscribe((res) => {
       expect(res).toEqual(updatedEvent);
     });
 
-    const req = httpMock.expectOne('http://localhost:5025/api/Event/UpdateEvent/123');
+    const req = httpMock.expectOne(
+      'http://localhost:5025/api/Event/UpdateEvent/123'
+    );
     expect(req.request.method).toBe('PUT');
     expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
     req.flush(updatedEvent);

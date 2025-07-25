@@ -15,20 +15,24 @@ public class EventService : IEventService
     private readonly IMapper _mapper;
     private readonly IWebHostEnvironment _env;
     private readonly IHubContext<EventHub> _hubContext;
-    private readonly IBlobService _blobService;
+    private readonly IRegistrationService _registrationService;
+    // private readonly IBlobService _blobService;
 
-    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext, IBlobService blobService)
+    public EventService(IEventRepository eventRepository, IMapper mapper, IWebHostEnvironment env, IHubContext<EventHub> hubContext, IRegistrationService registrationService
+    // ,IBlobService blobService
+    )
     {
         _eventRepository = eventRepository;
         _mapper = mapper;
         _env = env;
         _hubContext = hubContext;
-        _blobService = blobService;
+        _registrationService = registrationService;
+        // _blobService = blobService;
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date=null , int page = 1, int pageSize = 10)
+    public async Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date = null, int page = 1, int pageSize = 10)
     {
-        var events = await _eventRepository.GetAllAsync(search,date, page, pageSize);
+        var events = await _eventRepository.GetAllAsync(search, date, page, pageSize);
         return _mapper.Map<IEnumerable<EventResponseDto>>(events);
     }
 
@@ -51,22 +55,22 @@ public class EventService : IEventService
 
         if (dto.ImagePath != null)
         {
-            // var folder = Path.Combine("UploadedFiles", "Events");
-            // var extension = Path.GetExtension(dto.ImagePath.FileName);
-            // var fileName = $"{evnt.Id}{extension}";
-            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
-            // Directory.CreateDirectory(folderPath);
-            // var filePath = Path.Combine(folderPath, fileName);
+            var folder = Path.Combine("UploadedFiles", "Events");
+            var extension = Path.GetExtension(dto.ImagePath.FileName);
+            var fileName = $"{evnt.Id}{extension}";
+            var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            Directory.CreateDirectory(folderPath);
+            var filePath = Path.Combine(folderPath, fileName);
 
-            // using var stream = new FileStream(filePath, FileMode.Create);
-            // await dto.ImagePath.CopyToAsync(stream);
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await dto.ImagePath.CopyToAsync(stream);
 
-            // evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+            evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
 
             // using Azure blob
-            var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
-            var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName); // new overload with filename
-            evnt.ImagePath = blobUrl;
+            // var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
+            // var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName); // new overload with filename
+            // evnt.ImagePath = blobUrl;
 
         }
 
@@ -97,21 +101,21 @@ public class EventService : IEventService
 
         if (dto.ImagePath != null)
         {
-            // var folder = Path.Combine("UploadedFiles", "Events");
-            // var extension = Path.GetExtension(dto.ImagePath.FileName);
-            // var fileName = $"{evnt.Id}{extension}";
-            // var folderPath = Path.Combine(_env.ContentRootPath, folder);
-            // Directory.CreateDirectory(folderPath);
-            // var filePath = Path.Combine(folderPath, fileName);
+            var folder = Path.Combine("UploadedFiles", "Events");
+            var extension = Path.GetExtension(dto.ImagePath.FileName);
+            var fileName = $"{evnt.Id}{extension}";
+            var folderPath = Path.Combine(_env.ContentRootPath, folder);
+            Directory.CreateDirectory(folderPath);
+            var filePath = Path.Combine(folderPath, fileName);
 
-            // using var stream = new FileStream(filePath, FileMode.Create);
-            // await dto.ImagePath.CopyToAsync(stream);
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await dto.ImagePath.CopyToAsync(stream);
 
-            // evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
+            evnt.ImagePath = Path.Combine(folder, fileName).Replace("\\", "/");
 
-            var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
-            var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName);
-            evnt.ImagePath = blobUrl;
+            // var fileName = $"Events/{evnt.Id}{Path.GetExtension(dto.ImagePath.FileName)}";
+            // var blobUrl = await _blobService.UploadAsync(dto.ImagePath, fileName);
+            // evnt.ImagePath = blobUrl;
         }
 
         await _eventRepository.UpdateAsync(evnt);
@@ -129,7 +133,15 @@ public class EventService : IEventService
             throw new InvalidOperationException("Cannot delete an event that is scheduled for today or earlier.");
 
         evnt.IsDeleted = true;
+        
+        var registrations = await _registrationService.GetRegistrationsForEventAsync(evnt.Id);
+        foreach (var registration in registrations)
+        {
+            await _registrationService.CancelRegistrationAsync(registration.Id, registration.AttendeeId);
+        }
+
         await _eventRepository.UpdateAsync(evnt);
+
         return true;
     }
     public async Task<IEnumerable<EventResponseDto>> GetEventsByOrganizerAsync(Guid organizerId)

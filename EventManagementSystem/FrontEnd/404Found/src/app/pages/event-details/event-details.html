@@ -1,11 +1,12 @@
 <div class="event-details container mt-4" *ngIf="event">
-
   <div class="header">
     <h2>{{ event.title }}</h2>
     <!-- <div *ngIf="event.imagePath"> -->
     <!-- <img [src]="'http://localhost:5025/' + event.imagePath" class=" banner img-fluid mb-3" /> -->
-     <img [src]="event.imagePath?.startsWith('http') ? event.imagePath : 'http://localhost:5025/' + event.imagePath"
-     class="banner img-fluid mb-3" />
+    <img
+      [src]="event.imagePath?.startsWith('http') ? event.imagePath : 'http://localhost:5025/' + event.imagePath"
+      class="banner img-fluid mb-3"
+    />
     <!-- </div> -->
   </div>
 
@@ -16,22 +17,39 @@
     <p><strong>Organizer:</strong> {{ event.organizerName }}</p>
     <p><strong>Start:</strong> {{ event.startTime | date:'medium' }}</p>
     <p><strong>End:</strong> {{ event.endTime | date:'medium' }}</p>
+    <p>
+      <strong>Registration Fee:</strong>
+      <i class="bi bi-coin text-warning mx-2"></i>{{ event.registrationFee }}
+    </p>
 
-    <a *ngIf="event.googleMapLink" [href]="event.googleMapLink" target="_blank">📍 Google Map</a><br />
-    <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank">🔗 Online Meet</a>
+    <a *ngIf="event.googleMapLink" [href]="event.googleMapLink" target="_blank"
+      >📍 Google Map</a
+    ><br />
+    <a *ngIf="event.onlineMeetUrl" [href]="event.onlineMeetUrl" target="_blank"
+      >🔗 Online Meet</a
+    >
     <p><strong>Total Registrations:</strong> {{ registrationCount }}</p>
 
     <div *ngIf="!isOrganizer && !isRegistered && !isExpiredEvent" class="mt-3">
-      <button class="btn btn-success" (click)="register()">Register for this Event</button>
+      <button class="btn btn-success" (click)="register()">
+        Register for this Event
+      </button>
     </div>
     <div class="controls">
       <div *ngIf="isRegistered" class="alert alert-info mt-3">
         ✅ You have registered for this event.
       </div>
-      <button *ngIf="registrationId" class="btn btn-danger mt-3" (click)="cancelRegistration()">
+      <button
+        *ngIf="registrationId"
+        class="btn btn-danger mt-3"
+        (click)="cancelRegistration()"
+      >
         Cancel Registration
       </button>
-      <div *ngIf="isExpiredEvent && !isOrganizer" class="alert alert-warning mt-3">
+      <div
+        *ngIf="isExpiredEvent && !isOrganizer"
+        class="alert alert-warning mt-3"
+      >
         ❌ Registration is closed for this event.
       </div>
     </div>
@@ -45,12 +63,16 @@
     <ul *ngIf="showAttendees" class="list-group mt-3">
       <li class="list-group-item" *ngFor="let attendee of attendees">
         <!-- 👤 {{ attendee.username }} ({{ attendee.email }}) -->
-        <img [src]="'http://localhost:5025/' + attendee.profilePicturePath" alt="{{ attendee.username }}"
-          class="rounded-circle me-2" width="40" height="40" style="object-fit: cover;" />
+        <img
+          [src]="'http://localhost:5025/' + attendee.profilePicturePath"
+          alt="{{ attendee.username }}"
+          class="rounded-circle me-2"
+          width="40"
+          height="40"
+          style="object-fit: cover"
+        />
         <span>{{ attendee.username }} ({{ attendee.email }})</span>
       </li>
     </ul>
   </div>
-
-
 </div>

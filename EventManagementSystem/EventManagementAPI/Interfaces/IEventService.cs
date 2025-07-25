@@ -4,7 +4,7 @@ namespace EventManagementAPI.Interfaces;
 
 public interface IEventService
 {
-    Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date=null, int page = 1, int pageSize = 10);
+    Task<IEnumerable<EventResponseDto>> GetAllEventsAsync(string? search = null, DateTime? date = null, int page = 1, int pageSize = 10);
     Task<EventResponseDto?> GetEventByIdAsync(Guid id);
     Task<EventResponseDto> CreateEventAsync(EventCreateDto dto, Guid organizerId);
     Task<EventResponseDto?> UpdateEventAsync(Guid id, EventUpdateDto dto, Guid organizerId);

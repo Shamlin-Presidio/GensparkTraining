@@ -1,15 +1,20 @@
 <div class="container mt-4">
   <h3>Create New Event</h3>
 
-  <form [formGroup]="eventForm" (ngSubmit)="submit()" enctype="multipart/form-data" novalidate>
-    
+  <form
+    [formGroup]="eventForm"
+    (ngSubmit)="submit()"
+    enctype="multipart/form-data"
+    novalidate
+  >
     <!-- Title -->
     <div class="mb-3">
       <label class="form-label">Title</label>
       <input
         formControlName="title"
         class="form-control"
-        [class.is-invalid]="f['title'].touched && f['title'].invalid" />
+        [class.is-invalid]="f['title'].touched && f['title'].invalid"
+      />
       <div class="invalid-feedback">Title is required</div>
     </div>
 
@@ -26,7 +31,8 @@
         type="datetime-local"
         formControlName="startTime"
         class="form-control"
-        [class.is-invalid]="eventForm.errors?.['startInPast'] && f['startTime'].touched" />
+        [class.is-invalid]="eventForm.errors?.['startInPast'] && f['startTime'].touched"
+      />
       <div class="invalid-feedback">Start time cannot be in the past</div>
     </div>
 
@@ -37,7 +43,8 @@
         type="datetime-local"
         formControlName="endTime"
         class="form-control"
-        [class.is-invalid]="eventForm.errors?.['endBeforeStart'] && f['endTime'].touched" />
+        [class.is-invalid]="eventForm.errors?.['endBeforeStart'] && f['endTime'].touched"
+      />
       <div class="invalid-feedback">End time must be after start time</div>
     </div>
 
@@ -47,8 +54,24 @@
       <input
         formControlName="location"
         class="form-control"
-        [class.is-invalid]="f['location'].touched && f['location'].invalid" />
+        [class.is-invalid]="f['location'].touched && f['location'].invalid"
+      />
       <div class="invalid-feedback">Location is required</div>
+    </div>
+
+    <!-- Registration Fee -->
+    <div class="mb-3">
+      <label class="form-label"
+        >Registration Fee
+        <span class="text-primary">(cannot be changed later)</span></label
+      >
+      <input
+        type="number"
+        formControlName="registrationFee"
+        class="form-control"
+        [class.is-invalid]="f['registrationFee'].touched && f['registrationFee'].invalid"
+      />
+      <div class="invalid-feedback">Registration Fee is required</div>
     </div>
 
     <!-- Google Map Link -->
@@ -66,11 +89,19 @@
     <!-- Event Image -->
     <div class="mb-3">
       <label class="form-label">Event Image</label>
-      <input type="file" class="form-control" (change)="onFileSelected($event)" />
+      <input
+        type="file"
+        class="form-control"
+        (change)="onFileSelected($event)"
+      />
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-success" [disabled]="eventForm.invalid">
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="eventForm.invalid"
+    >
       Create Event
     </button>
   </form>

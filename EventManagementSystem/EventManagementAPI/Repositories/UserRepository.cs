@@ -56,7 +56,7 @@ public class UserRepository : IUserRepository
     {
         var user = await _context.Users.FindAsync(userId);
         if (user == null) throw new Exception("User not found");
-        user.Coins += coins;
+        user.Wallet.Coins += coins;
         await _context.SaveChangesAsync();
     }
 
