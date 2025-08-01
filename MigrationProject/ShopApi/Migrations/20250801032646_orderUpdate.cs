@@ -1,0 +1,73 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace ShopApi.Migrations
+{
+    /// <inheritdoc />
+    public partial class orderUpdate : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "CustomerAddress",
+                table: "Orders",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "CustomerEmail",
+                table: "Orders",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "CustomerName",
+                table: "Orders",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "CustomerPhone",
+                table: "Orders",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "PaymentType",
+                table: "Orders",
+                type: "text",
+                nullable: false,
+                defaultValue: "");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "CustomerAddress",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "CustomerEmail",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "CustomerName",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "CustomerPhone",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "PaymentType",
+                table: "Orders");
+        }
+    }
+}
