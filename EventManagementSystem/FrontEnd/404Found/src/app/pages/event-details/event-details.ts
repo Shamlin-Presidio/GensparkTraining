@@ -131,4 +131,7 @@ export class EventDetails implements OnInit {
       },
     });
   }
+  onImgError(event: any) {
+  event.target.src = 'assets/default-event.png';
+}
 }

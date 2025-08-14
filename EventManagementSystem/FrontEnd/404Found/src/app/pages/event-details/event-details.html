@@ -4,9 +4,8 @@
     <!-- <div *ngIf="event.imagePath"> -->
     <!-- <img [src]="'http://localhost:5025/' + event.imagePath" class=" banner img-fluid mb-3" /> -->
     <img
-      [src]="event.imagePath?.startsWith('http') ? event.imagePath : 'http://localhost:5025/' + event.imagePath"
-      class="banner img-fluid mb-3"
-    />
+          [src]="event.imagePath ? (event.imagePath.startsWith('http') ? event.imagePath : 'http://localhost:5025/' +event.imagePath) : 'assets/default-event.png'"
+          (error)="onImgError($event)" class="banner img-fluid mb-3" alt="Event image" />
     <!-- </div> -->
   </div>
 
