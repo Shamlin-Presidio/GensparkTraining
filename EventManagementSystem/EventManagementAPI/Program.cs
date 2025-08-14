@@ -208,7 +208,7 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/UploadedFiles"
 });
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseCors();
 app.MapHub<EventHub>("/eventHub");

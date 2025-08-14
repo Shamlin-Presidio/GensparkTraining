@@ -149,11 +149,6 @@
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/EventManagementAPI.sourcelink.json
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets.build.json
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets.development.json
-/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets/msbuild.EventManagementAPI.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets/msbuild.build.EventManagementAPI.props
-/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.EventManagementAPI.props
-/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.EventManagementAPI.props
-/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/scopedcss/bundle/EventManagementAPI.styles.css
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/EventMan.F3F38E4F.Up2Date
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/EventManagementAPI.dll
@@ -234,3 +229,10 @@
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/runtimes/win-x86/native/libwinpthread-1.dll
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/runtimes/win-x86/native/qpdf.dll
 /Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/bin/Debug/net8.0/EventManagementAPI.staticwebassets.endpoints.json
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/rpswa.dswa.cache.json
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/rjimswa.dswa.cache.json
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets.build.json.cache
+/Users/shamlin/GensparkTraining/EventManagementSystem/EventManagementAPI/obj/Debug/net8.0/staticwebassets.build.endpoints.json

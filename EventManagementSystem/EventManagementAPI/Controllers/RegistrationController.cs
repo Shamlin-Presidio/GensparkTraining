@@ -54,7 +54,7 @@ public class RegistrationController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "An unexpected error occurred.", Details = ex.Message });
+            return StatusCode(500, new { Message = "Insufficient coins. Topup to register.", Details = ex.Message });
         }
     }
 

@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "H7dLINpfvLSVQ1TgCeIoz/uEzm931LYCEs+tRycRoyA=",
-  "Source": "EventManagementAPI",
-  "BasePath": "_content/EventManagementAPI",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"RmymqpsYG9UuHp38ByKEufo9LdhMcAT8DPDAOwPwE9o=","Source":"EventManagementAPI","BasePath":"_content/EventManagementAPI","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

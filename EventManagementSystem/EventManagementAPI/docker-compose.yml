@@ -15,7 +15,7 @@
 #     environment:
 #       POSTGRES_USER: postgres
 #       POSTGRES_PASSWORD: shamlin
-#       POSTGRES_DB: EventManagementSystemDB
+#       POSTGRES_DB: EventManagementSystemDataBase
 #     ports:
 #       - "5433:5432"
 #     volumes:
@@ -30,7 +30,7 @@
 #       - "5026:8081"
 #     environment:
 #       ASPNETCORE_ENVIRONMENT: Development
-#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDataBase;Username=postgres;Password=shamlin"
 #     depends_on:
 #       - db
 
@@ -42,7 +42,7 @@
 #       - db
 #     environment:
 #       ASPNETCORE_ENVIRONMENT: Development
-#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+#       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDataBase;Username=postgres;Password=shamlin"
 
 
 # volumes:
@@ -65,7 +65,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: shamlin
-      POSTGRES_DB: EventManagementSystemDB
+      POSTGRES_DB: EventManagementSystemDataBase
     ports:
       - "5433:5432"
     volumes:
@@ -78,10 +78,10 @@ services:
     image: event-api:latest
     ports:
       - "5025:8080"
-      - "5026:8081"
+      # - "5026:8081"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDataBase;Username=postgres;Password=shamlin"
     depends_on:
       - db
 
@@ -92,7 +92,7 @@ services:
       - db
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDB;Username=postgres;Password=shamlin"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=EventManagementSystemDataBase;Username=postgres;Password=shamlin"
     deploy:
       restart_policy:
         condition: on-failure
